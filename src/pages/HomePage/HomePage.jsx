@@ -2,11 +2,14 @@ import { BACKEND_URL } from "../../scripts/config.js";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+import AddressForm from "../../components/AddressForm/AddressForm.jsx";
 import RoutesList from "../../components/RoutesList/RoutesList.jsx";
 import StopPairsList from "../../components/StopPairsList/StopPairsList.jsx";
 import PlacesList from "../../components/PlacesList/PlacesList.jsx";
 
 function HomePage() {
+  const [addressA, setAddressA] = useState("");
+  const [addressB, setAddressB] = useState("");
   const [routes, setRoutes] = useState(null);
   const [stopPairs, setStopPairs] = useState(null);
   const [places, setPlaces] = useState(null);
@@ -14,13 +17,20 @@ function HomePage() {
   //   get nearby routes
   const fetchRoutes = async () => {
     try {
+      //   const response = await axios.get(
+      //     `${BACKEND_URL}/routes?locA=2329%20West%20Mall&locB=3305%20Kingsway`
+      //   );
+
+      const encodedAddressA = encodeURIComponent(addressA);
+      const encodedAddressB = encodeURIComponent(addressB);
+
       const response = await axios.get(
-        `${BACKEND_URL}/routes?locA=2329%20West%20Mall&locB=3551%20Foster%20Avenue`
+        `${BACKEND_URL}/routes?locA=${encodedAddressA}&locB=${encodedAddressB}`
       );
 
       setRoutes(response.data);
     } catch (error) {
-      console.error("Error fetching places:", error);
+      console.error("Error fetching routes:", error);
     }
   };
 
@@ -49,7 +59,7 @@ function HomePage() {
 
       setStopPairs(allStopPairs); // Store all stop pairs in state
     } catch (error) {
-      console.error("Error fetching places:", error);
+      console.error("Error fetching stop pairs:", error);
     }
   };
 
@@ -67,21 +77,35 @@ function HomePage() {
   };
 
   useEffect(() => {
-    fetchRoutes();
-    fetchStopPairs();
-    fetchPlaces();
-  }, []);
+    if (addressA && addressB) {
+      fetchRoutes();
+    }
+  }, [addressA, addressB]);
+
+  //   useEffect(() => {
+  //     fetchRoutes();
+  //     fetchStopPairs();
+  //     fetchPlaces();
+  //   }, []);
 
   return (
     <div>
       <p>HomePage.jsx</p>
-      {/* {!routes ? <p>Loading routes...</p> : <RoutesList routes={routes} />}
-      {!stopPairs ? (
+
+      <h1>Address Form</h1>
+      <AddressForm setAddressA={setAddressA} setAddressB={setAddressB} />
+
+      <h2>Submitted Addresses:</h2>
+      <p>Address A: {addressA}</p>
+      <p>Address B: {addressB}</p>
+
+      {!routes ? <p>Loading routes...</p> : <RoutesList routes={routes} />}
+      {/* {!stopPairs ? (
         <p>Loading stop pairs...</p>
       ) : (
         <StopPairsList stopPairs={stopPairs} />
-      )}
-      {!places ? <p>Loading places...</p> : <PlacesList places={places} />} */}
+      )} */}
+      {/* {!places ? <p>Loading places...</p> : <PlacesList places={places} />} */}
     </div>
   );
 }
