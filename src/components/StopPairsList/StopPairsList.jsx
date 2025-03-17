@@ -12,6 +12,12 @@ function StopPairsList({stopPairs}) {
             <p>
               <strong>Distance:</strong> {stopPair.distance} km
             </p>
+            <p>
+              <strong>Mid lat:</strong> {stopPair.mid_lat}
+            </p>
+            <p>
+              <strong>Mid lon:</strong> {stopPair.mid_lon}
+            </p>
 
             <div>
               <h3>Route A Stop:</h3>
