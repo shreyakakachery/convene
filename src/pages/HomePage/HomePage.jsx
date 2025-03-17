@@ -12,7 +12,6 @@ function HomePage() {
   const [places, setPlaces] = useState(null);
 
   //   get nearby routes
-
   const fetchRoutes = async () => {
     try {
       const response = await axios.get(
@@ -25,16 +24,7 @@ function HomePage() {
     }
   };
 
-  //   useEffect(() => {
-  //     fetchRoutes();
-  //   }, []);
-
-//   if (!routes) {
-//     return <div>Loading nearby routes...</div>;
-//   }
-
   //   get stop pairs
-
   const fetchStopPairs = async () => {
     try {
       const response = await axios.get(
@@ -44,15 +34,11 @@ function HomePage() {
       // setStopPairs(response.data);
 
       //
-      //
 
       // if only one stop pair
       const dynamicKey = Object.keys(response.data)[0]; // Get the first key dynamically
       // console.log("Dynamic Key:", dynamicKey); // Debugging: Check what key is returned
       setStopPairs(response.data[dynamicKey]);
-
-      //
-      //
 
       // for more than one stop pair
       const allStopPairs = Object.keys(response.data).flatMap(
@@ -67,42 +53,35 @@ function HomePage() {
     }
   };
 
+  //   get places
+  const fetchPlaces = async () => {
+    try {
+      const response = await axios.get(
+        `${BACKEND_URL}/places?lat=49.2344841&lon=-123.1543581`
+      );
+      // const response = await axios.get(`${BACKEND_URL}/places`);
+      setPlaces(response.data);
+    } catch (error) {
+      console.error("Error fetching places:", error);
+    }
+  };
+
   useEffect(() => {
     fetchRoutes();
     fetchStopPairs();
     fetchPlaces();
   }, []);
 
-//   if (!stopPairs) {
-//     return <div>Loading stop pairs...</div>;
-//   }
-
-  //   get places
-
-    const fetchPlaces = async () => {
-      try {
-        const response = await axios.get(`${BACKEND_URL}/places?lat=49.2344841&lon=-123.1543581`);
-        // const response = await axios.get(`${BACKEND_URL}/places`);
-        setPlaces(response.data);
-      } catch (error) {
-        console.error("Error fetching places:", error);
-      }
-    };
-
-  //   useEffect(() => {
-  //     fetchPlaces();
-  //   }, []);
-
-  //   if (!places) {
-  //     return <div>Loading places...</div>;
-  //   }
-
   return (
     <div>
       <p>HomePage.jsx</p>
-      {!routes ? <p>Loading routes...</p> : <RoutesList routes={routes} />}
-      {!stopPairs ? <p>Loading stop pairs...</p> : <StopPairsList stopPairs={stopPairs} />}
-      {!places ? <p>Loading places...</p> : <PlacesList places={places} />}
+      {/* {!routes ? <p>Loading routes...</p> : <RoutesList routes={routes} />}
+      {!stopPairs ? (
+        <p>Loading stop pairs...</p>
+      ) : (
+        <StopPairsList stopPairs={stopPairs} />
+      )}
+      {!places ? <p>Loading places...</p> : <PlacesList places={places} />} */}
     </div>
   );
 }
