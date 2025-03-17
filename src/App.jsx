@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Header from "./components/Header/Header.jsx";
+import Header from "./components/Header/Header.jsx";
 import HomePage from "./pages/HomePage/HomePage.jsx";
 // import Footer from "./components/Footer/Footer.jsx";
 import "./App.scss";
@@ -124,7 +124,7 @@ function App() {
     <div>
       <BrowserRouter>
         <p>App.jsx</p>
-        {/* <Header /> */}
+        <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
         </Routes>
