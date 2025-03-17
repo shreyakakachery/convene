@@ -107,7 +107,7 @@ function RoutesList({ routes, onSubmitSelection }) {
                     handleRouteSelection(
                       routeIndex % 2 === 0 ? "routeA" : "routeB",
                       stop.route,
-                      stop.stop_code
+                      stop.stop_id
                     )
                   }
                   style={{

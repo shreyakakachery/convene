@@ -19,12 +19,10 @@ function HomePage() {
   const [stopA, setStopA] = useState(null);
   const [stopB, setStopB] = useState(null);
 
-  console.log("HOMEPAGE", routeA)
-  console.log("HOMEPAGE", stopA)
-  console.log("HOMEPAGE", routeB)
-  console.log("HOMEPAGE", stopB)
-
-
+  //   console.log("HOMEPAGE", routeA);
+  //   console.log("HOMEPAGE", stopA);
+  //   console.log("HOMEPAGE", routeB);
+  //   console.log("HOMEPAGE", stopB);
 
   // Handle the route selection submission from RoutesList
   const handleSelection = (
@@ -55,19 +53,37 @@ function HomePage() {
     }
   };
 
+  console.log("WHAAT");
+
   //   get stop pairs
   const fetchStopPairs = async () => {
+    if (!routeA || !routeB || !stopA || !stopB) {
+      console.warn("fetchStopPairs skipped: missing route or stop values");
+      return;
+    }
+
     try {
+      const encodedRouteA = encodeURIComponent(routeA);
+      const encodedRouteB = encodeURIComponent(routeB);
+
+      console.log(encodedRouteA);
+      console.log(encodedRouteB);
+
+      //   const response = await axios.get(
+      //     `${BACKEND_URL}/stops?routeA=R4%2041ST%20Avenue/To%20Joyce%20Station&originStopA=1896&routeB=Expo%20Line%20To%20Waterfront&originStopB=8069`
+      //   );
+
       const response = await axios.get(
-        `${BACKEND_URL}/stops?routeA=R4%2041ST%20Avenue/To%20Joyce%20Station&originStopA=1896&routeB=Expo%20Line%20To%20Waterfront&originStopB=8069`
+        `${BACKEND_URL}/stops?routeA=${encodedRouteA}&originStopA=${stopA}&routeB=${encodedRouteB}&originStopB=${stopB}`
       );
+
       // setStopPairs(response.data);
 
       //
 
       // if only one stop pair
       const dynamicKey = Object.keys(response.data)[0]; // Get the first key dynamically
-      // console.log("Dynamic Key:", dynamicKey); // Debugging: Check what key is returned
+      console.log("Dynamic Key:", dynamicKey); // Debugging: Check what key is returned
       setStopPairs(response.data[dynamicKey]);
 
       // for more than one stop pair
@@ -75,7 +91,7 @@ function HomePage() {
         (key) => response.data[key]
       ); // Combine all arrays into one
 
-      // console.log("All Stop Pairs:", allStopPairs); // Debugging: Check the structure
+      console.log("All Stop Pairs:", allStopPairs); // Debugging: Check the structure
 
       setStopPairs(allStopPairs); // Store all stop pairs in state
     } catch (error) {
@@ -102,7 +118,12 @@ function HomePage() {
   }, [addressA, addressB]);
 
   useEffect(() => {
-    fetchStopPairs();
+    if (routeA && routeB && stopA && stopB) {
+      fetchStopPairs();
+    }
+  }, [routeA, routeB, stopA, stopB]);
+
+  useEffect(() => {
     fetchPlaces();
   }, []);
 
@@ -122,11 +143,11 @@ function HomePage() {
       ) : (
         <RoutesList routes={routes} onSubmitSelection={handleSelection} />
       )}
-      {/* {!stopPairs ? (
+      {!stopPairs ? (
         <p>Loading stop pairs...</p>
       ) : (
         <StopPairsList stopPairs={stopPairs} />
-      )} */}
+      )}
       {/* {!places ? <p>Loading places...</p> : <PlacesList places={places} />} */}
     </div>
   );
