@@ -5,7 +5,7 @@ import axios from "axios";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header.jsx";
 import HomePage from "./pages/HomePage/HomePage.jsx";
-// import Footer from "./components/Footer/Footer.jsx";
+import Footer from "./components/Footer/Footer.jsx";
 import "./App.scss";
 
 function App() {
@@ -128,7 +128,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
         </Routes>
-        {/* <Footer /> */}
+        <Footer />
       </BrowserRouter>
 
       {/* <p>App.jsx</p>
