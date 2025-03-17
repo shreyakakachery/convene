@@ -14,6 +14,31 @@ function HomePage() {
   const [stopPairs, setStopPairs] = useState(null);
   const [places, setPlaces] = useState(null);
 
+  const [routeA, setRouteA] = useState(null);
+  const [routeB, setRouteB] = useState(null);
+  const [stopA, setStopA] = useState(null);
+  const [stopB, setStopB] = useState(null);
+
+  console.log("HOMEPAGE", routeA)
+  console.log("HOMEPAGE", stopA)
+  console.log("HOMEPAGE", routeB)
+  console.log("HOMEPAGE", stopB)
+
+
+
+  // Handle the route selection submission from RoutesList
+  const handleSelection = (
+    selectedRouteA,
+    selectedRouteB,
+    selectedStopA,
+    selectedStopB
+  ) => {
+    setRouteA(selectedRouteA);
+    setRouteB(selectedRouteB);
+    setStopA(selectedStopA);
+    setStopB(selectedStopB);
+  };
+
   //   get nearby routes
   const fetchRoutes = async () => {
     try {
@@ -92,7 +117,11 @@ function HomePage() {
       <p>Address A: {addressA}</p>
       <p>Address B: {addressB}</p>
 
-      {!routes ? <p>Loading routes...</p> : <RoutesList routes={routes} />}
+      {!routes ? (
+        <p>Loading routes...</p>
+      ) : (
+        <RoutesList routes={routes} onSubmitSelection={handleSelection} />
+      )}
       {/* {!stopPairs ? (
         <p>Loading stop pairs...</p>
       ) : (
