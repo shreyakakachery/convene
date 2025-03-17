@@ -1,12 +1,17 @@
 import { BACKEND_URL } from "./scripts/config.js";
 import { useState, useEffect } from "react";
 import axios from "axios";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import Header from "./components/Header/Header.jsx";
+import HomePage from "./pages/HomePage/HomePage.jsx";
+// import Footer from "./components/Footer/Footer.jsx";
 import "./App.scss";
 
 function App() {
-  const [routes, setRoutes] = useState(null);
-  const [stopPairs, setStopPairs] = useState(null);
-  const [places, setPlaces] = useState(null);
+  // const [routes, setRoutes] = useState(null);
+  // const [stopPairs, setStopPairs] = useState(null);
+  // const [places, setPlaces] = useState(null);
 
   //
   //
@@ -91,33 +96,42 @@ function App() {
   //
   //
 
-  console.log("before:", routes);
+  // console.log("before:", routes);
 
-  const fetchRoutes = async () => {
-    try {
-      const response = await axios.get(
-        `${BACKEND_URL}/routes?locA=2329%20West%20Mall&locB=3551%20Foster%20Avenue`
-      );
+  // const fetchRoutes = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       `${BACKEND_URL}/routes?locA=2329%20West%20Mall&locB=3551%20Foster%20Avenue`
+  //     );
 
-      setRoutes(response.data);
-    } catch (error) {
-      console.error("Error fetching places:", error);
-    }
-  };
+  //     setRoutes(response.data);
+  //   } catch (error) {
+  //     console.error("Error fetching places:", error);
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchRoutes();
-  }, []);
+  // useEffect(() => {
+  //   fetchRoutes();
+  // }, []);
 
-  if (!routes) {
-    return <div>Loading nearby routes...</div>;
-  }
+  // if (!routes) {
+  //   return <div>Loading nearby routes...</div>;
+  // }
 
-  console.log("after:", stopPairs);
+  // console.log("after:", stopPairs);
 
   return (
     <div>
-      <p>App.jsx</p>
+      <BrowserRouter>
+        <p>App.jsx</p>
+        {/* <Header /> */}
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+        {/* <Footer /> */}
+      </BrowserRouter>
+
+      {/* <p>App.jsx</p>
       <p>{BACKEND_URL}</p>
       <h1>NEARBY ROUTES</h1>
       {routes.length > 0 ? (
@@ -163,7 +177,7 @@ function App() {
         <p>Loading...</p>
       )}
 
-      <h1>STOP PAIRS</h1>
+      <h1>STOP PAIRS</h1> */}
       {/* {stopPairs.length > 0 ? (
         stopPairs.map((stopPair, index) => (
           <div key={index}>
@@ -206,7 +220,7 @@ function App() {
       ) : (
         <p>Loading...</p>
       )} */}
-      <h1>PLACES</h1>
+      {/* <h1>PLACES</h1>
       <h3>Places Nearby</h3>
       <ul>
         {places && places.length > 0 ? (
@@ -217,15 +231,15 @@ function App() {
               <p>
                 Address: {place.number} {place.street}
               </p>
-              {/* <p>Location: Latitude {place.lat}, Longitude {place.lon}</p> */}
-              {/* <p>Indoor Seating: {place.indoor_seating}</p>
-              <p>Outdoor Seating: {place.outdoor_seating}</p> */}
+              <p>Location: Latitude {place.lat}, Longitude {place.lon}</p>
+              <p>Indoor Seating: {place.indoor_seating}</p>
+              <p>Outdoor Seating: {place.outdoor_seating}</p>
             </li>
           ))
         ) : (
           <p>No places found.</p>
         )}
-      </ul>
+      </ul> */}
     </div>
   );
 }
