@@ -17,10 +17,6 @@ function HomePage() {
   //   get nearby routes
   const fetchRoutes = async () => {
     try {
-      //   const response = await axios.get(
-      //     `${BACKEND_URL}/routes?locA=2329%20West%20Mall&locB=3305%20Kingsway`
-      //   );
-
       const encodedAddressA = encodeURIComponent(addressA);
       const encodedAddressB = encodeURIComponent(addressB);
 
@@ -40,7 +36,6 @@ function HomePage() {
       const response = await axios.get(
         `${BACKEND_URL}/stops?routeA=R4%2041ST%20Avenue/To%20Joyce%20Station&originStopA=1896&routeB=Expo%20Line%20To%20Waterfront&originStopB=8069`
       );
-      // const response = await axios.get(`${BACKEND_URL}/stops`);
       // setStopPairs(response.data);
 
       //
@@ -69,7 +64,6 @@ function HomePage() {
       const response = await axios.get(
         `${BACKEND_URL}/places?lat=49.2344841&lon=-123.1543581`
       );
-      // const response = await axios.get(`${BACKEND_URL}/places`);
       setPlaces(response.data);
     } catch (error) {
       console.error("Error fetching places:", error);
@@ -82,11 +76,10 @@ function HomePage() {
     }
   }, [addressA, addressB]);
 
-  //   useEffect(() => {
-  //     fetchRoutes();
-  //     fetchStopPairs();
-  //     fetchPlaces();
-  //   }, []);
+  useEffect(() => {
+    fetchStopPairs();
+    fetchPlaces();
+  }, []);
 
   return (
     <div>
