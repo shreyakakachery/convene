@@ -19,6 +19,9 @@ function HomePage() {
   const [stopA, setStopA] = useState(null);
   const [stopB, setStopB] = useState(null);
 
+  const [midLat, setMidLat] = useState(null);
+  const [midLon, setMidLon] = useState(null);
+
   //   console.log("HOMEPAGE", routeA);
   //   console.log("HOMEPAGE", stopA);
   //   console.log("HOMEPAGE", routeB);
@@ -35,6 +38,11 @@ function HomePage() {
     setRouteB(selectedRouteB);
     setStopA(selectedStopA);
     setStopB(selectedStopB);
+  };
+
+  const handleMidpointSelection = (lat, lon) => {
+    setMidLat(lat);
+    setMidLon(lon);
   };
 
   //   get nearby routes
@@ -146,8 +154,9 @@ function HomePage() {
       {!stopPairs ? (
         <p>Loading stop pairs...</p>
       ) : (
-        <StopPairsList stopPairs={stopPairs} />
+        <StopPairsList stopPairs={stopPairs}  onSelectMidpoint={handleMidpointSelection} />
       )}
+      <p><strong>Selected Midpoint:</strong> {midLat && midLon ? `(${midLat}, ${midLon})` : "None selected"}</p>
       {/* {!places ? <p>Loading places...</p> : <PlacesList places={places} />} */}
     </div>
   );
