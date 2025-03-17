@@ -11,41 +11,29 @@ function HomePage() {
   const [stopPairs, setStopPairs] = useState(null);
   const [places, setPlaces] = useState(null);
 
-  
-  
-//   get places
-  
-  
+  //   get nearby routes
 
-  console.log("before:", places);
-
-  const fetchPlaces = async () => {
+  const fetchRoutes = async () => {
     try {
-      const response = await axios.get(`${BACKEND_URL}/places?lat=49.2344841&lon=-123.1543581`);
-      // const response = await axios.get(`${BACKEND_URL}/places`);
-      setPlaces(response.data);
+      const response = await axios.get(
+        `${BACKEND_URL}/routes?locA=2329%20West%20Mall&locB=3551%20Foster%20Avenue`
+      );
+
+      setRoutes(response.data);
     } catch (error) {
       console.error("Error fetching places:", error);
     }
   };
 
   useEffect(() => {
-    fetchPlaces();
+    fetchRoutes();
   }, []);
 
-//   if (!places) {
-//     return <div>Loading places...</div>;
-//   }
+  if (!routes) {
+    return <div>Loading nearby routes...</div>;
+  }
 
-  console.log("after:", places);
-
-  
-  
-//   get stop pairs
-  
-  
-
-  console.log("before:", stopPairs);
+  //   get stop pairs
 
   const fetchStopPairs = async () => {
     try {
@@ -67,64 +55,52 @@ function HomePage() {
       //
 
       // for more than one stop pair
-      const allStopPairs = Object.keys(response.data).flatMap((key) => response.data[key]); // Combine all arrays into one
+      const allStopPairs = Object.keys(response.data).flatMap(
+        (key) => response.data[key]
+      ); // Combine all arrays into one
 
       console.log("All Stop Pairs:", allStopPairs); // Debugging: Check the structure
 
       setStopPairs(allStopPairs); // Store all stop pairs in state
-
     } catch (error) {
       console.error("Error fetching places:", error);
     }
   };
 
-  useEffect(() => {
-    fetchStopPairs();
-  }, []);
+  //   useEffect(() => {
+  //     fetchStopPairs();
+  //   }, []);
 
-//   if (!stopPairs) {
-//     return <div>Loading stop pairs...</div>;
-//   }
+  //   if (!stopPairs) {
+  //     return <div>Loading stop pairs...</div>;
+  //   }
 
-  console.log("after:", stopPairs);
+  //   get places
 
-  
-  
-//   get nearby routes
-  
-  
+  //   const fetchPlaces = async () => {
+  //     try {
+  //       const response = await axios.get(`${BACKEND_URL}/places?lat=49.2344841&lon=-123.1543581`);
+  //       // const response = await axios.get(`${BACKEND_URL}/places`);
+  //       setPlaces(response.data);
+  //     } catch (error) {
+  //       console.error("Error fetching places:", error);
+  //     }
+  //   };
 
-  console.log("before:", routes);
+  //   useEffect(() => {
+  //     fetchPlaces();
+  //   }, []);
 
-  const fetchRoutes = async () => {
-    try {
-      const response = await axios.get(
-        `${BACKEND_URL}/routes?locA=2329%20West%20Mall&locB=3551%20Foster%20Avenue`
-      );
-
-      setRoutes(response.data);
-    } catch (error) {
-      console.error("Error fetching places:", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchRoutes();
-  }, []);
-
-//   if (!routes) {
-//     return <div>Loading nearby routes...</div>;
-//   }
-
-  console.log("after:", stopPairs);
+  //   if (!places) {
+  //     return <div>Loading places...</div>;
+  //   }
 
   return (
     <div>
       <p>HomePage.jsx</p>
-      <RoutesList />
+      <RoutesList routes={routes} />
       <StopPairsList />
       <PlacesList places={places} />
-
 
       {/* <h1>NEARBY ROUTES</h1>
       {routes.length > 0 ? (
@@ -213,26 +189,6 @@ function HomePage() {
       ) : (
         <p>Loading...</p>
       )} */}
-      {/* <h1>PLACES</h1>
-      <h3>Places Nearby</h3>
-      <ul>
-        {places && places.length > 0 ? (
-          places.map((place, index) => (
-            <li key={index}>
-              <h2>{place.name}</h2>
-              <p>Type: {place.amenity}</p>
-              <p>
-                Address: {place.number} {place.street}
-              </p>
-              <p>Location: Latitude {place.lat}, Longitude {place.lon}</p>
-              <p>Indoor Seating: {place.indoor_seating}</p>
-              <p>Outdoor Seating: {place.outdoor_seating}</p>
-            </li>
-          ))
-        ) : (
-          <p>No places found.</p>
-        )}
-      </ul> */}
     </div>
   );
 }
