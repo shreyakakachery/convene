@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import "./AddressForm.scss";
 
 // to do list:
 // add form validation
-// add reusable button component
 
 const AddressForm = ({ setAddressA, setAddressB }) => {
   const [addressA, setAddressAInput] = useState("");
@@ -10,33 +10,35 @@ const AddressForm = ({ setAddressA, setAddressB }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // send addresses to HomePage
     setAddressA(addressA);
     setAddressB(addressB);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Address A:</label>
+    <form className="address-form" onSubmit={handleSubmit}>
+      <div className="address-form__box">
+        <label className="address-form__label">Address A:</label>
         <input
+          className="address-form__input address-form__input--user-a"
           type="text"
           value={addressA}
           onChange={(e) => setAddressAInput(e.target.value)}
           placeholder="Enter Address A"
         />
       </div>
-      <div>
-        <label>Address B:</label>
+      <div className="address-form__box">
+        <label className="address-form__label">Address B:</label>
         <input
+          className="address-form__input address-form__input--user-b"
           type="text"
           value={addressB}
           onChange={(e) => setAddressBInput(e.target.value)}
           placeholder="Enter Address B"
         />
       </div>
-      {/* add reusable button component here */}
-      <button type="submit">Get Routes</button>
+      <button className="address-form__button" type="submit">
+        Get Routes
+      </button>
     </form>
   );
 };

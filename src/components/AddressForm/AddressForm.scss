@@ -1,0 +1,31 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.address-form {
+  border: 2px solid red;
+
+  &__box {
+    border: 2px solid blue;
+  }
+
+  &__label {
+    color: darkgreen;
+  }
+
+  &__input {
+    font-weight: 700;
+
+    &--user-a {
+      color: lightblue;
+    }
+
+    &--user-b {
+      color: lightpink;
+    }
+  }
+
+  &__button {
+    color: darkred;
+  }
+}
