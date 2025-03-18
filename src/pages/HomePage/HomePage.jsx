@@ -22,11 +22,6 @@ function HomePage() {
   const [midLat, setMidLat] = useState(null);
   const [midLon, setMidLon] = useState(null);
 
-  //   console.log("HOMEPAGE", routeA);
-  //   console.log("HOMEPAGE", stopA);
-  //   console.log("HOMEPAGE", routeB);
-  //   console.log("HOMEPAGE", stopB);
-
   // Handle the route selection submission from RoutesList
   const handleSelection = (
     selectedRouteA,
@@ -61,8 +56,6 @@ function HomePage() {
     }
   };
 
-  console.log("WHAAT");
-
   //   get stop pairs
   const fetchStopPairs = async () => {
     if (!routeA || !routeB || !stopA || !stopB) {
@@ -74,24 +67,15 @@ function HomePage() {
       const encodedRouteA = encodeURIComponent(routeA);
       const encodedRouteB = encodeURIComponent(routeB);
 
-      console.log(encodedRouteA);
-      console.log(encodedRouteB);
-
-      //   const response = await axios.get(
-      //     `${BACKEND_URL}/stops?routeA=R4%2041ST%20Avenue/To%20Joyce%20Station&originStopA=1896&routeB=Expo%20Line%20To%20Waterfront&originStopB=8069`
-      //   );
-
       const response = await axios.get(
         `${BACKEND_URL}/stops?routeA=${encodedRouteA}&originStopA=${stopA}&routeB=${encodedRouteB}&originStopB=${stopB}`
       );
-
-      // setStopPairs(response.data);
 
       //
 
       // if only one stop pair
       const dynamicKey = Object.keys(response.data)[0]; // Get the first key dynamically
-      console.log("Dynamic Key:", dynamicKey); // Debugging: Check what key is returned
+      // console.log("Dynamic Key:", dynamicKey); // Debugging: Check what key is returned
       setStopPairs(response.data[dynamicKey]);
 
       // for more than one stop pair
@@ -99,7 +83,7 @@ function HomePage() {
         (key) => response.data[key]
       ); // Combine all arrays into one
 
-      console.log("All Stop Pairs:", allStopPairs); // Debugging: Check the structure
+      // console.log("All Stop Pairs:", allStopPairs); // Debugging: Check the structure
 
       setStopPairs(allStopPairs); // Store all stop pairs in state
     } catch (error) {
@@ -110,8 +94,11 @@ function HomePage() {
   //   get places
   const fetchPlaces = async () => {
     try {
+      const encodedMidLat = encodeURIComponent(midLat);
+      const encodedMidLon = encodeURIComponent(midLon);
+
       const response = await axios.get(
-        `${BACKEND_URL}/places?lat=49.2344841&lon=-123.1543581`
+        `${BACKEND_URL}/places?lat=${encodedMidLat}&lon=${encodedMidLon}`
       );
       setPlaces(response.data);
     } catch (error) {
@@ -132,8 +119,10 @@ function HomePage() {
   }, [routeA, routeB, stopA, stopB]);
 
   useEffect(() => {
-    fetchPlaces();
-  }, []);
+    if (midLat && midLon) {
+      fetchPlaces();
+    }
+  }, [midLat, midLon]);
 
   return (
     <div>
@@ -142,6 +131,7 @@ function HomePage() {
       <h1>Address Form</h1>
       <AddressForm setAddressA={setAddressA} setAddressB={setAddressB} />
 
+      {/* for testing */}
       <h2>Submitted Addresses:</h2>
       <p>Address A: {addressA}</p>
       <p>Address B: {addressB}</p>
@@ -154,10 +144,16 @@ function HomePage() {
       {!stopPairs ? (
         <p>Loading stop pairs...</p>
       ) : (
-        <StopPairsList stopPairs={stopPairs}  onSelectMidpoint={handleMidpointSelection} />
+        <StopPairsList
+          stopPairs={stopPairs}
+          onSelectMidpoint={handleMidpointSelection}
+        />
       )}
-      <p><strong>Selected Midpoint:</strong> {midLat && midLon ? `(${midLat}, ${midLon})` : "None selected"}</p>
-      {/* {!places ? <p>Loading places...</p> : <PlacesList places={places} />} */}
+      <p>
+        <strong>Selected Midpoint:</strong>{" "}
+        {midLat && midLon ? `(${midLat}, ${midLon})` : "None selected"}
+      </p>
+      {!places ? <p>Loading places...</p> : <PlacesList places={places} />}
     </div>
   );
 }

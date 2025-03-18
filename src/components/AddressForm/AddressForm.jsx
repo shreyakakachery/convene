@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // to do list:
-// add form validation 
+// add form validation
 // add reusable button component
 
 const AddressForm = ({ setAddressA, setAddressB }) => {
@@ -36,7 +36,7 @@ const AddressForm = ({ setAddressA, setAddressB }) => {
         />
       </div>
       {/* add reusable button component here */}
-      <button type="submit">Submit</button>
+      <button type="submit">Get Routes</button>
     </form>
   );
 };

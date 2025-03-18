@@ -13,11 +13,6 @@ function PlacesList({ places }) {
               <p>
                 Address: {place.number} {place.street}
               </p>
-              <p>
-                Location: Latitude {place.lat}, Longitude {place.lon}
-              </p>
-              <p>Indoor Seating: {place.indoor_seating}</p>
-              <p>Outdoor Seating: {place.outdoor_seating}</p>
             </li>
           ))
         ) : (
