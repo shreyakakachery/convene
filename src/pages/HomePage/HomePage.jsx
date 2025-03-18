@@ -35,9 +35,9 @@ function HomePage() {
     setStopB(selectedStopB);
   };
 
-  const handleMidpointSelection = (lat, lon) => {
-    setMidLat(lat);
-    setMidLon(lon);
+  const handleMidpointSelection = (selectedMidpoint) => {
+    setMidLat(selectedMidpoint.midLat);
+    setMidLon(selectedMidpoint.midLon);
   };
 
   //   get nearby routes
