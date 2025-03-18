@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./RoutesList.scss";
 
 function RoutesList({ routes, onSubmitSelection }) {
   const [selectedRouteA, setSelectedRouteA] = useState(null);
@@ -39,8 +40,8 @@ function RoutesList({ routes, onSubmitSelection }) {
           onClick={() =>
             handleRouteSelection(routeType, stop.route, stop.stop_id)
           }
-          className={`route-list__item ${
-            isSelected ? "route-list__item--selected" : ""
+          className={`routes-list__item ${
+            isSelected ? "routes-list__item--selected" : ""
           }`}
         >
           <p className="routes-list__route-name">
@@ -80,13 +81,14 @@ function RoutesList({ routes, onSubmitSelection }) {
     <div>
       <p>RoutesList.jsx</p>
 
-      <p>{routesA.address}</p>
       <ul className="routes-list routes-list--a">
+        <p className="routes-list__title">{routesA.address}</p>
         {renderRoutes(routesA, selectedRouteA, selectedStopA, "routeA")}
       </ul>
 
-      <p>{routesB.address}</p>
       <ul className="routes-list routes-list--b">
+        <p className="routes-list__title">{routesB.address}</p>
+
         {renderRoutes(routesB, selectedRouteB, selectedStopB, "routeB")}
       </ul>
 
