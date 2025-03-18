@@ -1,0 +1,21 @@
+@font-face {
+  font-family: "Gowun Dodum";
+  src: url(./assets/fonts/gowun-dodum-regular.woff) format("woff");
+  src: url(./assets/fonts/alternatives/gowun-dodum-regular.woff2)
+    format("woff2");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Zain";
+  src: url(./assets/fonts/zain-regular.woff) format("woff");
+  src: url(./assets/fonts/alternatives/zain-regular.woff2) format("woff2");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Zain";
+  src: url(./assets/fonts/zain-bold.woff) format("woff");
+  src: url(./assets/fonts/alternatives/zain-bold.woff2) format("woff2");
+  font-weight: 700;
+}
