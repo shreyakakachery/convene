@@ -1,0 +1,35 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+
+.places {
+
+    &__title {
+        color: darkblue;
+    }
+
+    &__list {
+        border: 2px solid darkgoldenrod;
+    }
+
+    &__item {
+        border: 2px solid darkred;
+    }
+
+    &__name {
+        color: darkcyan;
+    }
+
+    &__type {
+        color: darkorchid;
+    }
+
+    &__address {
+        color: saddlebrown;
+    }
+
+    &__null-message {
+        color: red;
+    }
+}
