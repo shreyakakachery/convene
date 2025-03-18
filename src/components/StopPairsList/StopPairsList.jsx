@@ -66,7 +66,7 @@ function StopPairsList({ stopPairs, onSelectMidpoint }) {
           ))}
         </ul>
       ) : (
-        <p className="stop-pairs__loading">Loading stops...</p>
+        <p className="stop-pairs__null-message">No intersecting stops found.</p>
       )}
 
       {selectedStopPair && (

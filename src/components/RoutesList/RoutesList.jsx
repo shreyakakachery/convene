@@ -91,7 +91,7 @@ function RoutesList({ routes, onSubmitSelection }) {
           </div>
         ))
       ) : (
-        <p>Loading routes...</p>
+        <p>No routes found.</p>
       )}
 
       {/* Button to submit selected routes and stops */}

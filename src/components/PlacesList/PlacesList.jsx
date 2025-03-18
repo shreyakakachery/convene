@@ -1,22 +1,20 @@
 function PlacesList({ places }) {
   return (
-    <div>
-      <p>PlacesList.jsx</p>
-      <h1>PLACES</h1>
-      <h3>Places Nearby</h3>
-      <ul>
+    <div className="places">
+      <h3 className="places__title">Places Nearby</h3>
+      <ul className="places__list">
         {places && places.length > 0 ? (
           places.map((place, index) => (
-            <li key={index}>
-              <h2>{place.name}</h2>
-              <p>Type: {place.amenity}</p>
-              <p>
+            <li className="places__item" key={index}>
+              <h2 className="places__item-name">{place.name}</h2>
+              <p className="places__item-type">Type: {place.amenity}</p>
+              <p className="places__item-address">
                 Address: {place.number} {place.street}
               </p>
             </li>
           ))
         ) : (
-          <p>No places found.</p>
+          <p className="places__null-message">No places found.</p>
         )}
       </ul>
     </div>
