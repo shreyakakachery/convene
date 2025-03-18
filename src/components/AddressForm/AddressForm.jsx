@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./AddressForm.scss";
 
 // to do list:
@@ -8,10 +9,13 @@ const AddressForm = ({ setAddressA, setAddressB }) => {
   const [addressA, setAddressAInput] = useState("");
   const [addressB, setAddressBInput] = useState("");
 
+  const navigate = useNavigate()
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setAddressA(addressA);
     setAddressB(addressB);
+    navigate("/test", {state: {addressA, addressB}}) // to send to next page upon click, plus pass props
   };
 
   return (

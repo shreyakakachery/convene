@@ -22,7 +22,6 @@ function HomePage() {
   const [midLat, setMidLat] = useState(null);
   const [midLon, setMidLon] = useState(null);
 
-  // Handle the route selection submission from RoutesList
   const handleSelection = (
     selectedRouteA,
     selectedRouteB,
