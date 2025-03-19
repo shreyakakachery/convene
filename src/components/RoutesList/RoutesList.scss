@@ -2,19 +2,31 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/typography" as *;
 
+
+.routes {
+  padding: 1rem;
+
+  &__title {
+    padding: 1rem 0;
+  }
+}
+
 .routes-list {
     list-style-type: none;
-    padding: 0;
-    margin: 0;
-    padding: 1rem;
+    padding: 0.6rem;
     margin: 1rem 0;
     border-radius: 1rem;
 
     &__title {
-        color: seagreen;
+        color: darkblue;
         font-weight: 700;
         font-size: 25px;
         text-transform: capitalize;
+        padding: 0.3rem;
+
+        &--b {
+          color: seagreen;
+        }
     }
   
     &--a {
@@ -30,15 +42,23 @@
   
     &__item {
       margin-bottom: 10px;
-      padding: 10px 24px;
-      border: 1px solid gray;
+      padding: 1rem;
+      border: 2px solid gray;
       border-radius: 2rem;
       cursor: pointer;
       transition: background-color 0.3s, border-color 0.3s;
       background-color: lightblue;
 
+      &:hover {
+        background-color: papayawhip;
+      }
+
       &--b {
         background-color: lightgoldenrodyellow;
+
+        &:hover {
+          background-color: peachpuff;
+        }
       }
   
       &--selected {
@@ -55,16 +75,17 @@
 
     &__stop-name {
         // color: darkcyan;
-        font-size: 0.8rem;
+        font-size: 0.85rem;
+        padding: 0.2rem 0 0.5rem;
     }
 
     // &__stop-code {
     //     color: darkorchid;
     // }
 
-    &__distance {
-        color: darkblue;
-    }
+    // &__distance {
+    //     color: darkblue;
+    // }
 
     &__button {
       @include get-button;

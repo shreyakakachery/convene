@@ -35,14 +35,14 @@ function RoutesList({ routes, onSubmitSelection }) {
       const isSelected =
         selectedRoute === stop.route && selectedStop === stop.stop_id;
 
-      const routeClassModifier = routeType === "routeB" ? "routes-list__item--b" : "";
+      const routeItemModifier = routeType === "routeB" ? "routes-list__item--b" : "";
       return (
         <li
           key={stopIndex}
           onClick={() =>
             handleRouteSelection(routeType, stop.route, stop.stop_id)
           }
-          className={`routes-list__item  ${routeClassModifier}  ${
+          className={`routes-list__item  ${routeItemModifier}  ${
             isSelected ? "routes-list__item--selected" : ""
           }`}
         >
@@ -81,8 +81,8 @@ function RoutesList({ routes, onSubmitSelection }) {
   // const RoutesB = allRoutesB.filter(route => !route.filteredStops.some(stop => stop.zone_id.startsWith("Z")));
 
   return (
-    <div>
-      <p>RoutesList.jsx</p>
+    <div className="routes">
+      <h2 className="routes__title">Routes</h2>
 
       <ul className="routes-list routes-list--a">
         <p className="routes-list__title">{routesA.address}</p>
@@ -90,7 +90,7 @@ function RoutesList({ routes, onSubmitSelection }) {
       </ul>
 
       <ul className="routes-list routes-list--b">
-        <p className="routes-list__title">{routesB.address}</p>
+        <p className="routes-list__title routes-list__title--b">{routesB.address}</p>
 
         {renderRoutes(routesB, selectedRouteB, selectedStopB, "routeB")}
       </ul>
