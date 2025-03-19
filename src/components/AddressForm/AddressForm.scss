@@ -3,29 +3,64 @@
 @use "../../styles/partials/typography" as *;
 
 .address-form {
-  border: 2px solid red;
+  // border: 2px solid red;
+  padding: 1rem;
 
   &__box {
-    border: 2px solid blue;
+    // border: 2px solid blue;
+    padding: 1rem 0rem;
+    display: flex;
+    flex-direction: column;
   }
 
   &__label {
-    color: darkgreen;
+    padding-left: 0.5rem;
+    padding-bottom: 0.25rem;
+    font-family: "Gidole";
+    color: darkblue;
+    font-weight: 700;
+
+    &--user-b {
+      color: lightseagreen;
+    }
   }
 
   &__input {
+    padding: 1rem;
+    width: 100%;
+    border: 2px solid lightskyblue;
+    border-radius: 20px;
+    font-family: "Gidole";
+    font-size: 1rem;
     font-weight: 700;
+    outline: none;
+    color: darkblue;
 
-    &--user-a {
-      color: lightblue;
+    &::placeholder {
+      color: grey;
+    }
+
+    &:focus {
+      border-color: darkblue;
     }
 
     &--user-b {
-      color: lightpink;
+      color: seagreen;
+      border-color: lightseagreen;
+
+      &:focus {
+        border-color: seagreen;
+      }
     }
   }
 
   &__button {
-    color: darkred;
+    // color: darkred;
+    font-weight: 700;
+    font-size: 1.5rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 60%;
+    margin-top: 1rem;
   }
 }
