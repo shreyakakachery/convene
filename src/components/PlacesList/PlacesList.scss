@@ -4,17 +4,26 @@
 
 
 .places {
+    padding: 4rem 1rem;
+    background-color: blanchedalmond;
+
 
     &__title {
         color: darkblue;
     }
 
     &__list {
-        border: 2px solid darkgoldenrod;
+        // border: 2px solid darkgoldenrod;
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        // padding: 1rem;
     }
 
     &__item {
         border: 2px solid darkred;
+        width: 100%;
+        padding: 1rem;
     }
 
     &__name {
