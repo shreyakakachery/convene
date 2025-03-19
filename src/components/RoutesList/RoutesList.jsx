@@ -95,7 +95,7 @@ function RoutesList({ routes, onSubmitSelection }) {
         {renderRoutes(routesB, selectedRouteB, selectedStopB, "routeB")}
       </ul>
 
-      <button onClick={handleGetStops}>Get Stops</button>
+      <button className="routes-list__button" onClick={handleGetStops}>Get Stops</button>
     </div>
   );
 }

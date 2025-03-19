@@ -12,8 +12,24 @@
   }
 }
 
-@mixin font($font-size, $font-weight, $line-height) {
-  font-size: $font-size;
-  font-weight: $font-weight;
-  line-height: $line-height;
+// @mixin font($font-size, $font-weight, $line-height) {
+//   font-size: $font-size;
+//   font-weight: $font-weight;
+//   line-height: $line-height;
+// }
+
+@mixin get-button {
+  font-weight: 700;
+  font-size: 1.5rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  width: 60%;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  &:hover {
+    background: darkred;
+    color: white;
+  }
 }

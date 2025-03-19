@@ -67,10 +67,12 @@
   }
 
   &__button {
-    background-color: pink;
-    margin: 2rem 0;
-    padding: 1rem;
-    border-radius: 0.2rem;
+    // background-color: pink;
+    // margin: 2rem 0;
+    // padding: 1rem;
+    // border-radius: 0.2rem;
+
+    @include get-button;
   }
 }
 

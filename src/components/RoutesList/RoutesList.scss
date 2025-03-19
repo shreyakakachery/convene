@@ -65,5 +65,9 @@
     &__distance {
         color: darkblue;
     }
+
+    &__button {
+      @include get-button;
+    }
   }
   
