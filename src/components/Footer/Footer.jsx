@@ -1,11 +1,12 @@
-import React from 'react'
+import "./Footer.scss";
 
 function Footer() {
   return (
-    <div>
-        <p>Footer.jsx</p>
+    <div className="footer">
+      <p className="footer__flair">🚌 ࿐ ࿔*:･ﾟ</p>
+      <p className="footer__copyright">&copy; Shreya Kakachery 2025</p>
     </div>
-  )
+  );
 }
 
-export default Footer
+export default Footer;
