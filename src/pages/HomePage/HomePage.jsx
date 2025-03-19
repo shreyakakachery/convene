@@ -3,14 +3,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import AddressForm from "../../components/AddressForm/AddressForm.jsx";
-import RoutesList from "../../components/RoutesList/RoutesList.jsx";
+// import RoutesList from "../../components/RoutesList/RoutesList.jsx";
 import StopPairsList from "../../components/StopPairsList/StopPairsList.jsx";
 import PlacesList from "../../components/PlacesList/PlacesList.jsx";
 
 function HomePage() {
-  const [addressA, setAddressA] = useState("");
-  const [addressB, setAddressB] = useState("");
-  const [routes, setRoutes] = useState(null);
+  const [addressA, setAddressA] = useState(""); // del
+  const [addressB, setAddressB] = useState(""); // del
+  // const [routes, setRoutes] = useState(null);
   const [stopPairs, setStopPairs] = useState(null);
   const [places, setPlaces] = useState(null);
 
@@ -22,17 +22,17 @@ function HomePage() {
   const [midLat, setMidLat] = useState(null);
   const [midLon, setMidLon] = useState(null);
 
-  const handleSelection = (
-    selectedRouteA,
-    selectedRouteB,
-    selectedStopA,
-    selectedStopB
-  ) => {
-    setRouteA(selectedRouteA);
-    setRouteB(selectedRouteB);
-    setStopA(selectedStopA);
-    setStopB(selectedStopB);
-  };
+  // const handleSelection = (
+  //   selectedRouteA,
+  //   selectedRouteB,
+  //   selectedStopA,
+  //   selectedStopB
+  // ) => {
+  //   setRouteA(selectedRouteA);
+  //   setRouteB(selectedRouteB);
+  //   setStopA(selectedStopA);
+  //   setStopB(selectedStopB);
+  // };
 
   const handleMidpointSelection = (selectedMidpoint) => {
     setMidLat(selectedMidpoint.midLat);
@@ -40,20 +40,20 @@ function HomePage() {
   };
 
   //   get nearby routes
-  const fetchRoutes = async () => {
-    try {
-      const encodedAddressA = encodeURIComponent(addressA);
-      const encodedAddressB = encodeURIComponent(addressB);
+  // const fetchRoutes = async () => {
+  //   try {
+  //     const encodedAddressA = encodeURIComponent(addressA);
+  //     const encodedAddressB = encodeURIComponent(addressB);
 
-      const response = await axios.get(
-        `${BACKEND_URL}/routes?locA=${encodedAddressA}&locB=${encodedAddressB}`
-      );
+  //     const response = await axios.get(
+  //       `${BACKEND_URL}/routes?locA=${encodedAddressA}&locB=${encodedAddressB}`
+  //     );
 
-      setRoutes(response.data);
-    } catch (error) {
-      console.error("Error fetching routes:", error);
-    }
-  };
+  //     setRoutes(response.data);
+  //   } catch (error) {
+  //     console.error("Error fetching routes:", error);
+  //   }
+  // };
 
   //   get stop pairs
   const fetchStopPairs = async () => {
@@ -105,11 +105,11 @@ function HomePage() {
     }
   };
 
-  useEffect(() => {
-    if (addressA && addressB) {
-      fetchRoutes();
-    }
-  }, [addressA, addressB]);
+  // useEffect(() => {
+  //   if (addressA && addressB) {
+  //     fetchRoutes();
+  //   }
+  // }, [addressA, addressB]);
 
   useEffect(() => {
     if (routeA && routeB && stopA && stopB) {
@@ -135,11 +135,11 @@ function HomePage() {
       <p>Address A: {addressA}</p>
       <p>Address B: {addressB}</p>
 
-      {!routes ? (
+      {/* {!routes ? (
         <p>Loading routes...</p>
       ) : (
         <RoutesList routes={routes} onSubmitSelection={handleSelection} />
-      )}
+      )} */}
       {!stopPairs ? (
         <p>Loading stop pairs...</p>
       ) : (
