@@ -3,7 +3,7 @@ import "./PlacesList.scss";
 function PlacesList({ places }) {
   return (
     <div className="places">
-      <h2 className="places__title">Places Nearby</h2>
+      <h2 className="places__title">Nearby Places</h2>
       <ul className="places__list">
         {places && places.length > 0 ? (
           places.map((place, index) => (
@@ -16,7 +16,7 @@ function PlacesList({ places }) {
             </li>
           ))
         ) : (
-          <p className="places__null-message">No places found.</p>
+          <p className="places__null-message">No places found. Please select a different Intersection</p>
         )}
       </ul>
     </div>

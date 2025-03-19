@@ -4,12 +4,12 @@
 
 
 .places {
-    padding: 4rem 1rem;
-    background-color: blanchedalmond;
+    padding: 1rem;
 
 
     &__title {
         color: darkblue;
+        padding-bottom: 1rem;
     }
 
     &__list {
@@ -22,23 +22,27 @@
 
     &__item {
         border: 2px solid darkred;
+        border-radius: 5px;
         width: 100%;
         padding: 1rem;
+        background-color: blanchedalmond;
+
     }
 
-    &__name {
-        color: darkcyan;
-    }
+    // &__name {
+    //     color: darkcyan;
+    // }
 
-    &__type {
-        color: darkorchid;
-    }
+    // &__type {
+    //     color: darkorchid;
+    // }
 
-    &__address {
-        color: saddlebrown;
-    }
+    // &__address {
+    //     color: saddlebrown;
+    // }
 
     &__null-message {
         color: red;
+        font-weight: 700;
     }
 }
