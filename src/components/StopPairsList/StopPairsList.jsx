@@ -16,8 +16,6 @@ function StopPairsList({ stopPairs, onSelectMidpoint }) {
 
   return (
     <div className="stop-pairs">
-      <p>StopPairsList.jsx</p>
-
       <h1 className="stop-pairs__title">Nearby Stops</h1>
 
       {stopPairs.length > 0 ? (
@@ -66,7 +64,9 @@ function StopPairsList({ stopPairs, onSelectMidpoint }) {
           ))}
         </ul>
       ) : (
-        <p className="stop-pairs__null-message">No intersecting stops found.</p>
+        <p className="stop-pairs__null-message">
+          No intersecting stops found. Please select a different route.
+        </p>
       )}
 
       {selectedStopPair && (
