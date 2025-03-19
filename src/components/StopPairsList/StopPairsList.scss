@@ -3,6 +3,9 @@
 @use "../../styles/partials/typography" as *;
 
 .stop-pairs {
+
+  padding: 1rem;
+
   &__title {
     // color: red;
   }
@@ -10,17 +13,22 @@
   &__list {
     // border: 2px solid red;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+
   }
 
   &__item {
     // border: 2px solid lightblue;
     cursor: pointer;
     border: 1px solid gray;
-    // padding: 15px;
+    padding: 0.5rem;
     // margin-bottom: 15px;
     border-radius: 5px;
     background-color: white;
     // transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
 
     // &:hover {
     //   background-color: #f0f0f0;
@@ -34,31 +42,35 @@
   }
 
   &__item-title {
-    // color: darkgreen;
+    color: darkgreen;
   }
 
   &__info-box {
     // border: 2px solid darkgoldenrod;
+    background-color: lightgrey;
   }
 
   &__route-name {
-    // color: darkcyan;
+    color: black;
   }
 
   &__stop-name {
-    // color: darkblue;
+    color: darkblue;
   }
 
   &__distance {
-    // color: purple;
+    color: purple;
   }
 
   &__loading-message {
-    // color: red;
+    color: red;
   }
 
   &__button {
-    // background-color: pink;
+    background-color: pink;
+    margin: 2rem 0;
+    padding: 1rem;
+    border-radius: 0.2rem;
   }
 }
 
