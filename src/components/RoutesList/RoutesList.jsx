@@ -34,28 +34,31 @@ function RoutesList({ routes, onSubmitSelection }) {
     return route.filteredStops.map((stop, stopIndex) => {
       const isSelected =
         selectedRoute === stop.route && selectedStop === stop.stop_id;
+
+      const routeClassModifier = routeType === "routeB" ? "routes-list__item--b" : "";
       return (
         <li
           key={stopIndex}
           onClick={() =>
             handleRouteSelection(routeType, stop.route, stop.stop_id)
           }
-          className={`routes-list__item ${
+          className={`routes-list__item  ${routeClassModifier}  ${
             isSelected ? "routes-list__item--selected" : ""
           }`}
         >
           <p className="routes-list__route-name">
-            <strong>Route Name:</strong> {stop.route || "N/A"}
+            {stop.route || "N/A"}
           </p>
           <p className="routes-list__stop-name">
-            <strong>Stop Name:</strong> {stop.stop_name}
+            {stop.stop_name}
           </p>
-          <p className="routes-list__stop-code">
+          {/* <p className="routes-list__stop-code">
             <strong>Stop Code:</strong> {stop.stop_code}
-          </p>
+          </p> */}
           <p className="routes-list__distance">
-            <strong>Distance:</strong>{" "}
-            {stop.distance ? `${stop.distance.toFixed(2)} km` : "N/A"}
+            {/* <strong>Distance:</strong>{" "} 
+            {stop.distance ? `${stop.distance.toFixed(2)} km` : "N/A"} */}
+            {stop.distance.toFixed(2)} km
           </p>
         </li>
       );
