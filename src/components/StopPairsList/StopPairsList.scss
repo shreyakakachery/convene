@@ -8,6 +8,7 @@
 
   &__title {
     // color: red;
+    padding: 1rem 0;
   }
 
   &__list {
@@ -26,9 +27,11 @@
     padding: 0.5rem;
     // margin-bottom: 15px;
     border-radius: 5px;
-    background-color: white;
+    background-color: aliceblue;
     // transition: background-color 0.3s ease, transform 0.2s ease;
     width: 100%;
+    // display: flex;
+    // flex-wrap: wrap;
 
     // &:hover {
     //   background-color: #f0f0f0;
@@ -47,19 +50,35 @@
 
   &__info-box {
     // border: 2px solid darkgoldenrod;
-    background-color: lightgrey;
+    // background-color: lightgrey;
+    // padding: 1rem;
+    // width: 50%;
+    padding: 1rem 0;
+
+
+
   }
 
   &__route-name {
-    color: black;
+    color: darkblue;
+    font-size: 0.8rem;
+
+    &--b {
+      color: red;
+    }
   }
 
   &__stop-name {
     color: darkblue;
+
+    &--b {
+      color: red;
+    }
   }
 
   &__distance {
     color: purple;
+    font-weight: bold;
   }
 
   &__loading-message {

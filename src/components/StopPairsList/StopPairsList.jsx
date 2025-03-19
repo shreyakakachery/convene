@@ -18,7 +18,7 @@ function StopPairsList({ stopPairs, onSelectMidpoint }) {
     <div className="stop-pairs">
       <p>StopPairsList.jsx</p>
 
-      <h1 className="stop-pairs__title">STOP PAIRS LIST design</h1>
+      <h1 className="stop-pairs__title">Nearby Stops</h1>
 
       {stopPairs.length > 0 ? (
         <ul className="stop-pairs__list">
@@ -37,23 +37,23 @@ function StopPairsList({ stopPairs, onSelectMidpoint }) {
               }
             >
               <h2 className="stop-pairs__item-title">
-                Destination Stops {index + 1}
+                Intersection {index + 1}
               </h2>
 
               <div className="stop-pairs__info-box">
                 <p className="stop-pairs__route-name">
-                  On {stopPair.routeA_stop.route_name}:
+                  {stopPair.routeA_stop.route_name}
                 </p>
                 <h4 className="stop-pairs__stop-name">
                   {stopPair.routeA_stop.stop_name}
                 </h4>
               </div>
 
-              <div className="stop-pairs__info-box">
-                <p className="stop-pairs__route-name">
-                  On {stopPair.routeB_stop.route_name}:
+              <div className="stop-pairs__info-box stop-pairs__info-box--b">
+                <p className="stop-pairs__route-name stop-pairs__route-name--b">
+                  {stopPair.routeB_stop.route_name}
                 </p>
-                <h4 className="stop-pairs__stop-name">
+                <h4 className="stop-pairs__stop-name stop-pairs__stop-name--b">
                   {stopPair.routeB_stop.stop_name}
                 </h4>
               </div>
