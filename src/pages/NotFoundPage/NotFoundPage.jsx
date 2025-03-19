@@ -9,9 +9,9 @@ function NotFoundPage() {
   return (
     <div>
         <p>404 Error: Not Found</p>
-        <p>Please use the link to navigate back to the main page</p>
+        {/* <p>Please use the link to navigate back to the main page</p> */}
 
-        <p>{location.state.addressA}</p>
+        {/* <p>{location.state.addressA}</p> */}
         {/* <button onClick={() => navigate(-1)} >  back</button>  */}
     </div>
   )
