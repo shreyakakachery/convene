@@ -12,7 +12,7 @@ function NotFoundPage() {
         <p>Please use the link to navigate back to the main page</p>
 
         <p>{location.state.addressA}</p>
-        <button onClick={() => navigate(-1)} >  back</button> 
+        {/* <button onClick={() => navigate(-1)} >  back</button>  */}
     </div>
   )
 }

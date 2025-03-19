@@ -15,7 +15,7 @@ const AddressForm = ({ setAddressA, setAddressB }) => {
     e.preventDefault();
     setAddressA(addressA);
     setAddressB(addressB);
-    navigate("/test", {state: {addressA, addressB}}) // to send to next page upon click, plus pass props
+    // navigate("/test", {state: {addressA, addressB}}) // to send to next page upon click, plus pass props
   };
 
   return (
