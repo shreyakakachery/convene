@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./RoutesList.scss";
 
 function RoutesList({ routes, onSubmitSelection }) {
@@ -6,6 +7,8 @@ function RoutesList({ routes, onSubmitSelection }) {
   const [selectedRouteB, setSelectedRouteB] = useState(null);
   const [selectedStopA, setSelectedStopA] = useState(null);
   const [selectedStopB, setSelectedStopB] = useState(null);
+
+  const navigate = useNavigate()
 
   const handleRouteSelection = (routeType, route, stop) => {
     if (routeType === "routeA") {
@@ -17,6 +20,8 @@ function RoutesList({ routes, onSubmitSelection }) {
     }
   };
 
+  console.log(selectedStopA)
+
   const handleGetStops = () => {
     if (selectedRouteA && selectedRouteB && selectedStopA && selectedStopB) {
       onSubmitSelection(
@@ -25,6 +30,10 @@ function RoutesList({ routes, onSubmitSelection }) {
         selectedStopA,
         selectedStopB
       );
+      navigate("/stops", {state: {selectedRouteA,
+        selectedRouteB,
+        selectedStopA,
+        selectedStopB}})
     } else {
       alert("Please select both routes and stops"); // remove alert and replace with inline error message
     }

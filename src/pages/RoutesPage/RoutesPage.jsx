@@ -14,6 +14,11 @@ function RoutesPage() {
   // const [addressA, setAddressA] = useState("");
   // const [addressB, setAddressB] = useState("");
 
+  const [routeA, setRouteA] = useState(null);
+  const [routeB, setRouteB] = useState(null);
+  const [stopA, setStopA] = useState(null);
+  const [stopB, setStopB] = useState(null);
+
   const addressA = location.state.addressA
   const addressB = location.state.addressB
 
