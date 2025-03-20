@@ -13,13 +13,19 @@
 
     &__title {
         padding-bottom: 1rem;
+
+        @include tablet {
+            padding-bottom: 2rem;
+            font-size: 2.5rem;
+        }
     }
 
     &__list {
         // border: 2px solid darkgoldenrod;
         display: flex;
-        gap: 1rem;
         flex-wrap: wrap;
+        gap: 1rem;
+        // justify-content: space-between;
         // padding: 1rem;
     }
 
@@ -29,6 +35,10 @@
         width: 100%;
         padding: 1rem;
         background-color: $accent-medium;
+
+        @include tablet {
+            width: 45%;
+        }
 
     }
 
