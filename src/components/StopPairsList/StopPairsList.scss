@@ -140,6 +140,15 @@
   &__null-message {
     color: $error-colour;
     font-weight: 700;
+    font-size: 1.35rem;
+
+    @include tablet {
+      font-size: 1.8rem;
+    }
+
+    @include desktop {
+      font-size: 1.8rem;
+    }
   }
 
   &__button {
