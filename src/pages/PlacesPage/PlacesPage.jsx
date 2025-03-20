@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { BACKEND_URL } from "../../scripts/config.js";
 import PlacesList from "../../components/PlacesList/PlacesList.jsx";
+
 function PlacesPage() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -21,13 +22,11 @@ function PlacesPage() {
         `${BACKEND_URL}/places?lat=${encodedMidLat}&lon=${encodedMidLon}`
       );
       setPlaces(response.data);
-      console.log(response.data);
     } catch (error) {
       console.error("Error fetching places:", error);
     }
   };
 
-  console.log(midLat);
 
   useEffect(() => {
     if (midLat && midLon) {
@@ -35,14 +34,10 @@ function PlacesPage() {
     }
   }, [midLat, midLon]);
 
-  console.log(places);
 
   return (
     <div>
-      <p>PlacesPage.jsx</p>
-      <button onClick={() => navigate(-1)}> back</button>
-      <p>{location.state.midLat}</p>
-      <p>{location.state.midLon}</p>
+      <button onClick={() => navigate(-1)}>Change Intersection</button>
       {!places ? <p>Loading places...</p> : <PlacesList places={places} />}
     </div>
   );

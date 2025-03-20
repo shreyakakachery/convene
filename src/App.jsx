@@ -12,15 +12,13 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-        <p>App.jsx</p>
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/routes" element={<RoutesPage />} />
           <Route path="/stops" element={<StopsPage />} />
           <Route path="/places" element={<PlacesPage />} />
-          {/* change path to * after testing */}
-          <Route path="/test" element={<NotFoundPage />} /> 
+          <Route path="*" element={<NotFoundPage />} /> 
         </Routes>
         <Footer />
       </BrowserRouter>

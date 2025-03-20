@@ -8,4 +8,3 @@ export function clearLocalStorageExcept(keysToKeep) {
   });
 }
 
-export { clearLocalStorageExcept };

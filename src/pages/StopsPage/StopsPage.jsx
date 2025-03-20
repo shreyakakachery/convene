@@ -19,9 +19,6 @@ function StopsPage() {
   const [stopPairs, setStopPairs] = useState(null);
 
   const handleMidpointSelection = (selectedMidpoint) => {
-    // const midLat = selectedMidpoint.midLat
-    // const midLon = selectedMidpoint.midLat
-
     setMidLat(selectedMidpoint.midLat);
     setMidLon(selectedMidpoint.midLon);
 
@@ -75,12 +72,7 @@ function StopsPage() {
 
   return (
     <div>
-      <p>StopsPage.jsx</p>
-      <button onClick={() => navigate(-1)}> back</button>
-      <p>{location.state.selectedRouteA}</p>
-      <p>{location.state.selectedRouteB}</p>
-      <p>{location.state.selectedStopA}</p>
-      <p>{location.state.selectedStopB}</p>
+      <button onClick={() => navigate(-1)}>Change Routes</button>
 
       {!stopPairs ? (
         <p>Loading stop pairs...</p>
