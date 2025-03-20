@@ -13,3 +13,10 @@ body {
 ul {
   list-style: none;
 }
+
+.app {
+
+  &__pages {
+    height: 100vh;
+  }
+}
