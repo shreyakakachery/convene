@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./RoutesList.scss";
 
@@ -8,19 +8,34 @@ function RoutesList({ routes, onSubmitSelection }) {
   const [selectedStopA, setSelectedStopA] = useState(null);
   const [selectedStopB, setSelectedStopB] = useState(null);
 
-  const navigate = useNavigate()
+  const [savedRouteA, setSavedRouteA] = useState(null);
+  const [savedRouteB, setSavedRouteB] = useState(null);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // localStorage.clear(); // clear local storage on mount
+
+    const savedRouteA = localStorage.getItem("savedRouteA");
+    const savedRouteB = localStorage.getItem("savedRouteB");
+
+    if (savedRouteA && savedRouteB) {
+      setSavedRouteA(savedRouteA);
+      setSavedRouteB(savedRouteB);
+    }
+  }, []);
 
   const handleRouteSelection = (routeType, route, stop) => {
     if (routeType === "routeA") {
       setSelectedRouteA(route);
       setSelectedStopA(stop);
+      localStorage.setItem("savedRouteA", route);
     } else if (routeType === "routeB") {
       setSelectedRouteB(route);
       setSelectedStopB(stop);
+      localStorage.setItem("savedRouteB", route);
     }
   };
-
-  console.log(selectedStopA)
 
   const handleGetStops = () => {
     if (selectedRouteA && selectedRouteB && selectedStopA && selectedStopB) {
@@ -30,10 +45,9 @@ function RoutesList({ routes, onSubmitSelection }) {
         selectedStopA,
         selectedStopB
       );
-      navigate("/stops", {state: {selectedRouteA,
-        selectedRouteB,
-        selectedStopA,
-        selectedStopB}})
+      navigate("/stops", {
+        state: { selectedRouteA, selectedRouteB, selectedStopA, selectedStopB },
+      });
     } else {
       alert("Please select both routes and stops"); // remove alert and replace with inline error message
     }
@@ -44,7 +58,8 @@ function RoutesList({ routes, onSubmitSelection }) {
       const isSelected =
         selectedRoute === stop.route && selectedStop === stop.stop_id;
 
-      const routeItemModifier = routeType === "routeB" ? "routes-list__item--b" : "";
+      const routeItemModifier =
+        routeType === "routeB" ? "routes-list__item--b" : "";
       return (
         <li
           key={stopIndex}
@@ -55,12 +70,8 @@ function RoutesList({ routes, onSubmitSelection }) {
             isSelected ? "routes-list__item--selected" : ""
           }`}
         >
-          <p className="routes-list__route-name">
-            {stop.route || "N/A"}
-          </p>
-          <p className="routes-list__stop-name">
-            {stop.stop_name}
-          </p>
+          <p className="routes-list__route-name">{stop.route || "N/A"}</p>
+          <p className="routes-list__stop-name">{stop.stop_name}</p>
           {/* <p className="routes-list__stop-code">
             <strong>Stop Code:</strong> {stop.stop_code}
           </p> */}
@@ -91,6 +102,12 @@ function RoutesList({ routes, onSubmitSelection }) {
 
   return (
     <div className="routes">
+      {savedRouteA && savedRouteB && (
+        <p className="routes__saved-routes">
+          Previously Selected: {savedRouteA} & {savedRouteB}
+        </p>
+      )}
+
       <h2 className="routes__title">Routes</h2>
 
       <ul className="routes-list routes-list--a">
@@ -99,12 +116,16 @@ function RoutesList({ routes, onSubmitSelection }) {
       </ul>
 
       <ul className="routes-list routes-list--b">
-        <p className="routes-list__title routes-list__title--b">{routesB.address}</p>
+        <p className="routes-list__title routes-list__title--b">
+          {routesB.address}
+        </p>
 
         {renderRoutes(routesB, selectedRouteB, selectedStopB, "routeB")}
       </ul>
 
-      <button className="routes-list__button" onClick={handleGetStops}>Get Stops</button>
+      <button className="routes-list__button" onClick={handleGetStops}>
+        Get Stops
+      </button>
     </div>
   );
 }
