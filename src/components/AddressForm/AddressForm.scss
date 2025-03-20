@@ -10,11 +10,25 @@
     padding: 1rem 5rem;
   }
 
+  @include desktop {
+    padding-top: 2rem;
+  }
+
   &__title {
     padding-bottom: 1.5rem;
 
     @include tablet {
       font-size: 2.5rem;
+    }
+
+    @include desktop {
+      font-size: 3rem;
+    }
+  }
+
+  &__inputs-box {
+    @include desktop {
+      display: flex;
     }
   }
 
@@ -22,6 +36,11 @@
     padding: 1rem 0rem;
     display: flex;
     flex-direction: column;
+
+    @include desktop {
+      width: 50%;
+      padding-right: 3rem;
+    }
   }
 
   &__label {
@@ -33,6 +52,11 @@
 
     @include tablet {
       font-size: 1.5rem;
+    }
+
+    @include desktop {
+      font-size: 1.75rem;
+      padding-bottom: 0.5rem;
     }
 
     &--user-b {
@@ -53,6 +77,10 @@
 
     @include tablet {
       font-size: 1.25rem;
+    }
+
+    @include desktop {
+      font-size: 1.5rem;
     }
 
     &::placeholder {

@@ -28,6 +28,10 @@
     width: 30%;
   }
 
+  @include desktop {
+    width: 18%;
+  }
+
   &:hover {
     background-color: $accent-dark;
     color: $site-light;

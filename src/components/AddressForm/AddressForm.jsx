@@ -33,28 +33,31 @@ const AddressForm = ({ setAddressA, setAddressB }) => {
   return (
     <form className="address-form" onSubmit={handleSubmit}>
       <h2 className="address-form__title">Starting Locations</h2>
-      <div className="address-form__box">
-        <label className="address-form__label">Starting Address A:</label>
-        <input
-          className="address-form__input"
-          type="text"
-          value={addressA}
-          onChange={(e) => setAddressAInput(e.target.value)}
-          placeholder="Enter Address "
-        />
+      <div className="address-form__inputs-box" >
+        <div className="address-form__box">
+          <label className="address-form__label">Starting Address A:</label>
+          <input
+            className="address-form__input"
+            type="text"
+            value={addressA}
+            onChange={(e) => setAddressAInput(e.target.value)}
+            placeholder="Enter Address "
+          />
+        </div>
+        <div className="address-form__box">
+          <label className="address-form__label address-form__label--user-b">
+            Starting Address B:
+          </label>
+          <input
+            className="address-form__input address-form__input--user-b"
+            type="text"
+            value={addressB}
+            onChange={(e) => setAddressBInput(e.target.value)}
+            placeholder="Enter Address"
+          />
+        </div>
       </div>
-      <div className="address-form__box">
-        <label className="address-form__label address-form__label--user-b">
-          Starting Address B:
-        </label>
-        <input
-          className="address-form__input address-form__input--user-b"
-          type="text"
-          value={addressB}
-          onChange={(e) => setAddressBInput(e.target.value)}
-          placeholder="Enter Address"
-        />
-      </div>
+      
       <button className="address-form__button" type="submit">
         Get Routes
       </button>
