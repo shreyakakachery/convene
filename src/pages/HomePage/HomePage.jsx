@@ -11,16 +11,16 @@ function HomePage() {
   const [addressA, setAddressA] = useState(""); 
   const [addressB, setAddressB] = useState(""); 
   // const [routes, setRoutes] = useState(null);
-  const [stopPairs, setStopPairs] = useState(null);
-  const [places, setPlaces] = useState(null);
+  // const [stopPairs, setStopPairs] = useState(null);
+  // const [places, setPlaces] = useState(null);
 
-  const [routeA, setRouteA] = useState(null);
-  const [routeB, setRouteB] = useState(null);
-  const [stopA, setStopA] = useState(null);
-  const [stopB, setStopB] = useState(null);
+  // const [routeA, setRouteA] = useState(null);
+  // const [routeB, setRouteB] = useState(null);
+  // const [stopA, setStopA] = useState(null);
+  // const [stopB, setStopB] = useState(null);
 
-  const [midLat, setMidLat] = useState(null);
-  const [midLon, setMidLon] = useState(null);
+  // const [midLat, setMidLat] = useState(null);
+  // const [midLon, setMidLon] = useState(null);
 
   // const handleSelection = (
   //   selectedRouteA,
@@ -91,19 +91,19 @@ function HomePage() {
   // };
 
   //   get places
-  const fetchPlaces = async () => {
-    try {
-      const encodedMidLat = encodeURIComponent(midLat);
-      const encodedMidLon = encodeURIComponent(midLon);
+  // const fetchPlaces = async () => {
+  //   try {
+  //     const encodedMidLat = encodeURIComponent(midLat);
+  //     const encodedMidLon = encodeURIComponent(midLon);
 
-      const response = await axios.get(
-        `${BACKEND_URL}/places?lat=${encodedMidLat}&lon=${encodedMidLon}`
-      );
-      setPlaces(response.data);
-    } catch (error) {
-      console.error("Error fetching places:", error);
-    }
-  };
+  //     const response = await axios.get(
+  //       `${BACKEND_URL}/places?lat=${encodedMidLat}&lon=${encodedMidLon}`
+  //     );
+  //     setPlaces(response.data);
+  //   } catch (error) {
+  //     console.error("Error fetching places:", error);
+  //   }
+  // };
 
   // useEffect(() => {
   //   if (addressA && addressB) {
@@ -117,11 +117,11 @@ function HomePage() {
   //   }
   // }, [routeA, routeB, stopA, stopB]);
 
-  useEffect(() => {
-    if (midLat && midLon) {
-      fetchPlaces();
-    }
-  }, [midLat, midLon]);
+  // useEffect(() => {
+  //   if (midLat && midLon) {
+  //     fetchPlaces();
+  //   }
+  // }, [midLat, midLon]);
 
   return (
     <div>
@@ -142,11 +142,7 @@ function HomePage() {
           onSelectMidpoint={handleMidpointSelection}
         />
       )} */}
-      <p>
-        <strong>Selected Midpoint:</strong>{" "}
-        {midLat && midLon ? `(${midLat}, ${midLon})` : "None selected"}
-      </p>
-      {!places ? <p>Loading places...</p> : <PlacesList places={places} />}
+      {/* {!places ? <p>Loading places...</p> : <PlacesList places={places} />} */}
     </div>
   );
 }

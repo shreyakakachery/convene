@@ -4,34 +4,34 @@ import axios from "axios";
 import { BACKEND_URL } from "../../scripts/config.js";
 import StopPairsList from "../../components/StopPairsList/StopPairsList.jsx";
 
-
 function StopsPage() {
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const location = useLocation()
-  const navigate = useNavigate()
-
-  const routeA = location.state.selectedRouteA
-  const routeB = location.state.selectedRouteB
-  const stopA = location.state.selectedStopA
-  const stopB = location.state.selectedStopB
+  const routeA = location.state.selectedRouteA;
+  const routeB = location.state.selectedRouteB;
+  const stopA = location.state.selectedStopA;
+  const stopB = location.state.selectedStopB;
 
   const [midLat, setMidLat] = useState(null);
   const [midLon, setMidLon] = useState(null);
 
-
-
   const [stopPairs, setStopPairs] = useState(null);
 
   const handleMidpointSelection = (selectedMidpoint) => {
-
     // const midLat = selectedMidpoint.midLat
     // const midLon = selectedMidpoint.midLat
 
     setMidLat(selectedMidpoint.midLat);
-    setMidLon(selectedMidpoint.midLat);
-    navigate("/places", {state: {midLat, midLon}})
-  };
+    setMidLon(selectedMidpoint.midLon);
 
+    navigate("/places", {
+      state: {
+        midLat: selectedMidpoint.midLat,
+        midLon: selectedMidpoint.midLon,
+      },
+    });
+  };
 
   const fetchStopPairs = async () => {
     if (!routeA || !routeB || !stopA || !stopB) {
@@ -73,7 +73,6 @@ function StopsPage() {
     }
   }, [routeA, routeB, stopA, stopB]);
 
-
   return (
     <div>
       <p>StopsPage.jsx</p>
@@ -91,7 +90,7 @@ function StopsPage() {
         />
       )}
     </div>
-  )
+  );
 }
 
-export default StopsPage
+export default StopsPage;
