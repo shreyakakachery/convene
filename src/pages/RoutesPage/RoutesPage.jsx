@@ -8,7 +8,6 @@ function RoutesPage() {
   const location = useLocation();
   const navigate = useNavigate();
 
-
   const [routeA, setRouteA] = useState(null);
   const [routeB, setRouteB] = useState(null);
   const [stopA, setStopA] = useState(null);
@@ -55,8 +54,6 @@ function RoutesPage() {
 
   return (
     <div>
-      {/* <button onClick={() => navigate(-1)}> Change Starting Locations</button> */}
-
       {!routes ? (
         <p>Loading routes...</p>
       ) : (

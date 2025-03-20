@@ -3,10 +3,8 @@
 @use "../../styles/partials/typography" as *;
 
 .address-form {
-  // border: 2px solid red;
   padding: 1rem;
   height: 100vh;
-
 
   @include tablet {
     padding: 1rem 5rem;
@@ -21,7 +19,6 @@
   }
 
   &__box {
-    // border: 2px solid blue;
     padding: 1rem 0rem;
     display: flex;
     flex-direction: column;
@@ -77,15 +74,6 @@
   }
 
   &__button {
-    // color: darkred;
-
-    // font-weight: 700;
-    // font-size: 1.5rem;
-    // padding: 1rem;
-    // border-radius: 1rem;
-    // width: 60%;
-    // margin-top: 1rem;
-
     @include get-button;
   }
 }

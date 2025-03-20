@@ -2,60 +2,41 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/typography" as *;
 
-
 .places {
+  padding: 1rem;
+
+  &__back-btn {
+    @include back-button;
+  }
+
+  &__title {
+    padding-bottom: 1rem;
+
+    @include tablet {
+      padding-bottom: 2rem;
+      font-size: 2.5rem;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  &__item {
+    border-radius: 5px;
+    width: 100%;
     padding: 1rem;
+    background-color: $accent-medium;
 
-    &__back-btn {
-        @include back-button;
+    @include tablet {
+      width: 45%;
     }
+  }
 
-
-    &__title {
-        padding-bottom: 1rem;
-
-        @include tablet {
-            padding-bottom: 2rem;
-            font-size: 2.5rem;
-        }
-    }
-
-    &__list {
-        // border: 2px solid darkgoldenrod;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        // justify-content: space-between;
-        // padding: 1rem;
-    }
-
-    &__item {
-        // border: 2px solid darkred;
-        border-radius: 5px;
-        width: 100%;
-        padding: 1rem;
-        background-color: $accent-medium;
-
-        @include tablet {
-            width: 45%;
-        }
-
-    }
-
-    // &__name {
-    //     color: darkcyan;
-    // }
-
-    // &__type {
-    //     color: darkorchid;
-    // }
-
-    // &__address {
-    //     color: saddlebrown;
-    // }
-
-    &__null-message {
-        color: $error-colour;
-        font-weight: 700;
-    }
+  &__null-message {
+    color: $error-colour;
+    font-weight: 700;
+  }
 }

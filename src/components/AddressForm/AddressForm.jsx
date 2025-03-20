@@ -6,12 +6,14 @@ import "./AddressForm.scss";
 // add form validation
 
 const AddressForm = ({ setAddressA, setAddressB }) => {
-  // const [addressA, setAddressAInput] = useState("");
-  // const [addressB, setAddressBInput] = useState("");
-  const [addressA, setAddressAInput] = useState(localStorage.getItem("addressA") || "");
-  const [addressB, setAddressBInput] = useState(localStorage.getItem("addressB") || "");
+  const [addressA, setAddressAInput] = useState(
+    localStorage.getItem("addressA") || ""
+  );
+  const [addressB, setAddressBInput] = useState(
+    localStorage.getItem("addressB") || ""
+  );
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     localStorage.setItem("addressA", addressA);
@@ -25,7 +27,7 @@ const AddressForm = ({ setAddressA, setAddressB }) => {
     e.preventDefault();
     setAddressA(addressA);
     setAddressB(addressB);
-    navigate("/routes", {state: {addressA, addressB}}) // to send to next page upon click, plus pass props
+    navigate("/routes", { state: { addressA, addressB } });
   };
 
   return (
@@ -42,7 +44,9 @@ const AddressForm = ({ setAddressA, setAddressB }) => {
         />
       </div>
       <div className="address-form__box">
-        <label className="address-form__label address-form__label--user-b">Starting Address B:</label>
+        <label className="address-form__label address-form__label--user-b">
+          Starting Address B:
+        </label>
         <input
           className="address-form__input address-form__input--user-b"
           type="text"

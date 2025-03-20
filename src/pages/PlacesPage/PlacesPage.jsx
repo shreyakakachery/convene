@@ -1,4 +1,4 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { BACKEND_URL } from "../../scripts/config.js";
@@ -6,7 +6,6 @@ import PlacesList from "../../components/PlacesList/PlacesList.jsx";
 
 function PlacesPage() {
   const location = useLocation();
-  const navigate = useNavigate();
 
   const midLat = location.state.midLat;
   const midLon = location.state.midLon;
@@ -27,17 +26,14 @@ function PlacesPage() {
     }
   };
 
-
   useEffect(() => {
     if (midLat && midLon) {
       fetchPlaces();
     }
   }, [midLat, midLon]);
 
-
   return (
     <div>
-      {/* <button onClick={() => navigate(-1)}>Change Intersection</button> */}
       {!places ? <p>Loading places...</p> : <PlacesList places={places} />}
     </div>
   );

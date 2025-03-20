@@ -11,7 +11,6 @@ function HomePage() {
 
   return (
     <div>
-      {/* <h1>Starting Locations</h1> */}
       <AddressForm setAddressA={setAddressA} setAddressB={setAddressB} />
     </div>
   );
