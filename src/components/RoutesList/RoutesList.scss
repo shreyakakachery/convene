@@ -6,6 +6,10 @@
 .routes {
   padding: 1rem;
 
+  &__back-btn {
+    @include back-button
+  }
+
   &__title {
     padding: 1rem 0;
   }

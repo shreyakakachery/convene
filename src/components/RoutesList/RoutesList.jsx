@@ -102,6 +102,8 @@ function RoutesList({ routes, onSubmitSelection }) {
 
   return (
     <div className="routes">
+      <button className="routes__back-btn" onClick={() => navigate(-1)}> Change Starting Locations</button>
+
       {savedRouteA && savedRouteB && (
         <p className="routes__saved-routes">
           Previously Selected: {savedRouteA} & {savedRouteB}

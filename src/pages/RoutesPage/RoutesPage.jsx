@@ -55,7 +55,7 @@ function RoutesPage() {
 
   return (
     <div>
-      <button onClick={() => navigate(-1)}> Change Starting Locations</button>
+      {/* <button onClick={() => navigate(-1)}> Change Starting Locations</button> */}
 
       {!routes ? (
         <p>Loading routes...</p>

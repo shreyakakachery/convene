@@ -6,6 +6,10 @@
 .places {
     padding: 1rem;
 
+    &__back-btn {
+        @include back-button;
+    }
+
 
     &__title {
         padding-bottom: 1rem;

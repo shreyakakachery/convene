@@ -25,6 +25,7 @@
   border-radius: 1rem;
   width: 60%;
   margin-top: 1rem;
+  border: 2px solid $neutral-dark;
   cursor: pointer;
   transition: background 0.3s ease;
   background-color: $accent-light;
@@ -32,5 +33,24 @@
   &:hover {
     background-color: $accent-dark;
     color: $site-light;
+  }
+}
+
+
+@mixin back-button {
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  display: inline-block; // Width adjusts to text inside
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+  background-color: $neutral-light;
+  border: 2px solid $neutral-dark;
+  color: $neutral-dark  ;
+  
+  &:hover {
+    background-color: $neutral-dark;
+    color: $neutral-light;
   }
 }

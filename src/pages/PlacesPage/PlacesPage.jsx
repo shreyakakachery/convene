@@ -37,7 +37,7 @@ function PlacesPage() {
 
   return (
     <div>
-      <button onClick={() => navigate(-1)}>Change Intersection</button>
+      {/* <button onClick={() => navigate(-1)}>Change Intersection</button> */}
       {!places ? <p>Loading places...</p> : <PlacesList places={places} />}
     </div>
   );

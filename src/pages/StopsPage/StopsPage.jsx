@@ -72,7 +72,7 @@ function StopsPage() {
 
   return (
     <div>
-      <button onClick={() => navigate(-1)}>Change Routes</button>
+      {/* <button onClick={() => navigate(-1)}>Change Routes</button> */}
 
       {!stopPairs ? (
         <p>Loading stop pairs...</p>

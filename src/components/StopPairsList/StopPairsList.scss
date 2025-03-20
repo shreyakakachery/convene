@@ -5,6 +5,10 @@
 .stop-pairs {
   padding: 1rem;
 
+  &__back-btn {
+    @include back-button;
+  }
+
   &__title {
     // color: red;
     padding: 1rem 0;
@@ -89,7 +93,6 @@
   }
 
   &__button {
-
     @include get-button;
     margin-top: 2rem;
   }

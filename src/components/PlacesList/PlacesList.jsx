@@ -1,8 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import "./PlacesList.scss";
 
 function PlacesList({ places }) {
+  const navigate = useNavigate();
   return (
     <div className="places">
+      <button className="places__back-btn" onClick={() => navigate(-1)}>
+        Change Intersection
+      </button>
       <h2 className="places__title">Nearby Places</h2>
       <ul className="places__list">
         {places && places.length > 0 ? (
@@ -16,7 +21,9 @@ function PlacesList({ places }) {
             </li>
           ))
         ) : (
-          <p className="places__null-message">No places found. Please select a different Intersection</p>
+          <p className="places__null-message">
+            No places found. Please select a different Intersection
+          </p>
         )}
       </ul>
     </div>

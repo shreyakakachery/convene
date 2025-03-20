@@ -1,14 +1,17 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./StopPairsList.scss";
 
 function StopPairsList({ stopPairs, onSelectMidpoint }) {
   const [selectedStopPair, setSelectedStopPair] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(null);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     const storedIndex = localStorage.getItem("savedStopPairIndex");
     if (storedIndex) {
-      setSelectedIndex(parseInt(storedIndex)); 
+      setSelectedIndex(parseInt(storedIndex));
     }
   }, []);
 
@@ -25,6 +28,10 @@ function StopPairsList({ stopPairs, onSelectMidpoint }) {
 
   return (
     <div className="stop-pairs">
+      <button className="stop-pairs__back-btn" onClick={() => navigate(-1)}>
+        Change Routes
+      </button>
+
       {selectedIndex !== null && (
         <p className="stop-pairs__previous-selection">
           Previously Selected: Intersection {selectedIndex + 1}
