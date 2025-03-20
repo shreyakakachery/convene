@@ -4,12 +4,9 @@ import axios from "axios";
 import { BACKEND_URL } from "../../scripts/config.js";
 import RoutesList from "../../components/RoutesList/RoutesList.jsx";
 
-
-
 function RoutesPage() {
-
-  const location = useLocation()
-  const navigate = useNavigate()
+  const location = useLocation();
+  const navigate = useNavigate();
 
   // const [addressA, setAddressA] = useState("");
   // const [addressB, setAddressB] = useState("");
@@ -19,8 +16,8 @@ function RoutesPage() {
   const [stopA, setStopA] = useState(null);
   const [stopB, setStopB] = useState(null);
 
-  const addressA = location.state.addressA
-  const addressB = location.state.addressB
+  const addressA = location.state.addressA;
+  const addressB = location.state.addressB;
 
   const [routes, setRoutes] = useState(null);
 
@@ -35,7 +32,6 @@ function RoutesPage() {
     setStopA(selectedStopA);
     setStopB(selectedStopB);
   };
-
 
   const fetchRoutes = async () => {
     try {
@@ -58,11 +54,10 @@ function RoutesPage() {
     }
   }, [addressA, addressB]);
 
-
-
   return (
     <div>
       <p>RoutesPage.jsx</p>
+      <button onClick={() => navigate(-1)}> back</button>
 
       <p>{location.state.addressA}</p>
       {!routes ? (
@@ -71,7 +66,6 @@ function RoutesPage() {
         <RoutesList routes={routes} onSubmitSelection={handleSelection} />
       )}
 
-      
       <p></p>
     </div>
   );

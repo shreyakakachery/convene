@@ -76,6 +76,7 @@ function StopsPage() {
   return (
     <div>
       <p>StopsPage.jsx</p>
+      <button onClick={() => navigate(-1)}> back</button>
       <p>{location.state.selectedRouteA}</p>
       <p>{location.state.selectedRouteB}</p>
       <p>{location.state.selectedStopA}</p>

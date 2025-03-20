@@ -40,6 +40,7 @@ function PlacesPage() {
   return (
     <div>
       <p>PlacesPage.jsx</p>
+      <button onClick={() => navigate(-1)}> back</button>
       <p>{location.state.midLat}</p>
       <p>{location.state.midLon}</p>
       {!places ? <p>Loading places...</p> : <PlacesList places={places} />}
