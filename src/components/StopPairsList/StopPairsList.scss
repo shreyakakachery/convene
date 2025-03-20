@@ -5,20 +5,28 @@
 .stop-pairs {
   padding: 1rem;
 
+  @include tablet {
+    padding: 1rem 2rem;
+  }
+
   &__back-btn {
     @include back-button;
   }
 
   &__title {
     // color: red;
-    padding: 1rem 0;
+    padding-bottom: 1rem;
+
+    @include tablet {
+      padding-bottom: 2rem;
+    }
   }
 
   &__list {
     // border: 2px solid red;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     gap: 1rem;
   }
 
@@ -34,6 +42,10 @@
     width: 100%;
     // display: flex;
     // flex-wrap: wrap;
+
+    @include tablet {
+      width: 45%;
+    }
 
     &:hover {
       background-color: $accent-light;
@@ -64,12 +76,12 @@
   }
 
   &__route-name {
-    color: $primary-dark;
+    // color: $primary-dark;
     font-size: 0.8rem;
 
-    &--b {
-      color: $secondary-dark;
-    }
+    // &--b {
+    //   color: $secondary-dark;
+    // }
   }
 
   &__stop-name {

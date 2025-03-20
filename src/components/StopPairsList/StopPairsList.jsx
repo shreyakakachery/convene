@@ -90,11 +90,15 @@ function StopPairsList({ stopPairs, onSelectMidpoint }) {
         </p>
       )}
 
-      {selectedStopPair && (
+      {/* {selectedStopPair && (
         <button className="stop-pairs__button" onClick={handleSubmit}>
           Get Places
         </button>
-      )}
+      )} */}
+
+      <button className="stop-pairs__button" onClick={handleSubmit}>
+        Get Places
+      </button>
     </div>
   );
 }
