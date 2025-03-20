@@ -31,7 +31,10 @@
     background-color: $accent-medium;
 
     @include tablet {
-      width: 45%;
+      width: calc(50% - 1rem);
+    }
+    @include desktop {
+      width: calc(33.33% - 1rem);
     }
   }
 
