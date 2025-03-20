@@ -5,6 +5,10 @@
 .routes {
   padding: 1rem;
 
+  @include desktop {
+    padding: 2rem 7rem;
+  }
+
   &__back-btn {
     @include back-button;
   }
@@ -14,6 +18,10 @@
 
     @include tablet {
       font-size: 2.5rem;
+    }
+
+    @include desktop {
+      font-size: 3rem;
     }
   }
 
@@ -48,6 +56,10 @@
     font-size: 1.5625rem;
     text-transform: capitalize;
     padding: 0.3rem 0.3rem 1rem;
+
+    @include desktop {
+      font-size: 1.75rem;
+    }
 
     &--b {
       color: $secondary-dark;
@@ -100,6 +112,10 @@
     @include tablet {
       font-size: 1.15rem;
     }
+
+    @include desktop {
+      font-size: 1.5rem;
+    }
   }
 
   &__stop-name {
@@ -108,6 +124,16 @@
 
     @include tablet {
       font-size: 0.95rem;
+    }
+
+    @include desktop {
+      font-size: 1.15rem;
+    }
+  }
+
+  &__distance {
+    @include desktop {
+      font-size: 1.3rem;
     }
   }
 }

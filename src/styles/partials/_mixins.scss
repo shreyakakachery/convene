@@ -26,10 +26,12 @@
 
   @include tablet {
     width: 30%;
+    font-size: 1.75rem;
   }
 
   @include desktop {
     width: 18%;
+    font-size: 2rem;
   }
 
   &:hover {
@@ -54,5 +56,13 @@
   &:hover {
     background-color: $neutral-dark;
     color: $neutral-light;
+  }
+
+  @include tablet {
+    font-size: 1.25rem;
+  }
+
+  @include desktop {
+    font-size: 1.5rem;
   }
 }
