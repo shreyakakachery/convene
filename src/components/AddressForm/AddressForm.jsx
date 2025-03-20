@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AddressForm.scss";
 
@@ -6,10 +6,20 @@ import "./AddressForm.scss";
 // add form validation
 
 const AddressForm = ({ setAddressA, setAddressB }) => {
-  const [addressA, setAddressAInput] = useState("");
-  const [addressB, setAddressBInput] = useState("");
+  // const [addressA, setAddressAInput] = useState("");
+  // const [addressB, setAddressBInput] = useState("");
+  const [addressA, setAddressAInput] = useState(localStorage.getItem("addressA") || "");
+  const [addressB, setAddressBInput] = useState(localStorage.getItem("addressB") || "");
 
   const navigate = useNavigate()
+
+  useEffect(() => {
+    localStorage.setItem("addressA", addressA);
+  }, [addressA]);
+
+  useEffect(() => {
+    localStorage.setItem("addressB", addressB);
+  }, [addressB]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
