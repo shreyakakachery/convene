@@ -15,7 +15,11 @@ ul {
 }
 
 .app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
   &__pages {
-    // height: 100vh;
+    flex: 1;
   }
 }
