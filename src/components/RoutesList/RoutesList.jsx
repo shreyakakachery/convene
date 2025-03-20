@@ -102,7 +102,10 @@ function RoutesList({ routes, onSubmitSelection }) {
 
   return (
     <div className="routes">
-      <button className="routes__back-btn" onClick={() => navigate(-1)}> Change Address</button>
+      <button className="routes__back-btn" onClick={() => navigate(-1)}>
+        {" "}
+        Change Address
+      </button>
 
       {savedRouteA && savedRouteB && (
         <p className="routes__saved-routes">
@@ -112,7 +115,7 @@ function RoutesList({ routes, onSubmitSelection }) {
 
       <h2 className="routes__title">Routes</h2>
 
-      <div className="routes__lists" >
+      <div className="routes__lists">
         <ul className="routes-list routes-list--a">
           <p className="routes-list__title">{routesA.address}</p>
           {renderRoutes(routesA, selectedRouteA, selectedStopA, "routeA")}
@@ -127,11 +130,11 @@ function RoutesList({ routes, onSubmitSelection }) {
         </ul>
       </div>
 
-
-
-      <button className="routes__button" onClick={handleGetStops}>
-        Get Stops
-      </button>
+      {selectedRouteA && selectedRouteB && (
+        <button className="stop-pairs__button" onClick={handleGetStops}>
+          Get Places
+        </button>
+      )}
     </div>
   );
 }
