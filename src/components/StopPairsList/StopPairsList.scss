@@ -25,11 +25,11 @@
   &__item {
     // border: 2px solid lightblue;
     cursor: pointer;
-    border: 1px solid gray;
+    border: 1px solid $neutral-dark;
     padding: 0.5rem;
     // margin-bottom: 15px;
     border-radius: 10px;
-    background-color: $accent-medium;
+    background-color: $site-medium;
     // transition: background-color 0.3s ease, transform 0.2s ease;
     width: 100%;
     // display: flex;
