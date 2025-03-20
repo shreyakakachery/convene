@@ -8,8 +8,21 @@ import StopPairsList from "../../components/StopPairsList/StopPairsList.jsx";
 import PlacesList from "../../components/PlacesList/PlacesList.jsx";
 
 function HomePage() {
-  const [addressA, setAddressA] = useState(""); 
-  const [addressB, setAddressB] = useState(""); 
+  const [addressA, setAddressA] = useState("");
+  const [addressB, setAddressB] = useState("");
+
+  function clearLocalStorageExcept(keysToKeep) {
+    // Loop through all items in localStorage
+    Object.keys(localStorage).forEach((key) => {
+      // Check if the key is not in the list of keys to keep
+      if (!keysToKeep.includes(key)) {
+        localStorage.removeItem(key);
+      }
+    });
+  }
+
+  clearLocalStorageExcept(["addressA", "addressB"]);
+
   // const [routes, setRoutes] = useState(null);
   // const [stopPairs, setStopPairs] = useState(null);
   // const [places, setPlaces] = useState(null);
@@ -125,7 +138,6 @@ function HomePage() {
 
   return (
     <div>
-
       <h1>Starting Locations</h1>
       <AddressForm setAddressA={setAddressA} setAddressB={setAddressB} />
 
