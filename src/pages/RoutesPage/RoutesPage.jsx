@@ -2,6 +2,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { BACKEND_URL } from "../../scripts/config.js";
+// import { clearLocalStorageExcept } from "../../scripts/helpers.js";
+
 import RoutesList from "../../components/RoutesList/RoutesList.jsx";
 
 function RoutesPage() {
@@ -49,6 +51,7 @@ function RoutesPage() {
   };
 
   useEffect(() => {
+    localStorage.removeItem("savedStopPairIndex");
     if (addressA && addressB) {
       fetchRoutes();
     }

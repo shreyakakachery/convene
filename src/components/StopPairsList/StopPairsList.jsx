@@ -1,11 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./StopPairsList.scss";
 
 function StopPairsList({ stopPairs, onSelectMidpoint }) {
   const [selectedStopPair, setSelectedStopPair] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null);
 
-  const handleSelectStopPair = (midLat, midLon) => {
+  useEffect(() => {
+    const storedIndex = localStorage.getItem("savedStopPairIndex");
+    if (storedIndex) {
+      setSelectedIndex(parseInt(storedIndex)); 
+    }
+  }, []);
+
+  const handleSelectStopPair = (midLat, midLon, index) => {
     setSelectedStopPair({ midLat, midLon });
+    localStorage.setItem("savedStopPairIndex", index);
   };
 
   const handleSubmit = () => {
@@ -16,6 +25,11 @@ function StopPairsList({ stopPairs, onSelectMidpoint }) {
 
   return (
     <div className="stop-pairs">
+      {selectedIndex !== null && (
+        <p className="stop-pairs__previous-selection">
+          Previously Selected: Intersection {selectedIndex + 1}
+        </p>
+      )}
       <h1 className="stop-pairs__title">Nearby Stops</h1>
 
       {stopPairs.length > 0 ? (
@@ -31,7 +45,7 @@ function StopPairsList({ stopPairs, onSelectMidpoint }) {
               }`}
               key={index}
               onClick={() =>
-                handleSelectStopPair(stopPair.mid_lat, stopPair.mid_lon)
+                handleSelectStopPair(stopPair.mid_lat, stopPair.mid_lon, index)
               }
             >
               <h2 className="stop-pairs__item-title">
