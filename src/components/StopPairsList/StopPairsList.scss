@@ -25,20 +25,25 @@
     padding: 0.5rem;
     // margin-bottom: 15px;
     border-radius: 10px;
-    background-color: aliceblue;
+    background-color: $accent-medium;
     // transition: background-color 0.3s ease, transform 0.2s ease;
     width: 100%;
     // display: flex;
     // flex-wrap: wrap;
 
-    // &:hover {
-    //   background-color: #f0f0f0;
-    // }
+    &:hover {
+      background-color: $accent-light;
+    }
 
     &--selected {
-      background-color: #fff0ed;
-      border-color: #007bff;
+      background-color: $accent-dark;
+      // border-color: #007bff;
       // transform: scale(1.02);
+      color: $site-light;
+
+      &:hover {
+        background-color: $accent-dark;
+      }
     }
   }
 
@@ -55,20 +60,20 @@
   }
 
   &__route-name {
-    color: darkblue;
+    color: $primary-dark;
     font-size: 0.8rem;
 
     &--b {
-      color: seagreen;
+      color: $secondary-dark;
     }
   }
 
   &__stop-name {
-    color: darkblue;
+    color: $primary-dark;
     padding-top: 0.2rem;
 
     &--b {
-      color: seagreen;
+      color: $secondary-dark;
     }
   }
 
@@ -79,7 +84,7 @@
   }
 
   &__null-message {
-    color: red;
+    color: $error-colour;
     font-weight: 700;
   }
 

@@ -8,7 +8,6 @@
 
 
     &__title {
-        color: darkblue;
         padding-bottom: 1rem;
     }
 
@@ -21,11 +20,11 @@
     }
 
     &__item {
-        border: 2px solid darkred;
+        // border: 2px solid darkred;
         border-radius: 5px;
         width: 100%;
         padding: 1rem;
-        background-color: blanchedalmond;
+        background-color: $accent-medium;
 
     }
 
@@ -42,7 +41,7 @@
     // }
 
     &__null-message {
-        color: red;
+        color: $error-colour;
         font-weight: 700;
     }
 }

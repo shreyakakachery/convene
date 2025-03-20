@@ -3,16 +3,16 @@
 @use "../../styles/partials/typography" as *;
 
 .footer {
-  background-color: #06402b;
+  background-color: $site-dark;
   padding: 2rem 0.5rem 1rem;
 
   &__flair {
-    color: white;
+    color: $site-light;
   }
 
   &__copyright {
     font-family: "Gidole";
     font-size: 1rem;
-    color: white;
+    color: $site-light;
   }
 }

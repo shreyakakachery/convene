@@ -1,13 +1,29 @@
 // colours
 
-$primary-dark: darkblue;
-$primary-medium: #2e66e5;
-$primary-light: lightblue;
+// user a
+$primary-dark: darkblue; //dark blue
+$primary-medium: #87cefa; // light sky blue
+$primary-light: #E1EFFF; // 
 
-$secondary-dark: darkred;
-$secondary-medium: red;
-$secondary-light: lightpink;
+// user b
+$secondary-dark: #005555; //dark teal
+$secondary-medium: #00A7A7; // medium cyan
+$secondary-light: #C5E7D6; // 
 
+// site colours
+$site-dark: #06402b; // dark green
+$site-medium: aliceblue;
+$site-light: #ffffff; // white
+
+// btn and accents
+$accent-dark: palevioletred; 
+$accent-medium: lavenderblush;
+$accent-light: papayawhip; 
+
+// selected
+$selected-colour: papayawhip;
+
+//error
 $error-colour: #941616;
 
 // screen breakpoints

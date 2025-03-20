@@ -18,24 +18,24 @@
     border-radius: 1rem;
 
     &__title {
-        color: darkblue;
+        color: $primary-dark;
         font-weight: 700;
         font-size: 25px;
         text-transform: capitalize;
         padding: 0.3rem;
 
         &--b {
-          color: seagreen;
+          color: $secondary-dark;
         }
     }
   
     &--a {
-      background-color: #f0f8ff; // Light blue for route A
+      background-color: rgba(225, 239, 255, 0.5); // Light blue for route A
 
     }
   
     &--b {
-      background-color: #f0fff0; // Light green for route B
+      background-color: rgba(197, 231, 214, 0.5); // Light green for route B
 
 
     }
@@ -43,27 +43,37 @@
     &__item {
       margin-bottom: 10px;
       padding: 1rem;
-      border: 2px solid gray;
+      border: 2px solid $primary-dark;
       border-radius: 2rem;
       cursor: pointer;
-      transition: background-color 0.3s, border-color 0.3s;
-      background-color: lightblue;
+      // transition: background-color 0.3s, border-color 0.3s;
+      background-color: $primary-light;
 
       &:hover {
-        background-color: papayawhip;
+        background-color: $accent-light;
       }
 
       &--b {
-        background-color: lightgoldenrodyellow;
+        background-color: $secondary-light;
+        border-color: $secondary-dark;
 
-        &:hover {
-          background-color: peachpuff;
-        }
+        // &:hover {
+        //   background-color: peachpuff;
+        // }
       }
   
       &--selected {
-        background-color: #fff0ed;
-        border-color: darkred;
+        background-color: $accent-dark;
+        // border-color: darkred;
+        // border-color: $accent-dark;
+        color: $site-light;
+
+
+        &:hover {
+          background-color: $accent-dark;
+        }
+
+
       }
     }
 

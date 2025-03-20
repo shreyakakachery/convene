@@ -6,7 +6,7 @@
 .header {
     display: flex;
     align-items: center;
-    background-color: #06402b;
+    background-color: $site-dark;
     padding: 0.25rem 0;
     position: relative;
 
@@ -14,7 +14,7 @@
         font-family: "Zain";
         font-size: 3rem;
         font-weight: 200;
-        color: white;
+        color: $site-light;
         position: absolute;
         left: 1.5rem;
     }

@@ -17,39 +17,39 @@
     padding-left: 0.5rem;
     padding-bottom: 0.25rem;
     font-family: "Gidole";
-    color: darkblue;
+    color: $primary-dark;
     font-weight: 700;
 
     &--user-b {
-      color: lightseagreen;
+      color: $secondary-dark;
     }
   }
 
   &__input {
     padding: 1rem;
     width: 100%;
-    border: 2px solid lightskyblue;
+    border: 2px solid $primary-medium;
     border-radius: 20px;
     font-family: "Gidole";
     font-size: 1rem;
     font-weight: 700;
     outline: none;
-    color: darkblue;
+    color: $primary-dark;
 
     &::placeholder {
       color: grey;
     }
 
     &:focus {
-      border-color: darkblue;
+      border-color: $primary-dark;
     }
 
     &--user-b {
-      color: seagreen;
-      border-color: lightseagreen;
+      color: $secondary-dark;
+      border-color: $secondary-medium;
 
       &:focus {
-        border-color: seagreen;
+        border-color: $secondary-dark;
       }
     }
   }
