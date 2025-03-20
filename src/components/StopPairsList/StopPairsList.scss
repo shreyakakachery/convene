@@ -6,7 +6,7 @@
   padding: 1rem;
 
   @include tablet {
-    padding: 1rem 2rem;
+    padding: 2rem 1rem;
   }
 
   &__back-btn {
@@ -29,8 +29,15 @@
   &__list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     gap: 1rem;
+
+    @include tablet {
+      gap: 2rem;
+    }
+
+    @include desktop {
+      gap: 1rem;
+    }
   }
 
   &__item {
@@ -48,7 +55,8 @@
       width: calc(50% - 1rem);
     }
     @include desktop {
-      width: calc(33.33% - 1rem);
+      width: calc(25% - 1rem);
+      // width: calc(33.33% - 1rem);
     }
 
     &:hover {

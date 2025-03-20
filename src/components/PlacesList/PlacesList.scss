@@ -5,6 +5,10 @@
 .places {
   padding: 1rem;
 
+  @include tablet {
+    padding: 2rem 1rem;
+  }
+
   &__back-btn {
     @include back-button;
   }
@@ -26,6 +30,14 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+
+    @include tablet {
+      gap: 2rem;
+    }
+
+    @include desktop {
+      gap: 1rem;
+    }
   }
 
   &__item {
