@@ -112,20 +112,24 @@ function RoutesList({ routes, onSubmitSelection }) {
 
       <h2 className="routes__title">Routes</h2>
 
-      <ul className="routes-list routes-list--a">
-        <p className="routes-list__title">{routesA.address}</p>
-        {renderRoutes(routesA, selectedRouteA, selectedStopA, "routeA")}
-      </ul>
+      <div className="routes__lists" >
+        <ul className="routes-list routes-list--a">
+          <p className="routes-list__title">{routesA.address}</p>
+          {renderRoutes(routesA, selectedRouteA, selectedStopA, "routeA")}
+        </ul>
 
-      <ul className="routes-list routes-list--b">
-        <p className="routes-list__title routes-list__title--b">
-          {routesB.address}
-        </p>
+        <ul className="routes-list routes-list--b">
+          <p className="routes-list__title routes-list__title--b">
+            {routesB.address}
+          </p>
 
-        {renderRoutes(routesB, selectedRouteB, selectedStopB, "routeB")}
-      </ul>
+          {renderRoutes(routesB, selectedRouteB, selectedStopB, "routeB")}
+        </ul>
+      </div>
 
-      <button className="routes-list__button" onClick={handleGetStops}>
+
+
+      <button className="routes__button" onClick={handleGetStops}>
         Get Stops
       </button>
     </div>

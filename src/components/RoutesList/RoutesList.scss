@@ -2,107 +2,128 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/typography" as *;
 
-
 .routes {
   padding: 1rem;
 
   &__back-btn {
-    @include back-button
+    @include back-button;
   }
 
   &__title {
-    padding: 1rem 0;
+    padding-bottom: 1rem;
+
+    @include tablet {
+      font-size: 2.5rem;
+    }
+  }
+
+  &__lists {
+    @include tablet {
+      display: flex;
+      justify-content: space-between;
+      padding: 0;
+      flex: 1;
+    }
+  }
+
+  &__button {
+    @include get-button;
   }
 }
 
 .routes-list {
-    list-style-type: none;
-    padding: 0.6rem;
-    margin: 1rem 0;
-    border-radius: 1rem;
+  list-style-type: none;
+  padding: 0.6rem;
+  margin: 1rem 0;
+  border-radius: 1rem;
 
-    &__title {
-        color: $primary-dark;
-        font-weight: 700;
-        font-size: 25px;
-        text-transform: capitalize;
-        padding: 0.3rem;
+  @include tablet {
+    width: 50%;
+    padding: 1rem;
+    // margin: 1rem;
+  }
 
-        &--b {
-          color: $secondary-dark;
-        }
-    }
-  
-    &--a {
-      background-color: rgba(225, 239, 255, 0.5); // Light blue for route A
+  &__title {
+    color: $primary-dark;
+    font-weight: 700;
+    font-size: 1.5625rem;
+    text-transform: capitalize;
+    padding: 0.3rem 0.3rem 1rem;
 
-    }
-  
     &--b {
-      background-color: rgba(197, 231, 214, 0.5); // Light green for route B
-
-
-    }
-  
-    &__item {
-      margin-bottom: 10px;
-      padding: 1rem 0.8rem;
-      border: 2px solid $primary-dark;
-      border-radius: 2rem;
-      cursor: pointer;
-      // transition: background-color 0.3s, border-color 0.3s;
-      background-color: $primary-light;
-
-      &:hover {
-        background-color: $accent-light;
-      }
-
-      &--b {
-        background-color: $secondary-light;
-        border-color: $secondary-dark;
-
-        // &:hover {
-        //   background-color: peachpuff;
-        // }
-      }
-  
-      &--selected {
-        background-color: $accent-dark;
-        // border-color: darkred;
-        // border-color: $accent-dark;
-        color: $site-light;
-
-
-        &:hover {
-          background-color: $accent-dark;
-        }
-
-
-      }
-    }
-
-    &__route-name {
-        // color: darkred;
-        font-weight: 700;
-        font-size: 1rem;
-    }
-
-    &__stop-name {
-        // color: darkcyan;
-        font-size: 0.85rem;
-        padding: 0.2rem 0 0.5rem;
-    }
-
-    // &__stop-code {
-    //     color: darkorchid;
-    // }
-
-    // &__distance {
-    //     color: darkblue;
-    // }
-
-    &__button {
-      @include get-button;
+      color: $secondary-dark;
     }
   }
-  
+
+  &--a {
+    background-color: rgba(225, 239, 255, 0.5); // Light blue for route A
+    margin-right: 1rem;
+  }
+
+  &--b {
+    background-color: rgba(197, 231, 214, 0.5); // Light green for route B
+    margin-left: 1rem;
+  }
+
+  &__item {
+    margin-bottom: 10px;
+    padding: 1rem 0.8rem;
+    border: 2px solid $primary-dark;
+    border-radius: 2rem;
+    cursor: pointer;
+    // transition: background-color 0.3s, border-color 0.3s;
+    background-color: $primary-light;
+
+    &:hover {
+      background-color: $accent-light;
+    }
+
+    &--b {
+      background-color: $secondary-light;
+      border-color: $secondary-dark;
+
+      // &:hover {
+      //   background-color: peachpuff;
+      // }
+    }
+
+    &--selected {
+      background-color: $accent-dark;
+      // border-color: darkred;
+      // border-color: $accent-dark;
+      color: $site-light;
+
+      &:hover {
+        background-color: $accent-dark;
+      }
+    }
+  }
+
+  &__route-name {
+    // color: darkred;
+    font-weight: 700;
+    font-size: 1rem;
+
+    @include tablet {
+      font-size: 1.15rem;
+    }
+  }
+
+  &__stop-name {
+    // color: darkcyan;
+    font-size: 0.85rem;
+    padding: 0.2rem 0 0.5rem;
+
+    @include tablet {
+      font-size: 0.95rem;
+    }
+  }
+
+  // &__stop-code {
+  //     color: darkorchid;
+  // }
+
+  // &__distance {
+  //     color: darkblue;
+  // }
+}
