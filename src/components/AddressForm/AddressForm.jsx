@@ -30,6 +30,7 @@ const AddressForm = ({ setAddressA, setAddressB }) => {
 
   return (
     <form className="address-form" onSubmit={handleSubmit}>
+      <h2 className="address-form__title">Starting Locations</h2>
       <div className="address-form__box">
         <label className="address-form__label">Starting Address A:</label>
         <input

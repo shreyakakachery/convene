@@ -30,6 +30,10 @@
   transition: background 0.3s ease;
   background-color: $accent-light;
 
+  @include tablet {
+    width: 30%;
+  }
+
   &:hover {
     background-color: $accent-dark;
     color: $site-light;
