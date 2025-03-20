@@ -107,13 +107,18 @@ function RoutesList({ routes, onSubmitSelection }) {
         Change Address
       </button>
 
-      {savedRouteA && savedRouteB && (
-        <p className="routes__saved-routes">
-          Previously Selected: {savedRouteA} & {savedRouteB}
-        </p>
-      )}
-
       <h2 className="routes__title">Routes</h2>
+
+      {savedRouteA && savedRouteB && (
+        // <p className="routes__prev-selection">
+        //   Previously Selected: {savedRouteA} & {savedRouteB}
+        // </p>
+
+        <ul className="routes__prev-selection"> Previously Selected:
+          <li>{savedRouteA}</li>
+          <li>{savedRouteB}</li>
+        </ul>
+      )}
 
       <div className="routes__lists">
         <ul className="routes-list routes-list--a">

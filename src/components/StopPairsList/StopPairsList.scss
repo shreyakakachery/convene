@@ -13,6 +13,33 @@
     @include back-button;
   }
 
+  &__prev-selection {
+    border: 2px dashed $neutral-dark;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+
+    @include tablet {
+      // to display on lelft
+      //
+      display: inline-block;
+
+      // to display center
+      //
+      // width: fit-content;
+      // margin: 0 auto;
+      // text-align: center;
+      // display: flex; // Flexbox ensures centering
+      // justify-content: center;
+      // font-size: 1.25rem;
+    }
+
+    @include desktop {
+      font-size: 1.5rem;
+    }
+  }
+
   &__title {
     padding-bottom: 1rem;
 
@@ -33,6 +60,7 @@
 
     @include tablet {
       gap: 2rem;
+      padding-top: 1rem;
     }
 
     @include desktop {
@@ -48,15 +76,13 @@
     background-color: $site-medium;
     // transition: background-color 0.3s ease, transform 0.2s ease;
     width: 100%;
-    // display: flex;
-    // flex-wrap: wrap;
 
     @include tablet {
       width: calc(50% - 1rem);
     }
     @include desktop {
-      width: calc(25% - 1rem);
-      // width: calc(33.33% - 1rem);
+      // width: calc(25% - 1rem);
+      width: calc(33.33% - 1rem);
     }
 
     &:hover {
@@ -79,11 +105,27 @@
 
   &__route-name {
     font-size: 0.8rem;
+
+    @include tablet {
+      font-size: 1rem;
+    }
+
+    @include desktop {
+      font-size: 1.3rem;
+    }
   }
 
   &__stop-name {
     color: $primary-dark;
     padding-top: 0.2rem;
+
+    @include tablet {
+      font-size: 1.1rem;
+    }
+
+    @include desktop {
+      font-size: 1.4rem;
+    }
 
     &--b {
       color: $secondary-dark;
