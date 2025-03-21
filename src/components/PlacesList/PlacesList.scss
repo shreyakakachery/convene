@@ -9,12 +9,13 @@
     padding: 2rem 1rem;
   }
 
-  &__back-btn {
-    @include back-button;
-  }
+  // &__back-btn {
+  //   @include back-button;
+  // }
 
   &__title {
     padding-bottom: 1rem;
+    text-transform: capitalize;
 
     @include tablet {
       padding-bottom: 2rem;

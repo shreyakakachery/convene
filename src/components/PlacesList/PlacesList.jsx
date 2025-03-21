@@ -1,14 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import "./PlacesList.scss";
 
-function PlacesList({ places }) {
+function PlacesList({ places, category }) {
   const navigate = useNavigate();
   return (
     <div className="places">
-      <button className="places__back-btn" onClick={() => navigate(-1)}>
+      {/* <button className="places__back-btn" onClick={() => navigate(-1)}>
         Change Intersection
-      </button>
-      <h2 className="places__title">Nearby Places</h2>
+      </button> */}
+      {/* <h2 className="places__title">Nearby Places</h2> */}
+      <h2 className="places__title">Nearby {category}s</h2>
       <ul className="places__list">
         {places && places.length > 0 ? (
           places.map((place, index) => (

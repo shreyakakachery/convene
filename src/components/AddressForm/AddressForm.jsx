@@ -136,7 +136,7 @@ function AddressForm({ setAddressA, setAddressB }) {
       <h2 className="address-form__title">Starting Locations</h2>
       <div className="address-form__inputs-box">
         <div className="address-form__box">
-          <label className="address-form__label">Starting Address A:</label>
+          <label className="address-form__label">Starting Address 1:</label>
           <input
             className={`address-form__input ${
               errors.addressA ? "address-form__input--error" : ""
@@ -167,7 +167,7 @@ function AddressForm({ setAddressA, setAddressB }) {
 
         <div className="address-form__box">
           <label className="address-form__label address-form__label--user-b">
-            Starting Address B:
+            Starting Address 2:
           </label>
           <input
             className={`address-form__input address-form__input--user-b ${
