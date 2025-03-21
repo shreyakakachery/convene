@@ -6,8 +6,14 @@
   &__back-btn {
     margin: 1rem;
     @include back-button;
+
+    @include tablet {
+      margin-top: 2rem;
+    }
   }
 }
+
+// change font size and colours
 
 .category {
   display: flex;
@@ -16,10 +22,24 @@
   padding: 1rem;
   border: 2px dashed $neutral-dark;
 
+  @include tablet {
+    display: block;
+    width: fit-content;
+    margin-bottom: 0;
+  }
+
   &__title {
     font-size: 1.25rem;
     font-weight: bold;
     padding-bottom: 1rem;
+
+    @include tablet {
+      font-size: 1.5rem;
+    }
+
+    @include desktop {
+      font-size: 1.75rem;
+    }
   }
 
   &__buttons {
@@ -29,7 +49,7 @@
   }
 
   &__btn {
-    background-color: #f4f4f4;
+    background-color: $neutral-light;
     border: none;
     padding: 8px 15px;
     border-radius: 6px;
@@ -37,18 +57,22 @@
     cursor: pointer;
     transition: all 0.3s ease;
 
-    &:hover {
-      background-color: #ddd;
+    @include tablet {
+      font-size: 1.25rem;
     }
 
-    &:active {
-      background-color: #bbb;
+    &:hover {
+      background-color: $accent-light;
     }
 
     &--selected {
-      background-color: #007bff;
+      background-color: $accent-dark;
       color: white;
       font-weight: bold;
+
+      &:hover {
+        background-color: $accent-dark;
+      }
     }
   }
 }
