@@ -85,8 +85,10 @@ function RoutesList({ routes, onSubmitSelection }) {
     });
   };
 
-  const routesA = routes[0];
-  const routesB = routes[1];
+  // with trains; comment out the filtering below
+
+  // const routesA = routes[0];
+  // const routesB = routes[1];
 
   //
   // TO FILTER OUT TRAIN ROUTES
@@ -94,11 +96,23 @@ function RoutesList({ routes, onSubmitSelection }) {
   // add zone_id in the backend
   // then use that to filter/remove train routes
 
-  // const allRoutesA = routes[0];
-  // const allRoutesB = routes[1];
+  const allRoutesA = routes[0];
+  const allRoutesB = routes[1];
 
-  // const RoutesA = allRoutesA.filter(route => !route.filteredStops.some(stop => stop.zone_id.startsWith("Z")));
-  // const RoutesB = allRoutesB.filter(route => !route.filteredStops.some(stop => stop.zone_id.startsWith("Z")));
+  // Filter stops where zone_id starts with "B"
+  const routesA = {
+    ...allRoutesA,
+    filteredStops: allRoutesA.filteredStops.filter((stop) =>
+      stop.zone_id.startsWith("B")
+    ),
+  };
+
+  const routesB = {
+    ...allRoutesB,
+    filteredStops: allRoutesB.filteredStops.filter((stop) =>
+      stop.zone_id.startsWith("B")
+    ),
+  };
 
   return (
     <div className="routes">
@@ -110,11 +124,9 @@ function RoutesList({ routes, onSubmitSelection }) {
       <h2 className="routes__title">Routes</h2>
 
       {savedRouteA && savedRouteB && (
-        // <p className="routes__prev-selection">
-        //   Previously Selected: {savedRouteA} & {savedRouteB}
-        // </p>
-
-        <ul className="routes__prev-selection"> Previously Selected:
+        <ul className="routes__prev-selection">
+          {" "}
+          Previously Selected:
           <li>{savedRouteA}</li>
           <li>{savedRouteB}</li>
         </ul>
