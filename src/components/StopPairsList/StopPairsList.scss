@@ -14,7 +14,7 @@
   }
 
   &__prev-selection {
-    border: 2px dashed $neutral-dark;
+    border: 0.125rem dashed $neutral-dark;
     text-align: center;
     padding: 1rem;
     font-size: 1rem;
@@ -44,7 +44,7 @@
 
   &__instruction {
     font-size: 1.1rem;
-    border-left: 4px solid $neutral-dark;
+    border-left: 0.25rem solid $neutral-dark;
     padding-left: 0.5rem;
     margin-bottom: 2rem;
 
@@ -74,9 +74,9 @@
 
   &__item {
     cursor: pointer;
-    border: 1px solid $neutral-dark;
+    border: 0.0625rem solid $neutral-dark;
     padding: 0.5rem;
-    border-radius: 10px;
+    border-radius: 0.625rem;
     background-color: $site-medium;
     transition: background-color 0.3s ease, transform 0.2s ease;
     width: 100%;

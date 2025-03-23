@@ -18,7 +18,7 @@
   padding: 1rem;
   border-radius: 1rem;
   margin-top: 1rem;
-  border: 2px solid $neutral-dark;
+  border: 0.125rem solid $neutral-dark;
   cursor: pointer;
   transition: background 0.3s ease;
   background-color: $accent-light;
@@ -47,7 +47,7 @@
   cursor: pointer;
   transition: background 0.3s ease, color 0.3s ease;
   background-color: $neutral-light;
-  border: 2px solid $neutral-dark;
+  border: 0.125rem solid $neutral-dark;
   color: $neutral-dark;
 
   &:hover {
