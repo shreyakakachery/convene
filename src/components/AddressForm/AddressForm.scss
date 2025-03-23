@@ -3,8 +3,6 @@
 @use "../../styles/partials/typography" as *;
 
 .address-form {
-  // padding: 1rem;
-
   @include tablet {
     padding: 0 2rem;
   }
@@ -15,12 +13,8 @@
 
   &__title {
     margin-bottom: 1rem;
-    // background-color: white;
-    // border-radius: 20px;
     width: fit-content;
     padding: 0.3rem;
-
-    // color: #333333;
     text-shadow: 2px 2px 0px #ffffff, 5px 4px 0px rgba(0, 0, 0, 0.15);
 
     @include tablet {

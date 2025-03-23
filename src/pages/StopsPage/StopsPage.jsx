@@ -13,8 +13,8 @@ function StopsPage() {
   const stopA = location.state.selectedStopA;
   const stopB = location.state.selectedStopB;
 
-  const [midLat, setMidLat] = useState(null);
-  const [midLon, setMidLon] = useState(null);
+  const [_midLat, setMidLat] = useState(null);
+  const [_midLon, setMidLon] = useState(null);
 
   const [stopPairs, setStopPairs] = useState(null);
 
@@ -44,21 +44,11 @@ function StopsPage() {
         `${BACKEND_URL}/stops?routeA=${encodedRouteA}&originStopA=${stopA}&routeB=${encodedRouteB}&originStopB=${stopB}`
       );
 
-      //
-
-      // if only one stop pair
-      const dynamicKey = Object.keys(response.data)[0]; // Get the first key dynamically
-      // console.log("Dynamic Key:", dynamicKey); // Debugging: Check what key is returned
-      setStopPairs(response.data[dynamicKey]);
-
-      // for more than one stop pair
       const allStopPairs = Object.keys(response.data).flatMap(
         (key) => response.data[key]
-      ); // Combine all arrays into one
+      );
 
-      // console.log("All Stop Pairs:", allStopPairs); // Debugging: Check the structure
-
-      setStopPairs(allStopPairs); // Store all stop pairs in state
+      setStopPairs(allStopPairs);
     } catch (error) {
       console.error("Error fetching stop pairs:", error);
     }

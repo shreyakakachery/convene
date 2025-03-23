@@ -2,23 +2,19 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/typography" as *;
 
-
 .header {
-    display: flex;
-    align-items: center;
-    background-color: $site-dark;
-    padding: 0.25rem 0;
-    position: relative;
+  display: flex;
+  align-items: center;
+  background-color: $site-dark;
+  padding: 0.25rem 0;
+  position: relative;
 
-    &__name {
-        font-family: "Zain";
-        font-size: 3rem;
-        font-weight: 200;
-        color: $site-light;
-        position: absolute;
-        left: 1.5rem;
-    }
-
-
-
+  &__name {
+    font-family: "Zain";
+    font-size: 3rem;
+    font-weight: 200;
+    color: $site-light;
+    position: absolute;
+    left: 1.5rem;
+  }
 }

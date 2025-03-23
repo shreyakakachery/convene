@@ -1,5 +1,5 @@
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import "leaflet/dist/leaflet.css";
 
 const BaseMap = ({ places = [], midLat, midLon }) => {
@@ -9,28 +9,18 @@ const BaseMap = ({ places = [], midLat, midLon }) => {
 
   const zoomLevel = places?.length >= 1 ? 16 : 11; // map tile 16 for 500m radius
 
-  // const [mapKey, setMapKey] = useState(0);
-
   const UpdateMapView = ({ center, zoom }) => {
     const map = useMap();
-    
+
     useEffect(() => {
       map.setView(center, zoom);
     }, [mapCenter, zoomLevel, map]);
-  
+
     return null;
   };
-  
 
-  // useEffect(() => {
-  //   setMapKey((prevKey) => prevKey + 1);
-  // }, [places]);
   return (
     <MapContainer
-      //   center={defaultPosition}
-      //   zoom={11}
-
-      // key={mapKey}
       center={mapCenter}
       zoom={zoomLevel}
       style={{ height: "100vh", width: "100vw" }}
@@ -42,7 +32,6 @@ const BaseMap = ({ places = [], midLat, midLon }) => {
 
       <UpdateMapView center={mapCenter} zoom={zoomLevel} />
 
-      {/* Conditionally Render Markers */}
       {places?.length >= 1 &&
         places.map((place) => (
           <Marker key={place.id} position={[place.lat, place.lon]}>
@@ -53,11 +42,6 @@ const BaseMap = ({ places = [], midLat, midLon }) => {
             </Popup>
           </Marker>
         ))}
-
-      {/* Marker */}
-      {/* <Marker position={position}>
-        <Popup>Vancouver, BC</Popup>
-      </Marker> */}
     </MapContainer>
   );
 };

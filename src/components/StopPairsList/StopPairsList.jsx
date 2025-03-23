@@ -33,8 +33,7 @@ function StopPairsList({ stopPairs, onSelectMidpoint }) {
       </button>
 
       <h2 className="stop-pairs__title">Nearby Stops</h2>
-      <p  className="stop-pairs__instruction">Select an intersection</p>
-
+      <p className="stop-pairs__instruction">Select an intersection</p>
 
       {selectedIndex !== null && (
         <p className="stop-pairs__prev-selection">
@@ -98,10 +97,6 @@ function StopPairsList({ stopPairs, onSelectMidpoint }) {
           Get Places
         </button>
       )}
-
-      {/* <button className="stop-pairs__button" onClick={handleSubmit}>
-        Get Places
-      </button> */}
     </div>
   );
 }

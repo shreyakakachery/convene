@@ -9,10 +9,6 @@
     padding: 2rem 1rem;
   }
 
-  // &__back-btn {
-  //   @include back-button;
-  // }
-
   &__title {
     padding-bottom: 1rem;
     text-transform: capitalize;
@@ -31,14 +27,6 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-
-    // @include tablet {
-    //   gap: 2rem;
-    // }
-
-    // @include desktop {
-    //   gap: 1rem;
-    // }
   }
 
   &__item {
@@ -47,9 +35,6 @@
     padding: 1rem;
     background-color: $accent-medium;
 
-    // @include tablet {
-    //   width: calc(50% - 1rem);
-    // }
     @include desktop {
       width: calc(33.33% - 1rem);
     }

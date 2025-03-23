@@ -18,22 +18,22 @@ function PlacesPage() {
 
   const fetchPlaces = async (category) => {
     try {
-      console.log(
-        `Fetching places for ${category} at`,
-        new Date().toISOString()
-      );
+      // console.log(
+      //   `Fetching places for ${category} at`,
+      //   new Date().toISOString()
+      // );
 
       const encodedMidLat = encodeURIComponent(midLat);
       const encodedMidLon = encodeURIComponent(midLon);
 
-      const startTime = performance.now(); // Start timing
+      // const startTime = performance.now(); // Start timing
 
       const response = await axios.get(
         `${BACKEND_URL}/places?lat=${encodedMidLat}&lon=${encodedMidLon}&category=${category}`
       );
 
-      const endTime = performance.now(); // End timing
-      console.log(`Response received in ${(endTime - startTime).toFixed(2)}ms`);
+      // const endTime = performance.now(); // End timing
+      // console.log(`Response received in ${(endTime - startTime).toFixed(2)}ms`);
 
       setPlaces(response.data);
     } catch (error) {
@@ -46,8 +46,6 @@ function PlacesPage() {
       fetchPlaces(selectedCategory);
     }
   }, [midLat, midLon, selectedCategory]);
-
-  // need to fix bem
 
   return (
     <div className="places-page">
@@ -82,7 +80,11 @@ function PlacesPage() {
         {!places ? (
           <p>Loading places...</p>
         ) : (
-          <PlacesList places={places} category={selectedCategory} />
+          <PlacesList
+            className="places-page__list"
+            places={places}
+            category={selectedCategory}
+          />
         )}
       </div>
 

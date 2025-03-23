@@ -14,8 +14,6 @@ function RoutesList({ routes, onSubmitSelection }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // localStorage.clear(); // clear local storage on mount
-
     const savedRouteA = localStorage.getItem("savedRouteA");
     const savedRouteB = localStorage.getItem("savedRouteB");
 
@@ -48,8 +46,6 @@ function RoutesList({ routes, onSubmitSelection }) {
       navigate("/stops", {
         state: { selectedRouteA, selectedRouteB, selectedStopA, selectedStopB },
       });
-    } else {
-      alert("Please select both routes and stops"); // remove alert and replace with inline error message
     }
   };
 
@@ -72,34 +68,15 @@ function RoutesList({ routes, onSubmitSelection }) {
         >
           <p className="routes-list__route-name">{stop.route || "N/A"}</p>
           <p className="routes-list__stop-name">{stop.stop_name}</p>
-          {/* <p className="routes-list__stop-code">
-            <strong>Stop Code:</strong> {stop.stop_code}
-          </p> */}
-          <p className="routes-list__distance">
-            {/* <strong>Distance:</strong>{" "} 
-            {stop.distance ? `${stop.distance.toFixed(2)} km` : "N/A"} */}
-            {stop.distance.toFixed(2)} km
-          </p>
+          <p className="routes-list__distance">{stop.distance.toFixed(2)} km</p>
         </li>
       );
     });
   };
 
-  // with trains; comment out the filtering below
-
-  // const routesA = routes[0];
-  // const routesB = routes[1];
-
-  //
-  // TO FILTER OUT TRAIN ROUTES
-  //
-  // add zone_id in the backend
-  // then use that to filter/remove train routes
-
   const allRoutesA = routes[0];
   const allRoutesB = routes[1];
 
-  // Filter stops where zone_id starts with "B"
   const routesA = {
     ...allRoutesA,
     filteredStops: allRoutesA.filteredStops.filter((stop) =>

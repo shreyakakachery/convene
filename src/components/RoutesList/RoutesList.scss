@@ -21,7 +21,7 @@
     font-weight: 700;
 
     & > * {
-      font-weight: 400; // Change this to any desired color
+      font-weight: 400; 
       padding-top: 0.3rem;
     }
 
@@ -29,7 +29,7 @@
       width: fit-content;
       margin: 0 auto;
       text-align: center;
-      display: flex; // Flexbox ensures centering
+      display: flex; 
       flex-direction: column;
       justify-content: center;
       font-size: 1.25rem;
@@ -129,7 +129,7 @@
     border: 2px solid $primary-dark;
     border-radius: 2rem;
     cursor: pointer;
-    // transition: background-color 0.3s, border-color 0.3s;
+    transition: background-color 0.3s;
     background-color: $primary-light;
 
     &:hover {
@@ -143,7 +143,6 @@
 
     &--selected {
       background-color: $accent-dark;
-
       color: $site-light;
 
       &:hover {

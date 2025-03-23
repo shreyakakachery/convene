@@ -1,15 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import "./AddressForm.scss";
 import axios from "axios";
+import "./AddressForm.scss";
 
 function AddressForm({ setAddressA, setAddressB }) {
-  const [addressA, setAddressAInput] = useState(
-    localStorage.getItem("addressA") || ""
-  );
-  const [addressB, setAddressBInput] = useState(
-    localStorage.getItem("addressB") || ""
-  );
+  const [addressA, setAddressAInput] = useState(localStorage.getItem("addressA") || "");
+  const [addressB, setAddressBInput] = useState(localStorage.getItem("addressB") || "");
   const [addressSuggestionsA, setAddressSuggestionsA] = useState([]);
   const [addressSuggestionsB, setAddressSuggestionsB] = useState([]);
   const [errors, setErrors] = useState({ addressA: "", addressB: "" });
@@ -33,20 +29,16 @@ function AddressForm({ setAddressA, setAddressB }) {
       const response = await axios.get(
         `https://photon.komoot.io/api/?q=${input}&lang=en&bbox=-123.5,49.0,-122.3,49.4`
       );
-      // console.log("API Response:", response.data); // Log the API response
-      // Ensure the 'features' array exists and extract address information from properties
       const suggestions = response.data.features
         ? response.data.features.map((feature) => {
             const { name, housenumber, street, city, state, postcode } =
               feature.properties;
 
-            // Build a full address string that includes name, housenumber, and street (if available)
-            let address = name ? `${name}` : ""; // Add name if it's available
+            let address = name ? `${name}` : "";
             if (housenumber && street) {
-              address += ` - ${housenumber} ${street}`; // Add street and house number
+              address += ` - ${housenumber} ${street}`;
             }
 
-            // Ensure a space between street address and city, and then add city, state, and postcode
             const locationDetails = [city, state, postcode]
               .filter(Boolean)
               .join(", ");
@@ -134,7 +126,6 @@ function AddressForm({ setAddressA, setAddressB }) {
   return (
     <form className="address-form" onSubmit={handleSubmit}>
       <h2 className="address-form__title">Starting Locations</h2>
-      {/* <p>Enter 2 starting locations.</p> */}
       <div className="address-form__inputs-box">
         <div className="address-form__box">
           <label className="address-form__label">Starting Address 1:</label>

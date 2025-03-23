@@ -8,13 +8,13 @@ function Header() {
         version="1.0"
         xmlns="http://www.w3.org/2000/svg"
         width="70px"
-        height="90px" // decrease and add padding to header
+        height="90px"
         viewBox="0 0 300.000000 321.000000"
         preserveAspectRatio="xMidYMid meet"
       >
         <g
           transform="translate(0.000000,321.000000) scale(0.100000,-0.100000)"
-          fill="#FFFFFF" // Set fill color to white
+          fill="#FFFFFF"
           stroke="#FFFFFF"
           strokeWidth="70"
         >
@@ -25,7 +25,6 @@ function Header() {
             -101 -38 -56 -68 -97 -68 -92 0 28 33 270 46 333 58 291 180 526 363 702
             186 180 397 285 671 334 142 26 385 23 513 -6 55 -12 101 -19 104 -16 9 8
             -121 44 -202 55 -86 12 -275 12 -376 1z"
-            // stroke="lightblue"
           />
           <path
             d="M467 1583 c-3 -10 -17 -45 -31 -78 -51 -123 -65 -165 -57 -165 9 0
@@ -35,7 +34,6 @@ function Header() {
             58 -486 171 -657 348 -214 220 -322 477 -373 887 -8 67 -15 125 -15 129 0 5
             30 -35 66 -89 78 -114 73 -108 79 -101 3 2 -29 58 -70 124 -41 65 -75 127
             -75 137 0 9 -4 17 -9 17 -5 0 -11 -8 -14 -17z"
-            // stroke="lightseagreen"
           />
         </g>
       </svg>
