@@ -134,6 +134,7 @@ function AddressForm({ setAddressA, setAddressB }) {
   return (
     <form className="address-form" onSubmit={handleSubmit}>
       <h2 className="address-form__title">Starting Locations</h2>
+      {/* <p>Enter 2 starting locations.</p> */}
       <div className="address-form__inputs-box">
         <div className="address-form__box">
           <label className="address-form__label">Starting Address 1:</label>

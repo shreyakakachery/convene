@@ -32,7 +32,8 @@ function StopPairsList({ stopPairs, onSelectMidpoint }) {
         Change Routes
       </button>
 
-      <h1 className="stop-pairs__title">Nearby Stops</h1>
+      <h2 className="stop-pairs__title">Nearby Stops</h2>
+      <p  className="stop-pairs__instruction">Select an intersection</p>
 
 
       {selectedIndex !== null && (

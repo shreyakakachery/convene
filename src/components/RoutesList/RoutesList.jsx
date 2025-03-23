@@ -122,6 +122,7 @@ function RoutesList({ routes, onSubmitSelection }) {
       </button>
 
       <h2 className="routes__title">Routes</h2>
+      <p className="routes__instruction">Select a route from each list</p>
 
       {savedRouteA && savedRouteB && (
         <ul className="routes__prev-selection">
@@ -149,7 +150,7 @@ function RoutesList({ routes, onSubmitSelection }) {
 
       {selectedRouteA && selectedRouteB && (
         <button className="stop-pairs__button" onClick={handleGetStops}>
-          Get Places
+          Get Stops
         </button>
       )}
     </div>
