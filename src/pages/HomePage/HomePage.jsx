@@ -12,16 +12,11 @@ function HomePage() {
   clearLocalStorageExcept(["addressA", "addressB"]);
 
   return (
-    // <div>
-    //   <AddressForm setAddressA={setAddressA} setAddressB={setAddressB} />
-    //   <BaseMap />
-    // </div>
-
-    <div className="home-container">
-      <div className="map-container">
+    <div className="home-page">
+      <div className="home-page__map-container">
         <BaseMap />
       </div>
-      <div className="form-container">
+      <div className="home-page__form-container">
         <AddressForm setAddressA={setAddressA} setAddressB={setAddressB} />
       </div>
     </div>

@@ -3,12 +3,12 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { BACKEND_URL } from "../../scripts/config.js";
 import PlacesList from "../../components/PlacesList/PlacesList.jsx";
+import BaseMap from "../../components/BaseMap/BaseMap.jsx";
 import "./PlacesPage.scss";
 
 function PlacesPage() {
   const location = useLocation();
   const navigate = useNavigate();
-  
 
   const midLat = location.state.midLat;
   const midLon = location.state.midLon;
@@ -56,13 +56,17 @@ function PlacesPage() {
         <h3 className="category__title">Categories:</h3>
         <div className="category__buttons">
           <button
-            className={`category__btn ${selectedCategory === "cafe" ? "category__btn--selected" : ""}`}
+            className={`category__btn ${
+              selectedCategory === "cafe" ? "category__btn--selected" : ""
+            }`}
             onClick={() => setSelectedCategory("cafe")}
           >
             Cafes
           </button>
           <button
-            className={`category__btn ${selectedCategory === "restaurant" ? "category__btn--selected" : ""}`}
+            className={`category__btn ${
+              selectedCategory === "restaurant" ? "category__btn--selected" : ""
+            }`}
             onClick={() => setSelectedCategory("restaurant")}
           >
             Restaurants
@@ -75,6 +79,10 @@ function PlacesPage() {
       ) : (
         <PlacesList places={places} category={selectedCategory} />
       )}
+
+      <div className="places-page__map-container">
+        <BaseMap places={places} midLat={midLat} midLon={midLon} />
+      </div>
     </div>
   );
 }
