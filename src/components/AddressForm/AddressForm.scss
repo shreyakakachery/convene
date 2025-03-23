@@ -60,11 +60,11 @@
     border-radius: 20px;
     width: fit-content;
     padding: 0.3rem;
-    text-shadow: 2px 2px 0px #ffffff, 5px 4px 0px rgba(0, 0, 0, 0.15);
 
     @include tablet {
       font-size: 1.5rem;
       background-color: initial;
+      text-shadow: 2px 2px 0px #ffffff, 5px 4px 0px rgba(0, 0, 0, 0.15);
     }
 
     @include desktop {
