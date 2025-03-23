@@ -6,18 +6,31 @@ function PlacesList({ places, category }) {
       <h2 className="places__title">Nearby {category}s</h2>
       <ul className="places__list">
         {places && places.length > 0 ? (
-          places.map((place, index) => (
-            <li className="places__item" key={index}>
-              <h2 className="places__name">{place.name}</h2>
-              <p className="places__type">Type: {place.amenity}</p>
-              <p className="places__address">
-                Address: {place.number} {place.street}
-              </p>
-            </li>
-          ))
+          places.map((place, index) => {
+            const placeUrl =
+              place.number === "Unknown"
+                ? `https://www.google.com/search?q=${place.name}+${category}`
+                : `https://www.google.com/maps/search/${place.name}+${place.number}+${place.street}`;
+
+            const linkText =
+              place.number === "Unknown" ? "Google" : "Google Maps";
+
+            return (
+              <li className="places__item" key={index}>
+                <h2 className="places__name">{place.name}</h2>
+                <p className="places__type">Type: {place.amenity}</p>
+                <p className="places__address">
+                  Address: {place.number} {place.street}
+                </p>
+                <a  className="places__link" href={placeUrl} target="_blank" rel="noopener noreferrer">
+                  {linkText}
+                </a>
+              </li>
+            );
+          })
         ) : (
           <p className="places__null-message">
-            No places found. Please select a different Intersection
+            No places found. Please select a different intersection.
           </p>
         )}
       </ul>

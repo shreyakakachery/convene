@@ -36,7 +36,36 @@
     background-color: $accent-medium;
 
     @include desktop {
-      width: calc(33.33% - 1rem);
+      width: calc(50% - 1rem);
+    }
+  }
+
+  &__link {
+    position: relative;
+    display: inline-block;
+    padding-top: 0.3rem;
+    color: $accent-dark;
+    font-weight: bold;
+    overflow: hidden;
+
+    &:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: $neutral-medium;
+      bottom: 0;
+      left: 0;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    &:hover {
+      color: $neutral-medium;
+    }
+
+    &:hover:before {
+      transform: translateX(0);
     }
   }
 
