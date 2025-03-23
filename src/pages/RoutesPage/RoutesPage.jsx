@@ -17,7 +17,7 @@ function RoutesPage() {
 
   const [routes, setRoutes] = useState(null);
 
-  const handleSelection = (
+  const handleRoutesSelection = (
     selectedRouteA,
     selectedRouteB,
     selectedStopA,
@@ -56,7 +56,7 @@ function RoutesPage() {
       {!routes ? (
         <p>Loading routes...</p>
       ) : (
-        <RoutesList routes={routes} onSubmitSelection={handleSelection} />
+        <RoutesList routes={routes} onSubmitSelection={handleRoutesSelection} />
       )}
     </div>
   );
