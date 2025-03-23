@@ -2,6 +2,7 @@ import { clearLocalStorageExcept } from "../../scripts/helpers.js";
 import { useState } from "react";
 
 import AddressForm from "../../components/AddressForm/AddressForm.jsx";
+import BaseMap from "../../components/BaseMap/BaseMap.jsx";
 
 function HomePage() {
   const [addressA, setAddressA] = useState("");
@@ -12,6 +13,7 @@ function HomePage() {
   return (
     <div>
       <AddressForm setAddressA={setAddressA} setAddressB={setAddressB} />
+      <BaseMap />
     </div>
   );
 }
