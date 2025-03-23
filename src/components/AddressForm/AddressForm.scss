@@ -151,8 +151,10 @@
   }
 
   &__suggestion {
-    padding: 8px;
+    padding: 1rem 8px;
     cursor: pointer;
+    border-top: 1px solid $neutral-light;
+    border-bottom: 1px solid $neutral-light;
 
     &:hover {
       background-color: #f0f0f0;
