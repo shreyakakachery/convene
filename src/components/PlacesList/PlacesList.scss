@@ -32,13 +32,13 @@
     flex-wrap: wrap;
     gap: 1rem;
 
-    @include tablet {
-      gap: 2rem;
-    }
+    // @include tablet {
+    //   gap: 2rem;
+    // }
 
-    @include desktop {
-      gap: 1rem;
-    }
+    // @include desktop {
+    //   gap: 1rem;
+    // }
   }
 
   &__item {
@@ -47,9 +47,9 @@
     padding: 1rem;
     background-color: $accent-medium;
 
-    @include tablet {
-      width: calc(50% - 1rem);
-    }
+    // @include tablet {
+    //   width: calc(50% - 1rem);
+    // }
     @include desktop {
       width: calc(33.33% - 1rem);
     }

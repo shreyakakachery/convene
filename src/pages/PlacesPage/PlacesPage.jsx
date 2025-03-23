@@ -47,38 +47,44 @@ function PlacesPage() {
     }
   }, [midLat, midLon, selectedCategory]);
 
-  return (
-    <div>
-      <button className="places__back-btn" onClick={() => navigate(-1)}>
-        Change Intersection
-      </button>
-      <div className="category">
-        <h3 className="category__title">Categories:</h3>
-        <div className="category__buttons">
-          <button
-            className={`category__btn ${
-              selectedCategory === "cafe" ? "category__btn--selected" : ""
-            }`}
-            onClick={() => setSelectedCategory("cafe")}
-          >
-            Cafes
-          </button>
-          <button
-            className={`category__btn ${
-              selectedCategory === "restaurant" ? "category__btn--selected" : ""
-            }`}
-            onClick={() => setSelectedCategory("restaurant")}
-          >
-            Restaurants
-          </button>
-        </div>
-      </div>
+  // need to fix bem
 
-      {!places ? (
-        <p>Loading places...</p>
-      ) : (
-        <PlacesList places={places} category={selectedCategory} />
-      )}
+  return (
+    <div className="places-page">
+      <div className="places-page__info-container">
+        <button className="places__back-btn" onClick={() => navigate(-1)}>
+          Change Intersection
+        </button>
+        <div className="category">
+          <h3 className="category__title">Categories:</h3>
+          <div className="category__buttons">
+            <button
+              className={`category__btn ${
+                selectedCategory === "cafe" ? "category__btn--selected" : ""
+              }`}
+              onClick={() => setSelectedCategory("cafe")}
+            >
+              Cafes
+            </button>
+            <button
+              className={`category__btn ${
+                selectedCategory === "restaurant"
+                  ? "category__btn--selected"
+                  : ""
+              }`}
+              onClick={() => setSelectedCategory("restaurant")}
+            >
+              Restaurants
+            </button>
+          </div>
+        </div>
+
+        {!places ? (
+          <p>Loading places...</p>
+        ) : (
+          <PlacesList places={places} category={selectedCategory} />
+        )}
+      </div>
 
       <div className="places-page__map-container">
         <BaseMap places={places} midLat={midLat} midLon={midLon} />
