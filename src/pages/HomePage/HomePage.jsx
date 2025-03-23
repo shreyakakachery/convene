@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import AddressForm from "../../components/AddressForm/AddressForm.jsx";
 import BaseMap from "../../components/BaseMap/BaseMap.jsx";
+import "./HomePage.scss";
 
 function HomePage() {
   const [addressA, setAddressA] = useState("");
@@ -11,9 +12,18 @@ function HomePage() {
   clearLocalStorageExcept(["addressA", "addressB"]);
 
   return (
-    <div>
-      <AddressForm setAddressA={setAddressA} setAddressB={setAddressB} />
-      <BaseMap />
+    // <div>
+    //   <AddressForm setAddressA={setAddressA} setAddressB={setAddressB} />
+    //   <BaseMap />
+    // </div>
+
+    <div className="home-container">
+      <div className="map-container">
+        <BaseMap />
+      </div>
+      <div className="form-container">
+        <AddressForm setAddressA={setAddressA} setAddressB={setAddressB} />
+      </div>
     </div>
   );
 }

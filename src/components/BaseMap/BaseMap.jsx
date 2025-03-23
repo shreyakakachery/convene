@@ -8,7 +8,7 @@ const BaseMap = () => {
     <MapContainer
       center={position}
       zoom={11}
-      style={{ height: "400px", width: "100%" }}
+      style={{ height: "100vh", width: "100vw" }}
     >
       {/* Streets Tile Layer */}
       <TileLayer
