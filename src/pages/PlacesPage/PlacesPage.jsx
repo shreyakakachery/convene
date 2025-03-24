@@ -15,7 +15,7 @@ function PlacesPage() {
 
   const [places, setPlaces] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("cafe");
-  const [selectedPlace, setSelectedPlace] = useState(null)
+  const [selectedPlace, setSelectedPlace] = useState(null);
 
   const fetchPlaces = async (category) => {
     try {
@@ -38,10 +38,10 @@ function PlacesPage() {
     }
   }, [midLat, midLon, selectedCategory]);
 
-    // NEW HANDLER FUNCTION TO UPDATE SELECTED PLACE
-    const handlePlaceClick = (place) => {
-      setSelectedPlace(place);
-    };
+  // NEW HANDLER FUNCTION TO UPDATE SELECTED PLACE
+  const handlePlaceClick = (place) => {
+    setSelectedPlace(place);
+  };
 
   return (
     <div className="places-page">
@@ -81,12 +81,18 @@ function PlacesPage() {
             places={places}
             category={selectedCategory}
             onPlaceClick={handlePlaceClick}
+            selectedPlace={selectedPlace}
           />
         )}
       </div>
 
       <div className="places-page__map-container">
-        <BaseMap places={places} midLat={midLat} midLon={midLon} selectedPlace={selectedPlace} />
+        <BaseMap
+          places={places}
+          midLat={midLat}
+          midLon={midLon}
+          selectedPlace={selectedPlace}
+        />
       </div>
     </div>
   );

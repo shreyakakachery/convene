@@ -33,7 +33,19 @@
     border-radius: 0.3125rem;
     width: 100%;
     padding: 1rem;
-    background-color: $accent-medium;
+    background-color: $site-medium;
+
+    &:hover {
+      background-color: $accent-light;
+    }
+
+    &--selected {
+      background-color: $accent-medium;
+
+      &:hover {
+        background-color: $accent-medium;
+      }
+    }
 
     @include desktop {
       width: calc(50% - 1rem);
