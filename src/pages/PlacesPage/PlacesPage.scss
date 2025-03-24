@@ -1,6 +1,7 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/typography" as *;
+@use "../../styles/partials/keyframes" as *;
 
 .places-page {
   position: relative;
@@ -44,6 +45,12 @@
       height: 100%;
       border-radius: 0 0.625rem 0.625rem 0;
     }
+  }
+
+  &__loading-message {
+    padding-left: 1rem;
+
+    @include loading-message;
   }
 }
 

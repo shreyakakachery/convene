@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { BACKEND_URL } from "../../scripts/config.js";
 import RoutesList from "../../components/RoutesList/RoutesList.jsx";
+import "./RoutesPage.scss"
 
 function RoutesPage() {
   const location = useLocation();
@@ -54,7 +55,7 @@ function RoutesPage() {
   return (
     <div>
       {!routes ? (
-        <p>Loading routes...</p>
+        <p className="routes-page__loading-message">Loading routes...</p>
       ) : (
         <RoutesList routes={routes} onSubmitSelection={handleRoutesSelection} />
       )}

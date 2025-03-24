@@ -73,7 +73,7 @@ function PlacesPage() {
         </div>
 
         {!places ? (
-          <p>Loading places...</p>
+          <p className="places-page__loading-message">Loading places...</p>
         ) : (
           <PlacesList
             className="places-page__list"

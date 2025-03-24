@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { BACKEND_URL } from "../../scripts/config.js";
 import StopPairsList from "../../components/StopPairsList/StopPairsList.jsx";
+import "./StopsPage.scss"
 
 function StopsPage() {
   const location = useLocation();
@@ -63,7 +64,7 @@ function StopsPage() {
   return (
     <div>
       {!stopPairs ? (
-        <p>Loading stop pairs...</p>
+        <p className="stops-page__loading-message">Loading stop pairs...</p>
       ) : (
         <StopPairsList
           stopPairs={stopPairs}

@@ -1,0 +1,12 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/keyframes" as *;
+
+.routes-page {
+  &__loading-message {
+    padding: 1rem;
+
+    @include loading-message;
+  }
+}
