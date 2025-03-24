@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-// Custom icons
 const defaultIcon = new L.Icon({
   iconUrl:
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png",
@@ -11,28 +10,13 @@ const defaultIcon = new L.Icon({
   iconAnchor: [12, 41],
 });
 
-// const selectedIcon = new L.Icon({
-//   iconUrl: "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png",
-//   iconSize: [30, 50],
-//   iconAnchor: [15, 50],
-// });
-
-// const selectedIcon = new L.divIcon({
-//   className: "star-icon",
-//   html: `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-//            <polygon points="16,0 20,12 32,12 22,20 26,32 16,24 6,32 10,20 0,12 12,12" fill="#06402b"/>
-//          </svg>`,
-//   iconSize: [50, 50], // Size of the marker
-//   iconAnchor: [16, 32],
-// });
-
 const selectedIcon = new L.divIcon({
   className: "custom-icon",
   html: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="50" height="50" fill="#d87093">
       <path d="M12 17.27l5.18 3.73-1.64-7.03L21 9.24l-7.19-.61L12 2 10.19 8.63 3 9.24l5.46 4.73-1.64 7.03z"/>
     </svg>`,
-  iconSize: [30, 30], // You can adjust the size as needed
-  iconAnchor: [15, 30], // Adjust the anchor position
+  iconSize: [30, 30],
+  iconAnchor: [15, 30],
 });
 
 const BaseMap = ({ places = [], midLat, midLon, selectedPlace }) => {

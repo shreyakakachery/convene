@@ -38,7 +38,6 @@ function PlacesPage() {
     }
   }, [midLat, midLon, selectedCategory]);
 
-  // NEW HANDLER FUNCTION TO UPDATE SELECTED PLACE
   const handlePlaceClick = (place) => {
     setSelectedPlace(place);
   };
