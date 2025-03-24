@@ -20,17 +20,13 @@ A user wants to find places to hang out with their friend in Metro Vancouver, as
 
 User Manual:
 
-1. Enter two locations (i.e your home address and your friend's home address) in the input fields.
-2. Click the Submit button. It will take you to the Search page.
-3. On the Search page you will see the two starting locations.
-4. Under each location, you will see a list of routes that are within 500 meters of the starting location. This is the Routes section of the Search Page.
-5. You will select one route from Location A list and one route from Location B list and click Submit. This will display the Stops section on the page, below the Routes section.
-6. The Stops section will display a list of stop pairs, which is the destination stop from each location on the selected route.
-7. You will click a stop pair button which will display the Places section below the Stops section, on the same page.
-8. The Places section displays a list of cafes and restaurants that are within 500 meters of the stop pairs.
-9. If there are more than one stop pair available, you may click on a different stop pair to see the locations in that area
-10. If there are no stop pairs available for the chosen location, or if you would like to browse a different route, you may scroll up and select a different route. 
-
+1. Enter two locations (i.e your home address and your friend's home address) in the input fields and click 'Get Stops'. It will take you to the Routes page.
+2. On the Routes page you will see the two starting locations. Under each location, you will see a list of routes that are within 500 meters of the starting location. This will take you to the Stops Page.
+3. You will select one route from the first and one route from the second list and click 'Get Stops'. This will take you to the Places Page.
+4. You will see a list of Intersection cards, which displays a destination stop from each location on the selected route. These are points where the two selected routes intersect.
+5. You will select an Intersection card, and click 'Get Places' which will display the Places. You can also visualize the places on the interactive map. Clicking a Place card will highlight its location on the map as a pink star. Use the link provided on the Place card to discover mode details about the place.
+6. The Places section displays a list of cafes and restaurants that are within 500 meters of the stop pairs.
+7. You may click the back button present on every page to change your selection or address.
 
 ## Implementation
 
@@ -40,40 +36,62 @@ User Manual:
 - Express
 - MYSQL
 - Client Libraries:
+
   - react
   - react router dom
   - axios
   - sass
   - dotenv
+  - react-leaflet
+  - leaflet
+
 - Server Libraries:
   - express
   - knex
-  - kd-tree
   - grid index
   - dotenv
   - cors
   - mysql2
-
+  - nodemon
+  - axios
 
 ### APIs
 
 - Overpass API (for places)
-- Nominatim API (for geocoding and reverse geocoding)
-
+- Nominatim API (for geocoding)
+- Photon API (for autocomplete)
+- OpenStreetMap API (for map tiles)
 
 ### Sitemap
 
 Home Page
 
-- displayed on laungh
+- displayed on launch
 - two input fields
-- submit button (redirect to search page)
+- submit button (redirect to routes page)
 
-Search Page
+Routes Page
 
-- displays the two starting locations entered by the user
-- conditionally renders the routes, stops, and places components based on user interaction
+- displays a list of nearby bus routes for the two given addresses
+- submit button (redirect to stops page)
+- back button (redirect to home page to change address)
 
+Stops Page
+
+- displays a list of intersecting stops of the two selected routes
+- submit button (redirect to places page)
+- back button (redirect to routes page to change selected routes)
+
+Places Page
+
+- displays a list of nearby places
+- place category selection buttons (cafe and restaurant)
+- back button (redirect to stops page to change selected stop)
+
+Not Found Page
+
+- displays error message
+- back button (redirect to home page)
 
 ### Mockups
 
@@ -84,220 +102,160 @@ Search Page
 
 #### Search Page
 
-![Search Page Routes Component](src/assets/misc/routes.JPG)
-![Search Page when routes are selected](src/assets/misc/routes-selectedJPG.JPG)
-![Search Page Stops Component](src/assets/misc/stops.JPG)
-![Search Page when stops are selected](src/assets/misc/stops-selectedJPG.JPG)
-![Search Page Places Component](src/assets/misc/places.JPG)
-
+![Routes Page](src/assets/misc/routes.JPG)
+![Routes Page when routes are selected](src/assets/misc/routes-selectedJPG.JPG)
+![Stops Page](src/assets/misc/stops.JPG)
+![Stops Page when stops are selected](src/assets/misc/stops-selectedJPG.JPG)
+![Places Page Places Component](src/assets/misc/places.JPG)
 
 ### Data
 
 ![Data Flow](src/assets/misc/data-flow.JPG)
 ![MYSQL Database Tables](src/assets/misc/sql-data.JPG)
 
-
 ### Endpoints
 
-**GET /coordinates**
+**GET /routes**
 
-- Get the coordinates (latitude, longitude) for a given address
-
-Parameters:
-
-- address: User-provided location as a strong
-
-Response:
-
-```
-{
-    "latitude": 49.987654,
-    "longitude": 23.567898
-}
-```
-
-**GET /address**
-
-- Get the address for a given coordinate
+- Get the nearby routes for the two given addresses
 
 Parameters:
 
-- latitude
-- longitude
-
-Response:
-
-```
-{
-    "address": "2329 West Mall"
-}
-```
-
-**GET /nearby-stops**
-
-- Get nearby transit stops for a given location
-
-Parameters:
-
-- latitude
-- longitude
-- radius in meters
+- 2 addresses: User-provided location as a string
 
 Response:
 
 ```
 [
-    {
-      stop_id: 1,
-      stop_code: 50001,
-      stop_name: "Westbound Davie St @ Bidwell St",
-      stop_lat: 49.286458,
-      stop_lon: -123.140424,
-      zone_id: "BUS ZN"
-    },
-    {...}
+  {
+    "address": "789 Street",
+    "routes": [
+      {
+        "route_id": 456,
+        ...
+      },
+      {...}
+    ]
+  },
+  {
+    "address": "123 Avenue",
+    "routes": [
+      {
+        "route_id": 1234,
+           ...
+      },
+      {...}
+    ]
+  }
 ]
-
 ```
 
-**GET /all-stops**
+**GET /stops**
 
-- Get all stops for a given route
+- Get intersecting stops between the two selected routes
 
 Parameters:
 
-- route id
+- 2 selected routes: User-selected routes as a string
 
 Response:
 
 ```
-[
+{
+  "stops_1": [
     {
-        route_id: 6613,
-        route_name: "3 Main/To Waterfront Station",
-        stop_id: 11251,
-        stop_sequence: 1,
-        dist_travelled: 0
-    },
+      "routeA_stop": {
+        "stop_id": 123,
+        ...
+      },
+      "routeB_stop": {
+        "stop_id": 456,
+        ...
+      },
+    }
     {...}
-]
-
+  ]
+  ...
+}
 ```
 
 **GET /places**
 
-- Get places around a given coordinate
+- Get nearby places for a given coordinate
 
 Parameters:
 
-- latitude
-- longitude
-- radius in meters
+- coordinate: latitude and longitude
 
 Response:
 
 ```
 [
     {
-        place_id: 1,
-        place_name: "Red River Cafe",
-        place_lat: 49.87654,
-        place_lon: 23.82254
-    },
+        "place_id": "123
+        ...
+    }
     {...}
 ]
-```
-
-**GET /route/id**
-
-- Get details for a single route
-
-Parameters:
-
-- route id
-
-Response:
-
-```
-{
-    route_id: 6613,
-    route_name: "3 Main/To Waterfront Station",
-    stop_id: 11251,
-    stop_sequence: 1,
-    dist_travelled: 0
-}
-```
-
-**GET /stop/id**
-
-- Get details for a single stop
-
-Parameters:
-
-- stop id
-
-Response:
-
-```
-{
-    stop_id: 1,
-    stop_code: 50001,
-    stop_name: "Westbound Davie St @ Bidwell St",
-    stop_lat: 49.286458,
-    stop_lon: -123.140424,
-    zone_id: "BUS ZN",
-}
 ```
 
 ## Roadmap
 
 ### General to-do List
+
 #### Buttons / Links
-- submit starting locations
-- single route
-- submit route pair
-- single stop pair
+
+- submit starting locations ✅
+- single route ✅
+- submit route pair ✅
+- single stop pair ✅
 
 #### Components
-- header
-- input form
-- routes list
-- stop pairs list
-- places list
-- selected items tracker card
+
+- header ✅
+- input form ✅
+- routes list ✅
+- stop pairs list ✅
+- places list ✅
+- selected items tracker card ✅
 
 #### BACKEND
-- set up database using knex
-- migrate and seed files 
-- set up get requests
-- set up cors 
-- set up .env and .env.sample files
-- connect to frontend
-- set up middleware 
-- test on postman
+
+- set up database using knex ✅
+- migrate and seed files ✅
+- set up get requests ✅
+- set up cors ✅
+- set up .env and .env.sample files ✅
+- connect to frontend ✅
+- set up middleware ✅
+- test on postman/thunderclient ✅
 
 #### FRONTEND
-- create components
-- style components 
-- set up .env and .env.sample files
-- connect to backend
-- make api calls to the backend
-- test app
+
+- create components ✅
+- style components ✅
+- set up .env and .env.sample files ✅
+- connect to backend ✅
+- make api calls to the backend ✅
+- test app ✅
+
+### Diving Deeper
+
+- Autocomplete for the address input fields; using Photon API ✅
+- Interactive map component to display places; using map tiles from OpenStreetMap API ✅
+- Filter suggested places by category ✅
 
 ### General Timeline
+
 - complete backend by Friday, March 14th
 - complete frontend by Thursday, March 19th
 - final edits and practice presentation by Thursday, March 20th
-
 
 ---
 
 ## Future Implementations
 
-- Autocomplete for the address input fields; using Photon API
-- Interactive map component to display places; using map tiles from OpenStreetMap API
 - Copy to Clipboard feature for places list and other relevant details such as routes and stops; using clipboard API
 - More location types eg. cinema, parks, beaches etc
-- Filter suggested places by category
 - Show distance travelled from each starting location
 - User can control the search radius for nearby bus stops, stop pairs, and places
