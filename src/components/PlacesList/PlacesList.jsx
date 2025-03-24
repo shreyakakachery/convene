@@ -1,6 +1,6 @@
 import "./PlacesList.scss";
 
-function PlacesList({ places, category }) {
+function PlacesList({ places, category, onPlaceClick }) {
   return (
     <div className="places">
       <h2 className="places__title">Nearby {category}s</h2>
@@ -16,7 +16,7 @@ function PlacesList({ places, category }) {
               place.number === "Unknown" ? "Google" : "Google Maps";
 
             return (
-              <li className="places__item" key={index}>
+              <li className="places__item" key={index} onClick={() => onPlaceClick(place)}>
                 <h2 className="places__name">{place.name}</h2>
                 <p className="places__type">Type: {place.amenity}</p>
                 <p className="places__address">
