@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import "./NotFoundPage.scss"
 
 function NotFoundPage() {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ function NotFoundPage() {
         onClick={() => navigate("/")}
       >
         {" "}
-        Take me to Home Page
+        Go To Home Page
       </button>
     </div>
   );

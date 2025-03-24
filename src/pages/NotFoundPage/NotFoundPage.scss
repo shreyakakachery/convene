@@ -1,0 +1,26 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+
+.not-found-page {
+  padding: 1rem;
+
+  &__message {
+    color: $error-colour;
+    font-weight: 700;
+    font-size: 1.35rem;
+    padding-bottom: 1rem;
+
+    @include tablet {
+      font-size: 1.8rem;
+    }
+
+    @include desktop {
+      font-size: 1.8rem;
+    }
+  }
+
+  &__back-btn {
+    @include back-button;
+  }
+}
