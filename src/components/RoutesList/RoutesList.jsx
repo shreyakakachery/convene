@@ -80,14 +80,14 @@ function RoutesList({ routes, onSubmitSelection }) {
   const routesA = {
     ...allRoutesA,
     filteredStops: allRoutesA.filteredStops
-      .filter((stop) => stop.zone_id.startsWith("B"))
+      // .filter((stop) => stop.zone_id.startsWith("B"))
       .sort((a, b) => a.distance - b.distance),
   };
 
   const routesB = {
     ...allRoutesB,
     filteredStops: allRoutesB.filteredStops
-      .filter((stop) => stop.zone_id.startsWith("B"))
+      // .filter((stop) => stop.zone_id.startsWith("B"))
       .sort((a, b) => a.distance - b.distance),
   };
 
