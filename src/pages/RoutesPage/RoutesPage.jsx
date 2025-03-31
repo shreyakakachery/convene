@@ -13,10 +13,7 @@ function RoutesPage() {
   const [_routeB, setRouteB] = useState(null);
   const [_stopA, setStopA] = useState(null);
   const [_stopB, setStopB] = useState(null);
-
-  // const [coordsA, setCoordsA] = useState(null);
-  // const [coordsB, setCoordsB] = useState(null);
-
+  
   const addressA = location.state.addressA;
   const addressB = location.state.addressB;
 
@@ -43,18 +40,6 @@ function RoutesPage() {
         `${BACKEND_URL}/routes?locA=${encodedAddressA}&locB=${encodedAddressB}`
       );
 
-      // if (response.data.length === 2) {
-      //   setCoordsA({
-      //     lat: response.data[0].lat,
-      //     lon: response.data[0].lon,
-      //   });
-
-      //   setCoordsB({
-      //     lat: response.data[1].lat,
-      //     lon: response.data[1].lon,
-      //   });
-      // }
-
       setRoutes(response.data);
     } catch (error) {
       console.error("Error fetching routes:", error);
@@ -68,19 +53,12 @@ function RoutesPage() {
     }
   }, [addressA, addressB]);
 
-  // const coordsA = {lat: routes[0].lat, lon: routes[0].lon }
-  // const coordsB = {lat: routes[1].lat, lon: routes[1].lon }
-
   const coordsA = routes?.[0]
     ? { address: routes[0].address, lat: routes[0].lat, lon: routes[0].lon }
     : null;
   const coordsB = routes?.[1]
     ? { address: routes[1].address, lat: routes[1].lat, lon: routes[1].lon }
     : null;
-
-  // console.log(coordsB);
-
-  // console.log(routes[1].lat)
 
   return (
     <div className="routes-page">
@@ -95,7 +73,10 @@ function RoutesPage() {
         )}
       </div>
       <div className="routes-page__map-container">
-        <BaseMap coordsA={coordsA} coordsB={coordsB} />
+        <BaseMap
+          coordsA={coordsA}
+          coordsB={coordsB}
+        />
       </div>
     </div>
   );

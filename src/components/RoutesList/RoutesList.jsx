@@ -10,16 +10,22 @@ function RoutesList({ routes, onSubmitSelection }) {
 
   const [savedRouteA, setSavedRouteA] = useState(null);
   const [savedRouteB, setSavedRouteB] = useState(null);
+  const [savedStopA, setSavedStopA] = useState(null);
+  const [savedStopB, setSavedStopB] = useState(null);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const savedRouteA = localStorage.getItem("savedRouteA");
     const savedRouteB = localStorage.getItem("savedRouteB");
+    const savedStopA = localStorage.getItem("savedStopA");
+    const savedStopB = localStorage.getItem("savedStopB");
 
-    if (savedRouteA && savedRouteB) {
+    if (savedRouteA && savedStopA && savedRouteB && savedStopB) {
       setSavedRouteA(savedRouteA);
       setSavedRouteB(savedRouteB);
+      setSavedStopA(savedStopA);
+      setSavedStopB(savedStopB);
     }
   }, []);
 
@@ -28,10 +34,12 @@ function RoutesList({ routes, onSubmitSelection }) {
       setSelectedRouteA(route);
       setSelectedStopA(stop);
       localStorage.setItem("savedRouteA", route);
+      localStorage.setItem("savedStopA", stop);
     } else if (routeType === "routeB") {
       setSelectedRouteB(route);
       setSelectedStopB(stop);
       localStorage.setItem("savedRouteB", route);
+      localStorage.setItem("savedStopB", stop);
     }
   };
 
