@@ -5,9 +5,9 @@
 .routes {
   padding: 1rem;
 
-  @include desktop {
-    padding: 2rem 7rem;
-  }
+  // @include desktop {
+  //   padding: 2rem 7rem;
+  // }
 
   &__back-btn {
     @include back-button;

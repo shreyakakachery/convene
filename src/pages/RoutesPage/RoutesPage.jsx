@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { BACKEND_URL } from "../../scripts/config.js";
 import RoutesList from "../../components/RoutesList/RoutesList.jsx";
+import BaseMap from "../../components/BaseMap/BaseMap.jsx";
 import "./RoutesPage.scss"
 
 function RoutesPage() {
@@ -53,13 +54,20 @@ function RoutesPage() {
   }, [addressA, addressB]);
 
   return (
-    <div>
-      {!routes ? (
-        <p className="routes-page__loading-message">Loading routes...</p>
-      ) : (
-        <RoutesList routes={routes} onSubmitSelection={handleRoutesSelection} />
-      )}
+    <div className="routes-page" >
+      <div className="routes-page__info-container" >
+        {!routes ? (
+          <p className="routes-page__loading-message">Loading routes...</p>
+        ) : (
+          <RoutesList routes={routes} onSubmitSelection={handleRoutesSelection} />
+        )}
+      </div>
+      <div className="routes-page__map-container" >
+        <BaseMap />
+      </div>
+
     </div>
+    
   );
 }
 
