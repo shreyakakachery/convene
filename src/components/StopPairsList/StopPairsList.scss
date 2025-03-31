@@ -81,12 +81,12 @@
     transition: background-color 0.3s ease, transform 0.2s ease;
     width: 100%;
 
-    @include tablet {
-      width: calc(50% - 1rem);
-    }
-    @include desktop {
-      width: calc(33.33% - 1rem);
-    }
+    // @include tablet {
+    //   width: calc(50% - 1rem);
+    // }
+    // @include desktop {
+    //   width: calc(33.33% - 1rem);
+    // }
 
     &:hover {
       background-color: $accent-light;

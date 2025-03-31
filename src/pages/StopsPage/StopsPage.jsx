@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { BACKEND_URL } from "../../scripts/config.js";
 import StopPairsList from "../../components/StopPairsList/StopPairsList.jsx";
+import BaseMap from "../../components/BaseMap/BaseMap.jsx";
 import "./StopsPage.scss"
 
 function StopsPage() {
@@ -62,15 +63,21 @@ function StopsPage() {
   }, [routeA, routeB, stopA, stopB]);
 
   return (
-    <div>
-      {!stopPairs ? (
-        <p className="stops-page__loading-message">Loading stop pairs...</p>
-      ) : (
-        <StopPairsList
-          stopPairs={stopPairs}
-          onSelectMidpoint={handleMidpointSelection}
-        />
-      )}
+    <div className="stops-page" >
+      <div className="stops-page__info-container" >
+        {!stopPairs ? (
+          <p className="stops-page__loading-message">Loading stop pairs...</p>
+        ) : (
+          <StopPairsList
+            stopPairs={stopPairs}
+            onSelectMidpoint={handleMidpointSelection}
+          />
+        )}
+      </div>
+      <div className="stops-page__map-container" >
+        <BaseMap />
+      </div>
+
     </div>
   );
 }
