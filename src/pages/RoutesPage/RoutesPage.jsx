@@ -13,11 +13,26 @@ function RoutesPage() {
   const [_routeB, setRouteB] = useState(null);
   const [_stopA, setStopA] = useState(null);
   const [_stopB, setStopB] = useState(null);
-  
+
   const addressA = location.state.addressA;
   const addressB = location.state.addressB;
 
   const [routes, setRoutes] = useState(null);
+
+  // const savedRouteA = localStorage.getItem("savedRouteA");
+  // const savedRouteB = localStorage.getItem("savedRouteB");
+  // const savedStopA = localStorage.getItem("savedStopA");
+  // const savedStopB = localStorage.getItem("savedStopB");
+
+
+    // Create state variables and initialize them from localStorage
+    const [savedRouteA, setSavedRouteA] = useState(localStorage.getItem("savedRouteA"));
+    const [savedRouteB, setSavedRouteB] = useState(localStorage.getItem("savedRouteB"));
+    const [savedStopA, setSavedStopA] = useState(localStorage.getItem("savedStopA"));
+    const [savedStopB, setSavedStopB] = useState(localStorage.getItem("savedStopB"));
+
+  const [stopsA, setStopsA] = useState([]);
+  const [stopsB, setStopsB] = useState([]);
 
   const handleRoutesSelection = (
     selectedRouteA,
@@ -29,6 +44,12 @@ function RoutesPage() {
     setRouteB(selectedRouteB);
     setStopA(selectedStopA);
     setStopB(selectedStopB);
+
+        // Save the selected values to localStorage
+        localStorage.setItem("savedRouteA", selectedRouteA);
+        localStorage.setItem("savedRouteB", selectedRouteB);
+        localStorage.setItem("savedStopA", selectedStopA);
+        localStorage.setItem("savedStopB", selectedStopB);
   };
 
   const fetchRoutes = async () => {
@@ -60,6 +81,51 @@ function RoutesPage() {
     ? { address: routes[1].address, lat: routes[1].lat, lon: routes[1].lon }
     : null;
 
+  const fetchStops = async (route, stop, setStops) => {
+    if (!route || !stop) return; // Prevent unnecessary API calls
+    try {
+      const response = await axios.get(`${BACKEND_URL}/route`, {
+        params: { routeName: route, stopId: stop },
+      });
+      setStops(response.data);
+    } catch (error) {
+      console.error(`Error fetching stops for ${route}:`, error);
+    }
+  };
+
+  // useEffect(() => {
+  //   fetchStops(savedRouteA, savedStopA, setStopsA);
+  //   fetchStops(savedRouteB, savedStopB, setStopsB);
+  // }, [savedRouteA, savedStopA, savedRouteB, savedStopB]); // Runs when any of these change
+
+  // useEffect(() => {
+  //   if (stopsA.length > 0 || stopsB.length > 0) {
+  //     // Here you could do additional things like setting zoom or centering the map
+  //   }
+  // }, [stopsA, stopsB]); // Trigger map update when stops are updated
+
+
+  useEffect(() => {
+    if (savedRouteA && savedStopA) {
+      fetchStops(savedRouteA, savedStopA, setStopsA);
+    }
+    if (savedRouteB && savedStopB) {
+      fetchStops(savedRouteB, savedStopB, setStopsB);
+    }
+  }, [savedRouteA, savedStopA, savedRouteB, savedStopB]);
+
+  // useEffect(() => {
+  //   if (stopsA.length > 0 || stopsB.length > 0) {
+  //     // Here you could do additional things like setting zoom or centering the map
+  //   }
+  // }, [stopsA, stopsB]); // Trigger map update when stops are updated
+
+
+  console.log(stopsB)
+
+
+
+
   return (
     <div className="routes-page">
       <div className="routes-page__info-container">
@@ -73,10 +139,7 @@ function RoutesPage() {
         )}
       </div>
       <div className="routes-page__map-container">
-        <BaseMap
-          coordsA={coordsA}
-          coordsB={coordsB}
-        />
+        <BaseMap coordsA={coordsA} coordsB={coordsB} stopsA={stopsA} stopsB={stopsB} />
       </div>
     </div>
   );

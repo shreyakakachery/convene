@@ -4,6 +4,7 @@ import {
   Marker,
   Popup,
   CircleMarker,
+  Polyline,
   useMap,
 } from "react-leaflet";
 import { useEffect } from "react";
@@ -29,6 +30,8 @@ const selectedIcon = new L.divIcon({
 const BaseMap = ({
   coordsA,
   coordsB,
+  stopsA,
+  stopsB,
   places = [],
   midLat,
   midLon,
@@ -89,8 +92,83 @@ const BaseMap = ({
           radius={10}
         >
           <Popup>{coordsB.address}</Popup>
-
         </CircleMarker>
+      )}
+
+      {/* Stops A */}
+
+      {stopsA && stopsA.length > 0 && (
+        <>
+          {stopsA.map((stop, index) => {
+            const lat = parseFloat(stop.stop_lat); // Convert to float
+            const lon = parseFloat(stop.stop_lon); // Convert to float
+
+            if (isNaN(lat) || isNaN(lon)) {
+              console.error(
+                `Invalid coordinates for stopA at index ${index}:`,
+                stop
+              );
+              return null; // Skip if coordinates are invalid
+            }
+
+            return (
+              <CircleMarker
+                key={`stopA-${index}`}
+                center={[lat, lon]} // Pass the numeric values
+                color="#00008b"
+                radius={5}
+              >
+                <Popup>{stop.stop_name}</Popup>
+              </CircleMarker>
+            );
+          })}
+
+          <Polyline
+            positions={stopsA.map((stop) => [
+              parseFloat(stop.stop_lat),
+              parseFloat(stop.stop_lon),
+            ])}
+            color="#00008b"
+          />
+        </>
+      )}
+
+      {/* Stops B */}
+
+      {stopsB && stopsB.length > 0 && (
+        <>
+          {stopsB.map((stop, index) => {
+            const lat = parseFloat(stop.stop_lat); // Convert to float
+            const lon = parseFloat(stop.stop_lon); // Convert to float
+
+            if (isNaN(lat) || isNaN(lon)) {
+              console.error(
+                `Invalid coordinates for stopB at index ${index}:`,
+                stop
+              );
+              return null; // Skip if coordinates are invalid
+            }
+
+            return (
+              <CircleMarker
+                key={`stopB-${index}`}
+                center={[lat, lon]} // Pass the numeric values
+                color="#06402b"
+                radius={5}
+              >
+                <Popup>{stop.stop_name}</Popup>
+              </CircleMarker>
+            );
+          })}
+
+          <Polyline
+            positions={stopsB.map((stop) => [
+              parseFloat(stop.stop_lat),
+              parseFloat(stop.stop_lon),
+            ])}
+            color="#06402b"
+          />
+        </>
       )}
 
       {places?.length >= 1 &&
