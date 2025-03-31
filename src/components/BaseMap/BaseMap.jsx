@@ -1,4 +1,11 @@
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  CircleMarker,
+  useMap,
+} from "react-leaflet";
 import { useEffect } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -19,12 +26,28 @@ const selectedIcon = new L.divIcon({
   iconAnchor: [15, 30],
 });
 
-const BaseMap = ({ places = [], midLat, midLon, selectedPlace }) => {
+const BaseMap = ({
+  coordsA,
+  coordsB,
+  places = [],
+  midLat,
+  midLon,
+  selectedPlace,
+}) => {
   const defaultPosition = [49.23205052720926, -123.08916193141513]; // Vancouver
 
-  const mapCenter = midLat && midLon ? [midLat, midLon] : defaultPosition;
+  // const mapCenter = midLat && midLon ? [midLat, midLon] : defaultPosition;
 
   const zoomLevel = places?.length >= 1 ? 16 : 11; // map tile 16 for 500m radius
+
+  const mapCenter =
+    coordsA && coordsB
+      ? [(coordsA.lat + coordsB.lat) / 2, (coordsA.lon + coordsB.lon) / 2]
+      : midLat && midLon
+      ? [midLat, midLon]
+      : defaultPosition;
+
+  // const zoomLevel = coordsA && coordsB ? 10 : places?.length >= 1 ? 16 : 11;
 
   const UpdateMapView = ({ center, zoom }) => {
     const map = useMap();
@@ -48,6 +71,27 @@ const BaseMap = ({ places = [], midLat, midLon, selectedPlace }) => {
       />
 
       <UpdateMapView center={mapCenter} zoom={zoomLevel} />
+
+      {/* Circle Markers for coordsA and coordsB */}
+      {coordsA && (
+        <CircleMarker
+          center={[coordsA.lat, coordsA.lon]}
+          color="blue"
+          radius={10}
+        >
+          <Popup>{coordsA.address}</Popup>
+        </CircleMarker>
+      )}
+      {coordsB && (
+        <CircleMarker
+          center={[coordsB.lat, coordsB.lon]}
+          color="green"
+          radius={10}
+        >
+          <Popup>{coordsB.address}</Popup>
+
+        </CircleMarker>
+      )}
 
       {places?.length >= 1 &&
         places.map((place) => (
