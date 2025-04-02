@@ -2,30 +2,40 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./RoutesList.scss";
 
-function RoutesList({ routes, onSubmitSelection }) {
-  const [selectedRouteA, setSelectedRouteA] = useState(null);
-  const [selectedRouteB, setSelectedRouteB] = useState(null);
-  const [selectedStopA, setSelectedStopA] = useState(null);
-  const [selectedStopB, setSelectedStopB] = useState(null);
+function RoutesList({
+  routes,
+  selectedRouteA,
+  setSelectedRouteA,
+  selectedRouteB,
+  setSelectedRouteB,
+  selectedStopA,
+  setSelectedStopA,
+  selectedStopB,
+  setSelectedStopB,
+}) {
+  // const [selectedRouteA, setSelectedRouteA] = useState(null);
+  // const [selectedRouteB, setSelectedRouteB] = useState(null);
+  // const [selectedStopA, setSelectedStopA] = useState(null);
+  // const [selectedStopB, setSelectedStopB] = useState(null);
 
   const [savedRouteA, setSavedRouteA] = useState(null);
   const [savedRouteB, setSavedRouteB] = useState(null);
-  const [savedStopA, setSavedStopA] = useState(null);
-  const [savedStopB, setSavedStopB] = useState(null);
+  // const [savedStopA, setSavedStopA] = useState(null);
+  // const [savedStopB, setSavedStopB] = useState(null);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const savedRouteA = localStorage.getItem("savedRouteA");
     const savedRouteB = localStorage.getItem("savedRouteB");
-    const savedStopA = localStorage.getItem("savedStopA");
-    const savedStopB = localStorage.getItem("savedStopB");
+    // const savedStopA = localStorage.getItem("savedStopA");
+    // const savedStopB = localStorage.getItem("savedStopB");
 
-    if (savedRouteA && savedStopA && savedRouteB && savedStopB) {
+    if (savedRouteA && savedRouteB) {
       setSavedRouteA(savedRouteA);
       setSavedRouteB(savedRouteB);
-      setSavedStopA(savedStopA);
-      setSavedStopB(savedStopB);
+      // setSavedStopA(savedStopA);
+      // setSavedStopB(savedStopB);
     }
   }, []);
 
@@ -45,12 +55,12 @@ function RoutesList({ routes, onSubmitSelection }) {
 
   const handleGetStops = () => {
     if (selectedRouteA && selectedRouteB && selectedStopA && selectedStopB) {
-      onSubmitSelection(
-        selectedRouteA,
-        selectedRouteB,
-        selectedStopA,
-        selectedStopB
-      );
+      // onSubmitSelection(
+      //   selectedRouteA,
+      //   selectedRouteB,
+      //   selectedStopA,
+      //   selectedStopB
+      // );
       navigate("/stops", {
         state: { selectedRouteA, selectedRouteB, selectedStopA, selectedStopB },
       });

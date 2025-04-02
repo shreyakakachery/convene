@@ -9,48 +9,49 @@ import "./RoutesPage.scss";
 function RoutesPage() {
   const location = useLocation();
 
-  const [_routeA, setRouteA] = useState(null);
-  const [_routeB, setRouteB] = useState(null);
-  const [_stopA, setStopA] = useState(null);
-  const [_stopB, setStopB] = useState(null);
+  const [selectedRouteA, setSelectedRouteA] = useState(null);
+  const [selectedRouteB, setSelectedRouteB] = useState(null);
+  const [selectedStopA, setSelectedStopA] = useState(null);
+  const [selectedStopB, setSelectedStopB] = useState(null);
+
+  // const [routeA, setRouteA] = useState(null);
+  // const [routeB, setRouteB] = useState(null);
+  // const [stopA, setStopA] = useState(null);
+  // const [stopB, setStopB] = useState(null);
 
   const addressA = location.state.addressA;
   const addressB = location.state.addressB;
 
   const [routes, setRoutes] = useState(null);
 
-  // const savedRouteA = localStorage.getItem("savedRouteA");
-  // const savedRouteB = localStorage.getItem("savedRouteB");
-  // const savedStopA = localStorage.getItem("savedStopA");
-  // const savedStopB = localStorage.getItem("savedStopB");
-
-
-    // Create state variables and initialize them from localStorage
-    const [savedRouteA, setSavedRouteA] = useState(localStorage.getItem("savedRouteA"));
-    const [savedRouteB, setSavedRouteB] = useState(localStorage.getItem("savedRouteB"));
-    const [savedStopA, setSavedStopA] = useState(localStorage.getItem("savedStopA"));
-    const [savedStopB, setSavedStopB] = useState(localStorage.getItem("savedStopB"));
+  // Create state variables and initialize them from localStorage
+  // const [savedRouteA, setSavedRouteA] = useState(
+  //   localStorage.getItem("savedRouteA")
+  // );
+  // const [savedRouteB, setSavedRouteB] = useState(
+  //   localStorage.getItem("savedRouteB")
+  // );
+  // const [savedStopA, setSavedStopA] = useState(
+  //   localStorage.getItem("savedStopA")
+  // );
+  // const [savedStopB, setSavedStopB] = useState(
+  //   localStorage.getItem("savedStopB")
+  // );
 
   const [stopsA, setStopsA] = useState([]);
   const [stopsB, setStopsB] = useState([]);
 
-  const handleRoutesSelection = (
-    selectedRouteA,
-    selectedRouteB,
-    selectedStopA,
-    selectedStopB
-  ) => {
-    setRouteA(selectedRouteA);
-    setRouteB(selectedRouteB);
-    setStopA(selectedStopA);
-    setStopB(selectedStopB);
-
-        // Save the selected values to localStorage
-        localStorage.setItem("savedRouteA", selectedRouteA);
-        localStorage.setItem("savedRouteB", selectedRouteB);
-        localStorage.setItem("savedStopA", selectedStopA);
-        localStorage.setItem("savedStopB", selectedStopB);
-  };
+  // const handleRoutesSelection = (
+  //   selectedRouteA,
+  //   selectedRouteB,
+  //   selectedStopA,
+  //   selectedStopB
+  // ) => {
+  //   setRouteA(selectedRouteA);
+  //   setRouteB(selectedRouteB);
+  //   setStopA(selectedStopA);
+  //   setStopB(selectedStopB);
+  // };
 
   const fetchRoutes = async () => {
     try {
@@ -94,52 +95,59 @@ function RoutesPage() {
   };
 
   // useEffect(() => {
-  //   fetchStops(savedRouteA, savedStopA, setStopsA);
-  //   fetchStops(savedRouteB, savedStopB, setStopsB);
-  // }, [savedRouteA, savedStopA, savedRouteB, savedStopB]); // Runs when any of these change
-
-  // useEffect(() => {
-  //   if (stopsA.length > 0 || stopsB.length > 0) {
-  //     // Here you could do additional things like setting zoom or centering the map
+  //   if (routeA && stopA) {
+  //     setSavedRouteA(routeA);
+  //     setSavedStopA(stopA);
   //   }
-  // }, [stopsA, stopsB]); // Trigger map update when stops are updated
-
+  //   if (routeB && stopB) {
+  //     setSavedRouteB(routeB);
+  //     setSavedStopB(stopB);
+  //   }
+  // }, [routeA, stopA, routeB, stopB]);
 
   useEffect(() => {
-    if (savedRouteA && savedStopA) {
-      fetchStops(savedRouteA, savedStopA, setStopsA);
+    if (selectedRouteA && selectedStopA) {
+      fetchStops(selectedRouteA, selectedStopA, setStopsA);
     }
-    if (savedRouteB && savedStopB) {
-      fetchStops(savedRouteB, savedStopB, setStopsB);
+    if (selectedRouteB && selectedStopB) {
+      fetchStops(selectedRouteB, selectedStopB, setStopsB);
     }
-  }, [savedRouteA, savedStopA, savedRouteB, savedStopB]);
-
-  // useEffect(() => {
-  //   if (stopsA.length > 0 || stopsB.length > 0) {
-  //     // Here you could do additional things like setting zoom or centering the map
-  //   }
-  // }, [stopsA, stopsB]); // Trigger map update when stops are updated
-
-
-  console.log(stopsB)
-
-
-
+  }, [selectedRouteA, selectedRouteB, selectedStopA, selectedStopB]);
 
   return (
     <div className="routes-page">
       <div className="routes-page__info-container">
+        {/* <p>TESTING</p>
+        <p>{selectedRouteA}</p>
+
+        {stopsB && stopsB.length > 0 ? (
+          <p>{stopsB[0].stop_name}</p>
+        ) : (
+          <p>None</p>
+        )} */}
         {!routes ? (
           <p className="routes-page__loading-message">Loading routes...</p>
         ) : (
           <RoutesList
             routes={routes}
-            onSubmitSelection={handleRoutesSelection}
+            selectedRouteA={selectedRouteA}
+            setSelectedRouteA={setSelectedRouteA}
+            selectedRouteB={selectedRouteB}
+            setSelectedRouteB={setSelectedRouteB}
+            selectedStopA={selectedStopA}
+            setSelectedStopA={setSelectedStopA}
+            selectedStopB={selectedStopB}
+            setSelectedStopB={setSelectedStopB}
           />
         )}
       </div>
       <div className="routes-page__map-container">
-        <BaseMap coordsA={coordsA} coordsB={coordsB} stopsA={stopsA} stopsB={stopsB} />
+        <BaseMap
+          coordsA={coordsA}
+          coordsB={coordsB}
+          stopsA={stopsA}
+          stopsB={stopsB}
+        />
       </div>
     </div>
   );
