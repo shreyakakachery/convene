@@ -20,6 +20,8 @@ function StopsPage() {
   const stopA = location.state.selectedStopA;
   const stopB = location.state.selectedStopB;
 
+  const [selectedStopPair, setSelectedStopPair] = useState(null);
+
   const [_midLat, setMidLat] = useState(null);
   const [_midLon, setMidLon] = useState(null);
 
@@ -76,6 +78,8 @@ function StopsPage() {
           <StopPairsList
             stopPairs={stopPairs}
             onSelectMidpoint={handleMidpointSelection}
+            selectedStopPair={selectedStopPair}
+            setSelectedStopPair={setSelectedStopPair}
           />
         )}
       </div>

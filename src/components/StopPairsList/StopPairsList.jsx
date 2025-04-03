@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./StopPairsList.scss";
 
-function StopPairsList({ stopPairs, onSelectMidpoint }) {
-  const [selectedStopPair, setSelectedStopPair] = useState(null);
+function StopPairsList({ stopPairs, onSelectMidpoint, selectedStopPair, setSelectedStopPair }) {
+  // const [selectedStopPair, setSelectedStopPair] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(null);
 
   const navigate = useNavigate();
