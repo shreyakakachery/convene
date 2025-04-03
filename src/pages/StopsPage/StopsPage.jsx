@@ -4,11 +4,16 @@ import axios from "axios";
 import { BACKEND_URL } from "../../scripts/config.js";
 import StopPairsList from "../../components/StopPairsList/StopPairsList.jsx";
 import BaseMap from "../../components/BaseMap/BaseMap.jsx";
-import "./StopsPage.scss"
+import "./StopsPage.scss";
 
 function StopsPage() {
   const location = useLocation();
   const navigate = useNavigate();
+
+  const coordsA = JSON.parse(localStorage.getItem("coordsA"));
+  const coordsB = JSON.parse(localStorage.getItem("coordsB"));
+  const stopsA = JSON.parse(localStorage.getItem("stopsA"));
+  const stopsB = JSON.parse(localStorage.getItem("stopsB"));
 
   const routeA = location.state.selectedRouteA;
   const routeB = location.state.selectedRouteB;
@@ -63,8 +68,8 @@ function StopsPage() {
   }, [routeA, routeB, stopA, stopB]);
 
   return (
-    <div className="stops-page" >
-      <div className="stops-page__info-container" >
+    <div className="stops-page">
+      <div className="stops-page__info-container">
         {!stopPairs ? (
           <p className="stops-page__loading-message">Loading stop pairs...</p>
         ) : (
@@ -74,10 +79,14 @@ function StopsPage() {
           />
         )}
       </div>
-      <div className="stops-page__map-container" >
-        <BaseMap />
+      <div className="stops-page__map-container">
+        <BaseMap
+          coordsA={coordsA}
+          coordsB={coordsB}
+          stopsA={stopsA}
+          stopsB={stopsB}
+        />
       </div>
-
     </div>
   );
 }

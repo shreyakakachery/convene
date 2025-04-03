@@ -114,6 +114,26 @@ function RoutesPage() {
     }
   }, [selectedRouteA, selectedRouteB, selectedStopA, selectedStopB]);
 
+
+  useEffect(() => {
+    if (coordsA) {
+      localStorage.setItem("coordsA", JSON.stringify(coordsA));
+    }
+    if (coordsB) {
+      localStorage.setItem("coordsB", JSON.stringify(coordsB));
+    }
+  }, [coordsA, coordsB]);
+  
+  useEffect(() => {
+    if (stopsA.length > 0) {
+      localStorage.setItem("stopsA", JSON.stringify(stopsA));
+    }
+    if (stopsB.length > 0) {
+      localStorage.setItem("stopsB", JSON.stringify(stopsB));
+    }
+  }, [stopsA, stopsB]);
+  
+
   return (
     <div className="routes-page">
       <div className="routes-page__info-container">
