@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./StopPairsList.scss";
 
-function StopPairsList({ stopPairs, onSelectMidpoint, selectedStopPair, setSelectedStopPair }) {
+function StopPairsList({ stopPairs, onSelectMidpoint, selectedStopPair, setSelectedStopPair, setMidLat, setMidLon }) {
   // const [selectedStopPair, setSelectedStopPair] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(null);
 
@@ -17,6 +17,8 @@ function StopPairsList({ stopPairs, onSelectMidpoint, selectedStopPair, setSelec
 
   const handleSelectStopPair = (midLat, midLon, index) => {
     setSelectedStopPair({ midLat, midLon });
+    setMidLat({midLat})
+    setMidLon({midLon})
     localStorage.setItem("savedStopPairIndex", index);
   };
 

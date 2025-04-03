@@ -39,8 +39,6 @@ const BaseMap = ({
 }) => {
   const defaultPosition = [49.23205052720926, -123.08916193141513]; // Vancouver
 
-  // const mapCenter = midLat && midLon ? [midLat, midLon] : defaultPosition;
-
   const zoomLevel = places?.length >= 1 ? 16 : 11; // map tile 16 for 500m radius
 
   const mapCenter =
@@ -49,8 +47,6 @@ const BaseMap = ({
       : midLat && midLon
       ? [midLat, midLon]
       : defaultPosition;
-
-  // const zoomLevel = coordsA && coordsB ? 10 : places?.length >= 1 ? 16 : 11;
 
   const UpdateMapView = ({ center, zoom }) => {
     const map = useMap();
@@ -124,10 +120,17 @@ const BaseMap = ({
           })}
 
           <Polyline
-            positions={stopsA.map((stop) => [
-              parseFloat(stop.stop_lat),
-              parseFloat(stop.stop_lon),
-            ])}
+            // positions={stopsA.map((stop) => [
+            //   parseFloat(stop.stop_lat),
+            //   parseFloat(stop.stop_lon),
+            // ])}
+            // color="#00008b"
+            positions={stopsA
+              .sort((a, b) => a.stop_sequence - b.stop_sequence) // 🛠 Sort by stop_sequence
+              .map((stop) => [
+                parseFloat(stop.stop_lat),
+                parseFloat(stop.stop_lon),
+              ])}
             color="#00008b"
           />
         </>
@@ -162,10 +165,17 @@ const BaseMap = ({
           })}
 
           <Polyline
-            positions={stopsB.map((stop) => [
-              parseFloat(stop.stop_lat),
-              parseFloat(stop.stop_lon),
-            ])}
+            // positions={stopsB.map((stop) => [
+            //   parseFloat(stop.stop_lat),
+            //   parseFloat(stop.stop_lon),
+            // ])}
+            // color="#06402b"
+            positions={stopsB
+              .sort((a, b) => a.stop_sequence - b.stop_sequence) // 🛠 Sort by stop_sequence
+              .map((stop) => [
+                parseFloat(stop.stop_lat),
+                parseFloat(stop.stop_lon),
+              ])}
             color="#06402b"
           />
         </>
