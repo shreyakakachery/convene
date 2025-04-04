@@ -41,13 +41,19 @@ const BaseMap = ({
 
   const zoomLevel = places?.length >= 1 ? 16 : 12; // map tile 16 for 500m radius
 
-  const mapCenter =
-    coordsA && coordsB
-      ? [(coordsA.lat + coordsB.lat) / 2, (coordsA.lon + coordsB.lon) / 2]
-      : midLat && midLon
-      ? [midLat, midLon]
-      : defaultPosition;
+  // const mapCenter =
+  //   coordsA && coordsB
+  //     ? [(coordsA.lat + coordsB.lat) / 2, (coordsA.lon + coordsB.lon) / 2]
+  //     : midLat && midLon
+  //     ? [midLat, midLon]
+  //     : defaultPosition;
 
+  const mapCenter =
+    places?.length >= 1
+      ? [midLat, midLon]
+      : coordsA && coordsB
+      ? [(coordsA.lat + coordsB.lat) / 2, (coordsA.lon + coordsB.lon) / 2]
+      : defaultPosition;
   // const mapCenter = midLat && midLon ? [midLat, midLon] : defaultPosition;
 
   const UpdateMapView = ({ center, zoom }) => {
@@ -57,7 +63,6 @@ const BaseMap = ({
     //   map.setView(center, zoom);
     // }, [mapCenter, zoomLevel, map]);
 
-    
     useEffect(() => {
       map.setView(center, zoom);
     }, [center, zoom, map]);

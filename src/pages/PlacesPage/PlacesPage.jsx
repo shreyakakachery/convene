@@ -10,6 +10,11 @@ function PlacesPage() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const coordsA = JSON.parse(localStorage.getItem("coordsA"));
+  const coordsB = JSON.parse(localStorage.getItem("coordsB"));
+  const stopsA = JSON.parse(localStorage.getItem("stopsA"));
+  const stopsB = JSON.parse(localStorage.getItem("stopsB"));
+
   const midLat = location.state.midLat;
   const midLon = location.state.midLon;
 
@@ -87,6 +92,10 @@ function PlacesPage() {
 
       <div className="places-page__map-container">
         <BaseMap
+          coordsA={coordsA}
+          coordsB={coordsB}
+          stopsA={stopsA}
+          stopsB={stopsB}
           places={places}
           midLat={midLat}
           midLon={midLon}
