@@ -55,7 +55,7 @@
     margin-bottom: 2rem;
 
     @include tablet {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
     }
 
     @include desktop {
@@ -63,7 +63,7 @@
     }
   }
 
-  &__lists {
+  // &__lists {
     // @include tablet {
     //   display: flex;
     //   justify-content: space-between;
@@ -71,7 +71,7 @@
     //   flex: 1;
     //   gap: 1rem;
     // }
-  }
+  // }
 
   &__button {
     @include get-button;
