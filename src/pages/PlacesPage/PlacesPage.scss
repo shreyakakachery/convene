@@ -6,7 +6,6 @@
 .places-page {
   position: relative;
   width: 100%;
-  // width: 100vw;
   height: 100vh;
   overflow: hidden;
   display: flex;
@@ -21,9 +20,6 @@
     height: 30vh;
     z-index: 0;
     @include tablet {
-      // position: absolute;
-      // top: 0;
-      // left: 0;
       height: 100%;
       width: 60%;
     }
@@ -40,9 +36,6 @@
     border-radius: 0.625rem 0.625rem 0 0;
     overflow-y: auto;
     @include tablet {
-      // position: absolute;
-      // top: 0;
-      // left: 0;
       width: 40%;
       height: 100%;
       border-radius: 0 0.625rem 0.625rem 0;

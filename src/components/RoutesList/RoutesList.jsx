@@ -13,29 +13,18 @@ function RoutesList({
   selectedStopB,
   setSelectedStopB,
 }) {
-  // const [selectedRouteA, setSelectedRouteA] = useState(null);
-  // const [selectedRouteB, setSelectedRouteB] = useState(null);
-  // const [selectedStopA, setSelectedStopA] = useState(null);
-  // const [selectedStopB, setSelectedStopB] = useState(null);
-
   const [savedRouteA, setSavedRouteA] = useState(null);
   const [savedRouteB, setSavedRouteB] = useState(null);
-  // const [savedStopA, setSavedStopA] = useState(null);
-  // const [savedStopB, setSavedStopB] = useState(null);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const savedRouteA = localStorage.getItem("savedRouteA");
     const savedRouteB = localStorage.getItem("savedRouteB");
-    // const savedStopA = localStorage.getItem("savedStopA");
-    // const savedStopB = localStorage.getItem("savedStopB");
 
     if (savedRouteA && savedRouteB) {
       setSavedRouteA(savedRouteA);
       setSavedRouteB(savedRouteB);
-      // setSavedStopA(savedStopA);
-      // setSavedStopB(savedStopB);
     }
   }, []);
 
@@ -55,12 +44,6 @@ function RoutesList({
 
   const handleGetStops = () => {
     if (selectedRouteA && selectedRouteB && selectedStopA && selectedStopB) {
-      // onSubmitSelection(
-      //   selectedRouteA,
-      //   selectedRouteB,
-      //   selectedStopA,
-      //   selectedStopB
-      // );
       navigate("/stops", {
         state: { selectedRouteA, selectedRouteB, selectedStopA, selectedStopB },
       });
@@ -97,16 +80,16 @@ function RoutesList({
 
   const routesA = {
     ...allRoutesA,
-    filteredStops: allRoutesA.filteredStops
-      // .filter((stop) => stop.zone_id.startsWith("B"))
-      .sort((a, b) => a.distance - b.distance),
+    filteredStops: allRoutesA.filteredStops.sort(
+      (a, b) => a.distance - b.distance
+    ),
   };
 
   const routesB = {
     ...allRoutesB,
-    filteredStops: allRoutesB.filteredStops
-      // .filter((stop) => stop.zone_id.startsWith("B"))
-      .sort((a, b) => a.distance - b.distance),
+    filteredStops: allRoutesB.filteredStops.sort(
+      (a, b) => a.distance - b.distance
+    ),
   };
 
   return (

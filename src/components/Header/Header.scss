@@ -3,8 +3,6 @@
 @use "../../styles/partials/typography" as *;
 
 .header {
-  // display: flex;
-  // align-items: center;
   background-color: $site-dark;
   padding: 0.25rem 0;
   position: relative;
@@ -12,9 +10,6 @@
   &__link {
     display: flex;
     align-items: center;
-    // background-color: $site-dark;
-    // padding: 0.25rem 0;
-    // position: relative;
     width: fit-content;
   }
 

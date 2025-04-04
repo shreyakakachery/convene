@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import "./StopPairsList.scss";
 
 function StopPairsList({ stopPairs, onSelectMidpoint, selectedStopPair, setSelectedStopPair, setMidLat, setMidLon }) {
-  // const [selectedStopPair, setSelectedStopPair] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(null);
 
   const navigate = useNavigate();

@@ -41,27 +41,15 @@ const BaseMap = ({
 
   const zoomLevel = places?.length >= 1 ? 16 : 12; // map tile 16 for 500m radius
 
-  // const mapCenter =
-  //   coordsA && coordsB
-  //     ? [(coordsA.lat + coordsB.lat) / 2, (coordsA.lon + coordsB.lon) / 2]
-  //     : midLat && midLon
-  //     ? [midLat, midLon]
-  //     : defaultPosition;
-
   const mapCenter =
     places?.length >= 1
       ? [midLat, midLon]
       : coordsA && coordsB
       ? [(coordsA.lat + coordsB.lat) / 2, (coordsA.lon + coordsB.lon) / 2]
       : defaultPosition;
-  // const mapCenter = midLat && midLon ? [midLat, midLon] : defaultPosition;
 
   const UpdateMapView = ({ center, zoom }) => {
     const map = useMap();
-
-    // useEffect(() => {
-    //   map.setView(center, zoom);
-    // }, [mapCenter, zoomLevel, map]);
 
     useEffect(() => {
       map.setView(center, zoom);
@@ -75,7 +63,6 @@ const BaseMap = ({
       center={mapCenter}
       zoom={zoomLevel}
       style={{ height: "100%", width: "100%" }}
-      // style={{ height: "100vh", width: "100vw" }}
     >
       <TileLayer
         url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
@@ -109,21 +96,21 @@ const BaseMap = ({
       {stopsA && stopsA.length > 0 && (
         <>
           {stopsA.map((stop, index) => {
-            const lat = parseFloat(stop.stop_lat); // Convert to float
-            const lon = parseFloat(stop.stop_lon); // Convert to float
+            const lat = parseFloat(stop.stop_lat);
+            const lon = parseFloat(stop.stop_lon);
 
             if (isNaN(lat) || isNaN(lon)) {
               console.error(
                 `Invalid coordinates for stopA at index ${index}:`,
                 stop
               );
-              return null; // Skip if coordinates are invalid
+              return null;
             }
 
             return (
               <CircleMarker
                 key={`stopA-${index}`}
-                center={[lat, lon]} // Pass the numeric values
+                center={[lat, lon]}
                 color="#00008b"
                 radius={5}
               >
@@ -133,13 +120,8 @@ const BaseMap = ({
           })}
 
           <Polyline
-            // positions={stopsA.map((stop) => [
-            //   parseFloat(stop.stop_lat),
-            //   parseFloat(stop.stop_lon),
-            // ])}
-            // color="#00008b"
             positions={stopsA
-              .sort((a, b) => a.stop_sequence - b.stop_sequence) // 🛠 Sort by stop_sequence
+              .sort((a, b) => a.stop_sequence - b.stop_sequence)
               .map((stop) => [
                 parseFloat(stop.stop_lat),
                 parseFloat(stop.stop_lon),
@@ -154,21 +136,21 @@ const BaseMap = ({
       {stopsB && stopsB.length > 0 && (
         <>
           {stopsB.map((stop, index) => {
-            const lat = parseFloat(stop.stop_lat); // Convert to float
-            const lon = parseFloat(stop.stop_lon); // Convert to float
+            const lat = parseFloat(stop.stop_lat);
+            const lon = parseFloat(stop.stop_lon);
 
             if (isNaN(lat) || isNaN(lon)) {
               console.error(
                 `Invalid coordinates for stopB at index ${index}:`,
                 stop
               );
-              return null; // Skip if coordinates are invalid
+              return null;
             }
 
             return (
               <CircleMarker
                 key={`stopB-${index}`}
-                center={[lat, lon]} // Pass the numeric values
+                center={[lat, lon]}
                 color="#06402b"
                 radius={5}
               >
@@ -178,13 +160,8 @@ const BaseMap = ({
           })}
 
           <Polyline
-            // positions={stopsB.map((stop) => [
-            //   parseFloat(stop.stop_lat),
-            //   parseFloat(stop.stop_lon),
-            // ])}
-            // color="#06402b"
             positions={stopsB
-              .sort((a, b) => a.stop_sequence - b.stop_sequence) // 🛠 Sort by stop_sequence
+              .sort((a, b) => a.stop_sequence - b.stop_sequence)
               .map((stop) => [
                 parseFloat(stop.stop_lat),
                 parseFloat(stop.stop_lon),
