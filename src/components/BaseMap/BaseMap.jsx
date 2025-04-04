@@ -39,7 +39,7 @@ const BaseMap = ({
 }) => {
   const defaultPosition = [49.23205052720926, -123.08916193141513]; // Vancouver
 
-  const zoomLevel = places?.length >= 1 ? 16 : 11; // map tile 16 for 500m radius
+  const zoomLevel = places?.length >= 1 ? 16 : 12; // map tile 16 for 500m radius
 
   const mapCenter =
     coordsA && coordsB
@@ -48,12 +48,19 @@ const BaseMap = ({
       ? [midLat, midLon]
       : defaultPosition;
 
+  // const mapCenter = midLat && midLon ? [midLat, midLon] : defaultPosition;
+
   const UpdateMapView = ({ center, zoom }) => {
     const map = useMap();
 
+    // useEffect(() => {
+    //   map.setView(center, zoom);
+    // }, [mapCenter, zoomLevel, map]);
+
+    
     useEffect(() => {
       map.setView(center, zoom);
-    }, [mapCenter, zoomLevel, map]);
+    }, [center, zoom, map]);
 
     return null;
   };
@@ -62,7 +69,8 @@ const BaseMap = ({
     <MapContainer
       center={mapCenter}
       zoom={zoomLevel}
-      style={{ height: "100vh", width: "100vw" }}
+      style={{ height: "100%", width: "100%" }}
+      // style={{ height: "100vh", width: "100vw" }}
     >
       <TileLayer
         url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png"
