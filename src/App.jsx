@@ -5,6 +5,7 @@ import AddressPage from "./pages/AddressPage/AddressPage.jsx";
 import RoutesPage from "./pages/RoutesPage/RoutesPage.jsx";
 import StopsPage from "./pages/StopsPage/StopsPage.jsx";
 import PlacesPage from "./pages/PlacesPage/PlacesPage.jsx";
+import FeedbackPage from "./pages/FeedbackPage/FeedbackPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import "./App.scss";
@@ -21,6 +22,7 @@ function App() {
             <Route path="/routes" element={<RoutesPage />} />
             <Route path="/stops" element={<StopsPage />} />
             <Route path="/places" element={<PlacesPage />} />
+            <Route path="/feedback" element={<FeedbackPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </BrowserRouter>

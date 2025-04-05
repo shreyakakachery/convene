@@ -13,12 +13,11 @@
     z-index: 0;
   }
 
-  &__form-container {
+  &__info-container {
     position: relative;
     z-index: 1;
     background: rgba(255, 255, 255, 0.8);
     box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.2);
-
     padding: 1rem 1rem 2rem;
     border-radius: 0.625rem;
     margin: 1rem;

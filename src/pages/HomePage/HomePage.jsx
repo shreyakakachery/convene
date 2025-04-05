@@ -15,7 +15,7 @@ function HomePage() {
       <div className="home-page__map-container">
         <BaseMap />
       </div>
-      <div className="home-page__form-container">
+      <div className="home-page__info-container">
         <h2>Instructions</h2>
         <ol>
           <li>Enter Address</li>
