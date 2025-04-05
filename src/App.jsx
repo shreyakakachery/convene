@@ -16,8 +16,8 @@ function App() {
       <div className="app__pages">
         <BrowserRouter>
           <Routes>
-            {/* <Route path="/" element={<HomePage />} /> */}
-            <Route path="/" element={<AddressPage />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/address" element={<AddressPage />} />
             <Route path="/routes" element={<RoutesPage />} />
             <Route path="/stops" element={<StopsPage />} />
             <Route path="/places" element={<PlacesPage />} />

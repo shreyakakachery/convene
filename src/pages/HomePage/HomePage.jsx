@@ -1,14 +1,14 @@
-import { clearLocalStorageExcept } from "../../scripts/helpers.js";
-import { useState } from "react";
-import AddressForm from "../../components/AddressForm/AddressForm.jsx";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import BaseMap from "../../components/BaseMap/BaseMap.jsx";
 import "./HomePage.scss";
 
 function HomePage() {
-  const [_addressA, setAddressA] = useState("");
-  const [_addressB, setAddressB] = useState("");
+  const navigate = useNavigate();
 
-  clearLocalStorageExcept(["addressA", "addressB"]);
+  useEffect(() => {
+    localStorage.clear();
+  }, []);
 
   return (
     <div className="home-page">
@@ -16,7 +16,20 @@ function HomePage() {
         <BaseMap />
       </div>
       <div className="home-page__form-container">
-        <AddressForm setAddressA={setAddressA} setAddressB={setAddressB} />
+        <h2>Instructions</h2>
+        <ol>
+          <li>Enter Address</li>
+          <li>Select a route from each list</li>
+          <li>Select an intersection</li>
+          <li>Browse places!</li>
+        </ol>
+        <button
+          className="home-page__start-btn"
+          onClick={() => navigate("/address")}
+        >
+          {" "}
+          Start
+        </button>
       </div>
     </div>
   );

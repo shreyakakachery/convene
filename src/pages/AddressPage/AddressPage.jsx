@@ -17,7 +17,6 @@ function AddressPage() {
       </div>
       <div className="address-page__form-container">
         <AddressForm setAddressA={setAddressA} setAddressB={setAddressB} />
-        <p>AddressPage.jsx</p>
       </div>
     </div>
   );
