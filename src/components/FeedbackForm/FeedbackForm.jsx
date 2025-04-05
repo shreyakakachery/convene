@@ -2,6 +2,7 @@
 // For more help visit https://formspr.ee/react-help
 import React from 'react';
 import { useForm, ValidationError } from '@formspree/react';
+import "./FeedbackForm.scss"
 
 function FeedbackForm() {
   const [state, handleSubmit] = useForm("mjkyannj"); // your form ID from Formspree
