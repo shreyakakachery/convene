@@ -8,11 +8,12 @@ function FeedbackForm() {
   const [state, handleSubmit] = useForm("mjkyannj"); // your form ID from Formspree
 
   if (state.succeeded) {
-    return <p>Thank you for your feedback!</p>;
+    return <p className="submit-msg">Thank you for your feedback!</p>;
   }
 
   return (
     <form
+      className="feedback-form"
       action="https://formspree.io/f/mjkyannj"
       method="POST"
       onSubmit={handleSubmit}
