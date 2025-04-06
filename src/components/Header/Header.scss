@@ -6,6 +6,8 @@
   background-color: $site-dark;
   padding: 0.25rem 0;
   position: relative;
+  display: flex;
+  justify-content: space-between;
 
   &__link {
     display: flex;
@@ -20,5 +22,23 @@
     color: $site-light;
     position: absolute;
     left: 1.5rem;
+  }
+
+  &__feedback-link {
+    background-color: $site-dark;
+    height: fit-content;
+    padding: 1rem;
+    position:absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-weight: 700;
+    border-radius: 1rem;
+    border: 2px solid $site-light;
+    color: $site-light;
+    display: none;
+
+    @include tablet {
+      display: initial;
+    }
   }
 }

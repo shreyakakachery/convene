@@ -4,11 +4,16 @@
 
 .footer {
   background-color: $site-dark;
-  padding: 1rem;
+  padding: 2rem 1rem 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
 
   @include tablet {
-    display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
   }
 
   &__flair {
@@ -20,7 +25,6 @@
     font-size: 1rem;
     color: $site-light;
     font-weight: 300;
-    padding-bottom: 0.5rem;
 
     @include tablet {
       padding-bottom: 0;
@@ -28,46 +32,22 @@
   }
 
   &__right {
+    padding-bottom: 2.5rem;
+  }
+
+  &__feedback-link {
+    background-color: $site-dark;
+    height: fit-content;
+    padding: 1rem;
+    font-weight: 700;
+    border-radius: 1rem;
+    border: 2px solid $site-light;
+    color: $site-light;
+
     @include tablet {
-      align-self: center;
+      position: absolute;
+      top: 0.8rem;
+      right: 1.5rem;
     }
-  }
-
-  // &__donate-link {
-  //   color: $site-light;
-  //   font-weight: 700;
-  // }
-  /* Base button styles */
-  
-  &__donate-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.75rem 1.5rem; /* Adjust padding */
-    background-color: #f9a7c1; /* Base color */
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 0.75rem; /* Rounded corners */
-    transition: all 0.3s ease; /* Smooth transition */
-    font-size: 1.125rem;
-    font-weight: 600;
-  }
-
-  /* Hover effect */
-  &__donate-link:hover {
-    background-color: #f58c99; /* Slightly darker shade on hover */
-    transform: scale(1.05); /* Button grows a little on hover */
-  }
-
-  /* Icon styling */
-  &__donate-link-icon {
-    font-size: 1.5rem;
-    margin-right: 0.5rem; /* Spacing between icon and text */
-  }
-
-  /* Text styling */
-  &__donate-link-text {
-    font-size: 1rem;
-    font-weight: 600;
   }
 }

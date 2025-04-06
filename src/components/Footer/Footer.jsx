@@ -8,23 +8,10 @@ function Footer() {
         <h4 className="footer__copyright">&copy; Shreya Kakachery 2025</h4>
       </div>
       <div className="footer__right">
-        {/* <a
-          href="https://www.buymeacoffee.com/yourusername"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="footer__donate-link"
-        >
-          🍦 Buy me an ice cream!
-        </a> */}
-        {/* <a
-          href="https://www.buymeacoffee.com/yourusername"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="footer__donate-link footer__donate-link--button"
-        >
-          <span className="footer__donate-link-icon">🍦</span>
-          <span className="footer__donate-link-text">Buy me an ice cream!</span>
-        </a> */}
+        <a className="footer__feedback-link" href="/feedback">
+          {" "}
+          Give Feedback
+        </a>
       </div>
     </div>
   );
