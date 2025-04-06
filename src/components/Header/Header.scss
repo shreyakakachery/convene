@@ -1,6 +1,7 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/typography" as *;
+@use "../../styles/partials/keyframes" as *;
 
 .header {
   background-color: $site-dark;
@@ -36,6 +37,12 @@
     border: 2px solid $site-light;
     color: $site-light;
     display: none;
+    animation: fadeSwap 4s ease-in-out infinite;
+
+    &:hover {
+      background-color: $accent-dark;
+      animation: none;
+    }
 
     @include tablet {
       display: initial;

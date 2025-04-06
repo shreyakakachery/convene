@@ -43,6 +43,12 @@
     border-radius: 1rem;
     border: 2px solid $site-light;
     color: $site-light;
+    animation: fadeSwap 4s ease-in-out infinite;
+
+    &:hover {
+      background-color: $accent-dark;
+      animation: none;
+    }
 
     @include tablet {
       position: absolute;

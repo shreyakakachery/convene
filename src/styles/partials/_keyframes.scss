@@ -1,8 +1,73 @@
+@use "./variables" as *;
+
 @keyframes typewriter {
   0% {
     width: 0;
   }
   100% {
     width: 100%;
+  }
+}
+
+@keyframes fadeSwap {
+  0% {
+    background-color: $site-dark;
+    color: $site-light;
+  }
+  50% {
+    background-color: $site-light;
+    color: $site-dark;
+  }
+  100% {
+    background-color: $site-dark;
+    color: $site-light;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0rem rgba($site-light, 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 1rem rgba($site-light, 0.7);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0rem rgba($site-light, 0.7);
+  }
+}
+
+@keyframes outlineGlow {
+  0% {
+    box-shadow: 0 0 0rem rgba($site-light, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 1rem rgba($site-light, 1);
+  }
+  100% {
+    box-shadow: 0 0 0rem rgba($site-light, 0.5);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
   }
 }
