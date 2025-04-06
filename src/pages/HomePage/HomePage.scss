@@ -1,8 +1,23 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/keyframes" as *;
+
+
 .home-page {
   position: relative;
   width: 100%;
   height: 100vh;
-  overflow: hidden;
+  // overflow: hidden;
+  padding-bottom: 65rem;
+
+  @include tablet {
+    padding-bottom: 55rem;
+  }
+
+  @include desktop {
+    padding-bottom: 0rem;
+  }
 
   &__map-container {
     position: absolute;
@@ -18,8 +33,67 @@
     z-index: 1;
     background: rgba(255, 255, 255, 0.8);
     box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.2);
-    padding: 1rem 1rem 2rem;
+    padding: 1.5rem;
     border-radius: 0.625rem;
     margin: 1rem;
+  }
+
+  &__slogan {
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    line-height: 1.4;
+    margin-inline: auto;
+    color: $site-dark;
+
+    @include tablet {
+      font-size: 2rem;
+    }
+  }
+
+  &__instructions-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    border-top: 2px solid $site-dark;
+    padding-top: 1rem;
+    color: $site-dark;
+
+  }
+
+  &__instructions-box {
+    display: flex;
+    flex-direction: column;
+
+    @include desktop {
+      flex-direction: row;
+    }
+  }
+
+  &__step {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__step-info {
+    font-size: 1rem;
+    margin-left: 1.5rem;
+    margin-bottom: 0.25rem;
+    line-height: 1.5;
+  }
+
+  &__start-btn {
+    background-color: $neutral-medium;
+    color: $site-light;
+    margin-top: 2rem;
+
+    &:hover {
+      background-color: $accent-dark;
+      color: $site-light;
+    }
   }
 }
