@@ -41,7 +41,7 @@ function Header() {
 
         <h2 className="header__name">convene</h2>
       </a>
-      <a className="header__feedback-link" href="/feedback"> Give Feedback</a>
+      {/* <a className="header__feedback-link" href="/feedback"> Give Feedback</a> */}
 
 
     </div>

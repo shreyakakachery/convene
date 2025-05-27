@@ -47,7 +47,7 @@ function HomePage() {
               ☕ Explore cafes & restaurants around your intersection.
             </h4>
           </div>
-          <div>
+          {/* <div>
             <h3 className="home-page__step">5 Give Feedback</h3>
             <h4 className="home-page__step-info">
               💖 What did you like about this website?
@@ -56,7 +56,7 @@ function HomePage() {
             <h4 className="home-page__step-info">
               💭 Let me know what you think!
             </h4>
-          </div>
+          </div> */}
         </div>
 
         <button

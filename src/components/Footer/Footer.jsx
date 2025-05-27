@@ -8,10 +8,10 @@ function Footer() {
         <h4 className="footer__copyright">&copy; Shreya Kakachery 2025</h4>
       </div>
       <div className="footer__right">
-        <a className="footer__feedback-link" href="/feedback">
+        {/* <a className="footer__feedback-link" href="/feedback">
           {" "}
           Give Feedback
-        </a>
+        </a> */}
       </div>
     </div>
   );
